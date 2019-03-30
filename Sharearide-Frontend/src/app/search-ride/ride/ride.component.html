@@ -1,0 +1,17 @@
+<div class="ride-items">
+  <p>pickUpLocation : </p>
+  <app-location [location]="ride.pickUpLocation"></app-location>
+  <p>dropOffLocation : </p>
+  <app-location [location]="ride.dropOffLocation"></app-location>
+  <p>stopover locations : </p>
+  <div *ngFor="let loc of ride.stopovers">
+    <app-location [location]="loc"></app-location>
+  </div>
+  <p>travelDate : {{ride.travelDate | date:"MM/dd/yy" }}</p>
+  <p>returnDate : {{ride.returnDate | date:"MM/dd/yy" }}</p>
+  <p>isRoundTrip : {{ride.isRoundTrip}}</p>
+  <p>passengerContribution : {{ride.passengerContribution | currency : "€"}}</p>
+  <p>totalAvailableSeats : {{ride.totalAvailableSeats}}</p>
+  <p>availableSeats : {{ride.availableSeats}}</p>
+  <p>isSoldOut : {{ride.isSoldOut}}</p>
+</div>

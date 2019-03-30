@@ -1,176 +1,38 @@
-$maincolor:#d94f5c;
-$black:#45474c;
-$duration: .2s;
-$distance: 8px;
-$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:700);
-
-.icon {
-  color: $maincolor
-}
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+$maincolor: #d94f5c;
 
 body {
+
   margin: 0px;
   font-family: 'Ubuntu', sans-serif;
+  overflow-x:auto;
+  overflow-y:scroll;
 }
 
-.nav {
-  height: 60px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  background-color: white;
-
-  #nav-check {
-    display: none;
-  }
-
-  .nav-header {
-    display: inline;
-  }
-
-  .nav-btn {
-    display: none;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0 auto;
-    font-size: 18px;
-
-    li {
-      list-style-type: none;
-      position: relative;
-      margin: 0.5%;
-      padding-bottom: 1%;
-      padding-top: 0.7%;
-
-      a {
-        padding: 15px 12px 15px 12px;
-        text-decoration: none;
-        font-size: 20px;
-        color: $black;
-        text-transform: uppercase;
-
-        &:before,
-        &:after {
-          content: '';
-          position: absolute;
-          bottom: 2px;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background-color: $maincolor;
-          width: 100%;
-        }
-
-        &:before {
-          opacity: 0;
-          transform: translateY(- $distance);
-          transition: transform 0s $easeOutBack, opacity 0s;
-        }
-
-        &:after {
-          opacity: 0;
-          transform: translateY($distance/2);
-          transition: transform $duration $easeOutBack, opacity $duration;
-        }
-
-        &:hover,
-        &:focus {
-
-          &:before,
-          &:after {
-            opacity: 1;
-            transform: translateY(0);
-          }
-
-          &:before {
-            transition: transform $duration $easeOutBack, opacity $duration;
-          }
-
-          &:after {
-            transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
-          }
-        }
-      }
-    }
-  }
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  background-color: $maincolor;
 }
-
-@media (max-width:600px) {
-  .nav {
-    background-color: $maincolor;
-    margin-top: 0;
-    height: 40px;
-
-    .nav-links {
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 0px;
-      overflow-y: hidden;
-      top: 50px;
-      left: 0px;
-
-      li {
-        a {
-          display: block;
-          width: 100%;
-
-          &:before,
-          &:after {
-            background-color: white;
-          }
-
-          &:hover {
-            color: lightgrey;
-            transition-duration: 1s;
-
-            i {
-              transform: rotateY(360deg);
-              transition-duration: 1.5s;
-            }
-          }
-        }
-      }
-    }
-
-    .nav-btn {
-      display: inline-block;
-      position: fixed;
-      right: 0px;
-      top: 0px;
-
-      label {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        padding: 13px;
-
-        span {
-          display: block;
-          width: 25px;
-          height: 10px;
-          border-top: 2px solid #eee;
-        }
-      }
-    }
-  }
-
-  .nav>.nav-links>.nav>#nav-check:not(:checked)+.nav-links {
-    height: 0px;
-  }
-
-
-  .nav>#nav-check:checked+.nav-links {
-    height: auto;
-    background-color: white;
-    overflow-y: auto;
-    overflow: hidden;
-  }
+mat-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-label {
+	color: $maincolor;
+}
+mat-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-ripple {
+	background-color: $maincolor;
+}
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $maincolor;
+}
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: $maincolor;
+}
+.mat-calendar-body-selected {
+  background-color: $maincolor
+}
+.mat-datepicker-toggle-active {
+  color: $maincolor;
+}
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: $maincolor;
 }

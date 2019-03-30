@@ -1,0 +1,13 @@
+$maincolor:#d94f5c;
+$black:#45474c;
+
+.component-body{
+    margin-top: 6%;
+    .title{
+        color: $maincolor;
+        text-align: center;
+    }
+    .spinner{
+        margin: 5% auto;
+    }
+}

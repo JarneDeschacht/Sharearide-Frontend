@@ -10,7 +10,7 @@ export class User {
     ) { }
 
     static fromJSON(json: any): User {
-        const ride = new User(json.firstName, json.lastName, json.dateOfBirth, json.email, json.phoneNumber, json.gender,json.rides);
+        const ride = new User(json.firstName, json.lastName, json.dateOfBirth, json.email, json.phoneNumber, json.gender, json.rides);
         return ride;
     }
 

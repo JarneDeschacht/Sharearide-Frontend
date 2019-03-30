@@ -1,28 +1,19 @@
-<div class="intro">
-  <img class="intro-img" src="../assets/Images/comingsoon.jpg">
+<div class="nav">
+  <div class="nav-header">
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <input type="checkbox" id="nav-check">
+  <div class="nav-links">
+    <li><a [routerLink]="['/home']"><i class="fas fa-home icon"></i> Home</a></li>
+    <li><a [routerLink]="['/searchRide']" ><i class="fas fa-search icon"></i> Zoek</a></li>
+    <li><a [routerLink]="['/offerRide']"><i class="fas fa-plus-circle icon"></i> Plaats een rit</a></li>
+    <li><a [routerLink]="['/account']"><i class="fas fa-user-alt icon"></i> Inloggen</a></li>
+  </div>
 </div>
-<div class="side-intro">
-  <div class="image">
-    <img src="../assets/Images/carpool.jpg" alt="side-intro-image">
-  </div>
-  <div class="content">
-    <h2>Waar wil je naartoe?</h2>
-    <p>Wij verzekeren je de tofste en goedkoopste rit die je ooit gereden hebt!</p>
-    <a class="button" href="#">Zoek een rit</a>
-  </div>
-</div>
-<div *ngIf="(users$ | async) as users">
-  <div style="text-align:center">
-    <h1>
-      Welcome to {{ title }}!
-    </h1>
-    <img width="300" alt="Angular Logo"
-      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-  </div>
-  <h2>Here are some Rides to test the backend:</h2>
-  <app-ride></app-ride>
-  <div class="user" *ngFor="let user of users">
-    <app-user [user]="user"></app-user>
-  </div>
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

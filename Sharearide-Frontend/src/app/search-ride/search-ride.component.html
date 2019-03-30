@@ -1,0 +1,11 @@
+<div class="component-body">
+  <h1 class="title">Zoek een Rit</h1>
+  <div *ngIf="(rides$ | async) as rides; else loading">
+    <div class="rides" *ngFor="let ride of rides">
+      <app-ride [ride]="ride"></app-ride>
+    </div>
+  </div>
+  <ng-template #loading>
+    <mat-spinner class="spinner"></mat-spinner>
+  </ng-template>
+</div>

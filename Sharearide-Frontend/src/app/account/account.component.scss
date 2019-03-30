@@ -1,0 +1,56 @@
+$maincolor: #d94f5c;
+$black:#45474c;
+
+.account-forms {
+  width: 50%;
+  margin: 6% auto;
+}
+.title{
+  text-align: center;
+  color: $black;
+  margin-bottom: 2%;
+}
+.table{
+  td{
+    padding: 0 2%;
+  }
+  .form-icon-td{
+    padding: 0;
+    .form-icon{
+      position: relative;
+      margin-left: 30%;
+      color: $maincolor;
+    }
+  }
+  width: 100%;
+  mat-form-field{
+    width: 100%;
+    margin: 10%;
+    margin: 0 auto;
+  }
+}
+.login{
+  width: 50%;
+  margin: 0 auto;
+}
+.button-confirm{
+  margin-top: 2%;
+  color: white;
+  width: 100%;
+  background-color: $maincolor;
+  border-radius: 10px;
+  border: $maincolor 2px solid;
+  transition-duration: .5s;
+  &:hover{
+    opacity: 0.8;
+    transition-duration: .5s;
+  }
+}
+
+@media (max-width:600px) {
+  .account-forms{
+    width: 100%;
+    margin-top: 15%;
+    overflow: hidden;
+  }
+}

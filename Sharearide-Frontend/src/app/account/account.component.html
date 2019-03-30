@@ -1,0 +1,125 @@
+<div class="account-forms">
+  <mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+    <mat-tab label="Inloggen">
+      <h1 class="title">Inloggen</h1>
+      <table class="table login">
+        <tr>
+          <td class="form-icon-td">
+            <i class="far fa-envelope fa-2x form-icon"></i>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput type="email" placeholder="E-mailadres*">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td class="form-icon-td">
+            <i class="fas fa-unlock-alt fa-2x form-icon"></i>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Wachtwoord*">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+              <button class="button-confirm"mat-button>Inloggen</button>
+          </td>
+        </tr>
+      </table>
+    </mat-tab>
+    <mat-tab label="Registreren">
+      <h1 class="title">Registreren</h1>
+      <table class="table">
+        <tr>
+          <td class="form-icon-td">
+            <i class="far fa-user fa-2x form-icon"></i>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Voornaam*">
+            </mat-form-field>
+          </td>
+          <td class="form-icon-td">
+            <i class="far fa-user fa-2x form-icon"></i>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Familienaam*">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td class="form-icon-td">
+            <i class="fas fa-phone fa-2x form-icon"></i>
+          </td>
+          <td>
+            <mat-form-field>
+              <input type="tel" matInput placeholder="Telefoonnummer*">
+            </mat-form-field>
+          </td>
+          <td class="form-icon-td">
+            <i class="fas fa-birthday-cake fa-2x form-icon"></i>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Geboortedatum*">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td class="form-icon-td">
+            <i class="far fa-envelope fa-2x form-icon"></i>
+          </td>
+          <td colspan="3">
+            <mat-form-field>
+              <input matInput type="email" placeholder="E-mailadres*">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td class="form-icon-td">
+            <i class="fas fa-transgender-alt fa-2x form-icon"></i>
+          </td>
+          <td colspan="4">
+            <mat-form-field>
+              <mat-label>Geslacht*</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                  {{gender.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td class="form-icon-td">
+            <i class="fas fa-key fa-2x form-icon"></i>
+          </td>
+          <td>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Wachtwoord*">
+            </mat-form-field>
+          </td>
+          <td class="form-icon-td">
+            <i class="fas fa-key fa-2x form-icon"></i>
+          </td>
+          <td>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Bevestig Wachtwoord*">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <button mat-button class="button-confirm">Bevestigen</button>
+            </td>
+          </tr>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
+</div>
