@@ -1,4 +1,4 @@
-$maincolor:#d94f5c;
+$maincolor:rgb(63, 169, 245);
 $black:#45474c;
 $duration: .2s;
 $distance: 8px;
@@ -15,7 +15,8 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
   top: 0;
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: white;  
+  background-color: white;
+
   #nav-check {
     display: none;
   }
@@ -28,11 +29,26 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     display: none;
   }
 
+  .button-confirm {
+    position: absolute;
+    height: 64px;
+    left:1%;
+    color: white !important;
+    background-color: $maincolor;
+    border-radius: 10px;
+    border: $maincolor 2px solid;
+    transition-duration: .5s;
+  
+    &:hover {
+      opacity: 0.5 !important;
+    }
+  }
   .nav-links {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     font-size: 18px;
+    text-transform: uppercase;
     margin-right: 3%;
 
     li {
@@ -42,12 +58,12 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
       padding-bottom: 1%;
       padding-top: 0.7%;
 
-      a {
+      a{
         padding: 15px 12px 15px 12px;
         text-decoration: none;
         font-size: 20px;
         color: $black;
-        text-transform: uppercase;
+        
         outline: none;
 
         &:before,

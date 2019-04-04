@@ -14,7 +14,7 @@ import { MatButtonModule, MatCheckboxModule, MatTabsModule } from '@angular/mate
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SearchRideComponent } from './search-ride/search-ride.component';
 import { RideComponent } from './search-ride/ride/ride.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -51,6 +51,7 @@ import { CityComponent } from './search-ride/ride/location/city/city.component';
     MatNativeDateModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    ReactiveFormsModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' },],
   bootstrap: [AppComponent]

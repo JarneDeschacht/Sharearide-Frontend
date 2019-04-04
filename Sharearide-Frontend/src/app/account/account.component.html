@@ -2,124 +2,172 @@
   <mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
     <mat-tab label="Inloggen">
       <h1 class="title">Inloggen</h1>
-      <table class="table login">
-        <tr>
-          <td class="form-icon-td">
-            <i class="far fa-envelope fa-2x form-icon"></i>
-          </td>
-          <td>
-            <mat-form-field>
-              <input matInput type="email" placeholder="E-mailadres*">
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td class="form-icon-td">
-            <i class="fas fa-unlock-alt fa-2x form-icon"></i>
-          </td>
-          <td>
-            <mat-form-field>
-              <input matInput type="password" placeholder="Wachtwoord*">
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-              <button class="button-confirm"mat-button>Inloggen</button>
-          </td>
-        </tr>
-      </table>
+
+      <!--LOGIN-->
+      <form [formGroup]="userLogin" (ngSubmit)='login()'>
+        <table class="table login">
+          <tr>
+            <td class="form-icon-td">
+              <i class="far fa-envelope fa-2x form-icon"></i>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="E-mailadres" aria-label="E-mailadres" type="email" formControlName="email"
+                  required>
+                <mat-error *ngIf="userLogin.get('email')['errors']  && 
+                userLogin.get('email').touched">
+                  {{getErrorMessage(userLogin.get('email')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td class=" form-icon-td">
+              <i class="fas fa-unlock-alt fa-2x form-icon"></i>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput type="password" placeholder="Wachtwoord" aria-label="Wachtwoord"
+                  formControlName="password" required>
+                <mat-error *ngIf="userLogin.get('password')['errors']  && 
+                userLogin.get('password').touched">
+                  {{getErrorMessage(userLogin.get('password')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button class="button-confirm" mat-button [disabled]='!userLogin.valid'>Inloggen</button>
+            </td>
+          </tr>
+        </table>
+      </form>
     </mat-tab>
     <mat-tab label="Registreren">
       <h1 class="title">Registreren</h1>
-      <table class="table">
-        <tr>
-          <td class="form-icon-td">
-            <i class="far fa-user fa-2x form-icon"></i>
-          </td>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Voornaam*">
-            </mat-form-field>
-          </td>
-          <td class="form-icon-td">
-            <i class="far fa-user fa-2x form-icon"></i>
-          </td>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Familienaam*">
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td class="form-icon-td">
-            <i class="fas fa-phone fa-2x form-icon"></i>
-          </td>
-          <td>
-            <mat-form-field>
-              <input type="tel" matInput placeholder="Telefoonnummer*">
-            </mat-form-field>
-          </td>
-          <td class="form-icon-td">
-            <i class="fas fa-birthday-cake fa-2x form-icon"></i>
-          </td>
-          <td>
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Geboortedatum*">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td class="form-icon-td">
-            <i class="far fa-envelope fa-2x form-icon"></i>
-          </td>
-          <td colspan="3">
-            <mat-form-field>
-              <input matInput type="email" placeholder="E-mailadres*">
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td class="form-icon-td">
-            <i class="fas fa-transgender-alt fa-2x form-icon"></i>
-          </td>
-          <td colspan="4">
-            <mat-form-field>
-              <mat-label>Geslacht*</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let gender of genders" [value]="gender.value">
-                  {{gender.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td class="form-icon-td">
-            <i class="fas fa-key fa-2x form-icon"></i>
-          </td>
-          <td>
-            <mat-form-field>
-              <input type="password" matInput placeholder="Wachtwoord*">
-            </mat-form-field>
-          </td>
-          <td class="form-icon-td">
-            <i class="fas fa-key fa-2x form-icon"></i>
-          </td>
-          <td>
-            <mat-form-field>
-              <input type="password" matInput placeholder="Bevestig Wachtwoord*">
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <button mat-button class="button-confirm">Bevestigen</button>
+
+      <!--REGISTER-->
+      <form [formGroup]="userRegister" (ngSubmit)='register()'>
+        <table class="table">
+          <tr>
+            <td class="form-icon-td">
+              <i class="far fa-user fa-2x form-icon"></i>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Voornaam" required aria-label="Voornaam" formControlName="firstname">
+                <mat-error *ngIf="userRegister.get('firstname')['errors']  && userRegister.get('firstname').touched">
+                  {{getErrorMessage(userRegister.get('firstname')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+            <td class="form-icon-td">
+              <i class="far fa-user fa-2x form-icon"></i>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Familienaam" required aria-label="Voornaam" formControlName="lastname">
+                <mat-error *ngIf="userRegister.get('lastname')['errors']  && userRegister.get('lastname').touched">
+                  {{getErrorMessage(userRegister.get('lastname')['errors']) }}
+                </mat-error>
+              </mat-form-field>
             </td>
           </tr>
-      </table>
+          <tr>
+            <td class="form-icon-td">
+              <i class="fas fa-phone fa-2x form-icon"></i>
+            </td>
+            <td>
+              <mat-form-field>
+                <input type="tel" matInput placeholder="Telefoonnummer" required aria-label="Telefoonnummer"
+                  formControlName="telnr">
+                <mat-error *ngIf="userRegister.get('telnr')['errors']  && userRegister.get('telnr').touched">
+                  {{getErrorMessage(userRegister.get('telnr')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+            <td class="form-icon-td">
+              <i class="fas fa-birthday-cake fa-2x form-icon"></i>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Geboortedatum" required aria-label="Geboortedatum"
+                  formControlName="borndate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="userRegister.get('borndate')['errors']  && userRegister.get('borndate').touched">
+                  {{getErrorMessage(userRegister.get('borndate')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td class="form-icon-td">
+              <i class="far fa-envelope fa-2x form-icon"></i>
+            </td>
+            <td colspan="3">
+              <mat-form-field>
+                <input matInput placeholder="E-mailadres" aria-label="E-mailadres" type="email" formControlName="email"
+                  required>
+                <mat-error *ngIf="userRegister.get('email')['errors']  && userRegister.get('email').touched">
+                  {{getErrorMessage(userRegister.get('email')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td class="form-icon-td">
+              <i class="fas fa-transgender-alt fa-2x form-icon"></i>
+            </td>
+            <td colspan="4">
+              <mat-form-field>
+                <mat-label>Geslacht</mat-label>
+                <mat-select aria-placeholder="Geslacht" formControlName="gender" required>
+                  <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                    {{gender.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="userRegister.get('gender')['errors']  && 
+                userRegister.get('gender').touched">
+                  {{getErrorMessage(userRegister.get('gender')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td class="form-icon-td">
+              <i class="fas fa-key fa-2x form-icon"></i>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput type="password" placeholder="Wachtwoord" required aria-label="Wachtwoord" formControlName="password">
+                <mat-error *ngIf="userRegister.get('password')['errors']  && 
+                userRegister.get('password').touched">
+                  {{getErrorMessage(userRegister.get('password')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+            <td class="form-icon-td">
+              <i class="fas fa-key fa-2x form-icon"></i>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput type="password" placeholder=" Bevestig Wachtwoord" required aria-label="Bevestig Wachtwoord" formControlName="passwordConfirm">
+                <mat-error *ngIf="userRegister.get('passwordConfirm')['errors']  && 
+                userRegister.get('passwordConfirm').touched">
+                  {{getErrorMessage(userRegister.get('passwordConfirm')['errors']) }}
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <button mat-button [disabled]='!userRegister.valid' class="button-confirm">Bevestigen</button>
+            </td>
+          </tr>
+        </table>
+      </form>
     </mat-tab>
   </mat-tab-group>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { City } from 'src/app/search-ride/city.model';
+import { City } from 'src/app/models/city.model';
 
 @Component({
   selector: 'app-city',

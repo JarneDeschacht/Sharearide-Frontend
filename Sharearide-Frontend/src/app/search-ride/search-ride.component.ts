@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Ride } from './ride.model';
+import { Component, OnInit} from '@angular/core';
+import { Ride } from '../models/ride.model';
 import { Observable } from 'rxjs';
-import { RideDataService } from './ride-data.service';
+import { SharearideDataService } from '../dataservice/sharearide-data.service';
 
 @Component({
   selector: 'app-search-ride',
@@ -10,9 +10,9 @@ import { RideDataService } from './ride-data.service';
 })
 export class SearchRideComponent implements OnInit {
 
-  private _fetchRides$: Observable<Ride[]> = this._rideDataService.rides$;
+  private _fetchRides$: Observable<Ride[]> = this._dataService.rides$;
 
-  constructor(private _rideDataService: RideDataService) { }
+  constructor(private _dataService: SharearideDataService) { }
 
   ngOnInit() {
   }

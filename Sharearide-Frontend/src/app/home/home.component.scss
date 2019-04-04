@@ -1,4 +1,4 @@
-$maincolor: #d94f5c;
+$maincolor: rgb(63, 169, 245);
 $black:#45474c;
 
 .user {
@@ -7,7 +7,17 @@ $black:#45474c;
   text-align: center;
 }
 .intro {
-  margin-top: 6%;
+  margin-top: 10%;
+  .title
+  {
+    font-size: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 2%;
+    margin-top: 8%;
+    color: $maincolor;
+  }
   .intro-img {
     display: block;
     width: 80%;

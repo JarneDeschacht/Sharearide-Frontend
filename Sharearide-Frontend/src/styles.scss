@@ -1,9 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:700);
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-$maincolor: #d94f5c;
+$maincolor: rgb(63, 169, 245);
 
 body {
-
   margin: 0px;
   font-family: 'Ubuntu', sans-serif;
   overflow-x:auto;
