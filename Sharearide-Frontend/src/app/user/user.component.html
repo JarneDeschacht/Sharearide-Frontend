@@ -1,7 +1,21 @@
-<p>Firstname: {{user.firstName}}</p>
-<p>Lastname: {{user.lastName}}</p>
-<p>Email: {{user.email}}</p>
-<p>DateOfBirth: {{user.dateOfBirth | date: 'dd/MM/yyyy'}}</p>
-<p>Phonenumber: {{user.phonenumber}}</p>
-<p>Gender: {{user.gender}}</p>
-<p>{{user.rides}}</p>
+<div class="profile">
+  <div class="header">
+    <img src="../../assets/Images/profilepic.png" alt="profilepic" class="profilepic">
+    <div class="header-content">
+      <h1>
+        {{user.firstName}} {{user.lastName}}
+      </h1>
+      <p>
+        <i class="fas fa-arrow-circle-right fa-2x"></i><span>{{user.email}}</span>
+      </p>
+    </div>
+  </div>
+  <div class="subnav">
+    <button mat-raised-button><a [routerLink]="['personaldata']">Wijzig persoonlijke gegevens</a></button>
+    <button mat-raised-button matBadge="2" matBadgePosition="after" ><a [routerLink]="['participatedRides']">Deelgenomen ritten</a></button>
+    <button mat-raised-button matBadge="1" matBadgePosition="after" ><a [routerLink]="['offeredRides']">Geplaatste ritten</a></button>
+  </div>
+  <div class="content">
+      <router-outlet></router-outlet>
+  </div>
+</div>

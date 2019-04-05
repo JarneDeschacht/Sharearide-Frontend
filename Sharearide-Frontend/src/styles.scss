@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:700);
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 $maincolor: rgb(63, 169, 245);
+$black:#45474c;
 
 body {
   margin: 0px;
@@ -34,4 +35,8 @@ mat-form-field.mat-form-field-appearance-legacy.mat-focused
 }
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: $maincolor;
+}
+.mat-badge-content{
+  background-color: $black;
+  color: white;
 }

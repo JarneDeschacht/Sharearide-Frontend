@@ -16,10 +16,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchRideComponent } from './search-ride/search-ride.component';
-import { RideComponent } from './search-ride/ride/ride.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { LocationComponent } from './search-ride/ride/location/location.component';
-import { CityComponent } from './search-ride/ride/location/city/city.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { PersonalDataComponent } from './user/personal-data/personal-data.component';
+import { OfferedRidesComponent } from './user/offered-rides/offered-rides.component';
+import { ParticipatedRidesComponent } from './user/participated-rides/participated-rides.component';
+import { RideComponent } from './ride/ride.component';
+import { LocationComponent } from './ride/location/location.component';
+import { CityComponent } from './ride/location/city/city.component';
 
 
 @NgModule({
@@ -32,6 +36,9 @@ import { CityComponent } from './search-ride/ride/location/city/city.component';
     RideComponent,
     LocationComponent,
     CityComponent,
+    PersonalDataComponent,
+    OfferedRidesComponent,
+    ParticipatedRidesComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +59,7 @@ import { CityComponent } from './search-ride/ride/location/city/city.component';
     MatSelectModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
+    MatBadgeModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' },],
   bootstrap: [AppComponent]

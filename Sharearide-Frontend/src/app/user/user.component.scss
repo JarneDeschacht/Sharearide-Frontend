@@ -1,0 +1,71 @@
+$maincolor:rgb(63, 169, 245);
+$black:#45474c;
+
+.profile {
+  width: 60%;
+  margin: 7% auto;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+
+    .profilepic {
+      width: 25%;
+      height: 25%;
+    }
+
+    .header-content {
+      width: 75%;
+
+      h1 {
+        font-size: 450%;
+        color: $maincolor;
+        font-weight: bold;
+        text-shadow: 2px 2px 8px $black;
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      p {
+        margin-top: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        i {
+          color: $maincolor;
+        }
+
+        span {
+          font-size: 140%;
+          color: $black;
+          margin-left: 1%;
+        }
+
+      }
+    }
+  }
+
+  .subnav {
+    margin: 3% 17%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+      background-color: $maincolor;
+      border-radius: 10px;
+      border: $maincolor 2px solid;
+      margin: 2%;
+        &:hover {
+          box-shadow: 0px 7px 7px $black;
+          text-shadow: 0px 7px 7px $black;
+        }
+        a {
+          color: white;
+          text-decoration: none;
+      }
+    }
+  }
+}

@@ -8,7 +8,8 @@ import { User } from '../models/user.model';
 })
 export class UserComponent implements OnInit {
 
-  @Input() public user: User;
+  private user : User = JSON.parse(localStorage.getItem('currentUser')); 
+
   constructor() { }
 
   ngOnInit() {

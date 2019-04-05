@@ -29,7 +29,7 @@ export class AccountComponent implements OnInit {
   login() {
     this._dataService
       .login(this.userLogin.value.email, this.userLogin.value.password)
-      .pipe(first())
+      .pipe()
       .subscribe(
         data => {
           location.reload();
@@ -40,7 +40,7 @@ export class AccountComponent implements OnInit {
     this._dataService.register(this.userRegister.value.email, this.userRegister.value.password,
       this.userRegister.value.firstname, this.userRegister.value.lastname, this.userRegister.value.passwordConfirm,
       this.userRegister.value.gender, this.userRegister.value.borndate, this.userRegister.value.telnr)
-      .pipe(first())
+      .pipe()
       .subscribe(
         data => {
           location.reload();
@@ -51,7 +51,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.userLogin = this.ulfb.group({
       email: new FormControl('',
-        [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]),
+        [Validators.required, Validators.email]),
       password: new FormControl('',
         [Validators.required, Validators.minLength(8)])
     });
@@ -61,7 +61,7 @@ export class AccountComponent implements OnInit {
       gender: new FormControl('', [Validators.required]),
       telnr: new FormControl('', [Validators.required]),
       borndate: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       passwordConfirm: new FormControl('', [Validators.required])
     });
@@ -74,7 +74,7 @@ export class AccountComponent implements OnInit {
     else if (errors.minlength) {
       return `Dit veld moet minstens ${errors.minlength.requiredLength} 
         karakters bevatten (nu ${errors.minlength.actualLength})`;
-    } else if (errors.pattern) {
+    } else if (errors.email) {
       return `Dit veld bevat geen geldig e-mailadres`;
     }
 
