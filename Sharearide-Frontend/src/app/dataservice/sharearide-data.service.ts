@@ -22,6 +22,11 @@ export class SharearideDataService {
       delay(400), //moet nog weg
       map((list: any[]): Ride[] => list.map(Ride.fromJSON)));
   }
+  ridesByUser$(id : number): Observable<Ride[]> {
+    return this.http.get(`${environment.apiUrl}/user/${id}/rides`).pipe(
+      delay(400), //moet nog weg
+      map((list: any[]): Ride[] => list.map(Ride.fromJSON)));
+  }
   login(email: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}/Account`, { email, password })
       .pipe(map(user => {

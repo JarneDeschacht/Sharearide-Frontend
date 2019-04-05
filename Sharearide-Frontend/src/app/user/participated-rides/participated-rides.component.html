@@ -1,3 +1,8 @@
-<p>
-  participated-rides works!
-</p>
+<div *ngIf="(ridesByUser$ | async) as rides; else loading">
+  <div class="rides" *ngFor="let ride of rides">
+    <app-ride [ride]="ride"></app-ride>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-spinner class="spinner"></mat-spinner>
+</ng-template>

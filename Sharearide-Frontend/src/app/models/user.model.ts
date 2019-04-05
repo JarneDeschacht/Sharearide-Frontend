@@ -2,6 +2,7 @@ import { Ride } from './ride.model';
 
 export class User {
     constructor(
+        private _id : number,
         private _firstName: string,
         private _lastName: string,
         private _dateOfBirth: Date,
@@ -10,10 +11,11 @@ export class User {
         private _gender: string,
         private _rides: Ride[],
         private _token : string,
+        private _nrOfParticipatedRides : number,
     ) { }
 
     static fromJSON(json: any): User {
-        const ride = new User(json.firstName, json.lastName, json.dateOfBirth, json.email, json.phoneNumber, json.gender, json.rides,json.token);
+        const ride = new User(json.userId,json.firstName, json.lastName, json.dateOfBirth, json.email, json.phoneNumber, json.gender, json.rides,json.token,json.nrOfParticipatedRides);
         return ride;
     }
 
@@ -40,5 +42,11 @@ export class User {
     }
     get token(): string {
         return this._token;
+    }
+    get id(): number {
+        return this._id;
+    }
+    get nrOfParticipatedRides() : number{
+        return this._nrOfParticipatedRides;
     }
 }
