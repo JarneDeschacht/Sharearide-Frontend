@@ -1,0 +1,44 @@
+$maincolor: rgb(63, 169, 245);
+$black:#45474c;
+
+.personal-data {
+
+  h1 {
+    text-align: center;
+    margin: 5% 0;
+    color: $black;
+  }
+
+  .table {
+    td {
+      padding: 0 2%;
+    }
+
+    .form-icon-td {
+      padding: 0;
+
+      .form-icon {
+        position: relative;
+        margin-left: 30%;
+        color: $maincolor;
+      }
+    }
+
+    width: 100%;
+
+    mat-form-field {
+      width: 100%;
+      margin: 1.5% auto;
+    }
+  }
+
+  .button-confirm {
+    margin-top: 4%;
+    color: white !important;
+    width: 100%;
+    background-color: $maincolor;
+    border-radius: 10px;
+    border: $maincolor 2px solid;
+    transition-duration: .5s;
+  }
+}

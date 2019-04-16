@@ -27,8 +27,11 @@
             </td>
             <td>
               <mat-form-field>
-                <input matInput type="password" placeholder="Wachtwoord" aria-label="Wachtwoord"
+                <input matInput [type]="hide3 ? 'text' : 'password'" placeholder="Wachtwoord" aria-label="Wachtwoord"
                   formControlName="password" required>
+                <mat-icon matSuffix (click)="hide3 = !hide3">
+                  {{hide3 ? "visibility_off" : "visibility"}}
+                </mat-icon>
                 <mat-error *ngIf="userLogin.get('password')['errors']  && 
                 userLogin.get('password').touched">
                   {{getErrorMessage(userLogin.get('password')['errors']) }}
@@ -80,6 +83,7 @@
             </td>
             <td>
               <mat-form-field>
+                <span matPrefix>+ &nbsp;</span>
                 <input type="tel" matInput placeholder="Telefoonnummer" required aria-label="Telefoonnummer"
                   formControlName="telnr">
                 <mat-error *ngIf="userRegister.get('telnr')['errors']  && userRegister.get('telnr').touched">
@@ -106,7 +110,7 @@
             <td class="form-icon-td">
               <i class="far fa-envelope fa-2x form-icon"></i>
             </td>
-            <td colspan="3">
+            <td>
               <mat-form-field>
                 <input matInput placeholder="E-mailadres" aria-label="E-mailadres" type="email" formControlName="email"
                   required>
@@ -115,12 +119,10 @@
                 </mat-error>
               </mat-form-field>
             </td>
-          </tr>
-          <tr>
             <td class="form-icon-td">
               <i class="fas fa-transgender-alt fa-2x form-icon"></i>
             </td>
-            <td colspan="4">
+            <td>
               <mat-form-field>
                 <mat-label>Geslacht</mat-label>
                 <mat-select aria-placeholder="Geslacht" formControlName="gender" required>
@@ -129,22 +131,27 @@
                   </mat-option>
                 </mat-select>
                 <mat-error *ngIf="userRegister.get('gender')['errors']  && 
-                userRegister.get('gender').touched">
+                  userRegister.get('gender').touched">
                   {{getErrorMessage(userRegister.get('gender')['errors']) }}
                 </mat-error>
               </mat-form-field>
             </td>
           </tr>
-          <tr>
+          <tr formGroupName="passwordGroup">
             <td class="form-icon-td">
               <i class="fas fa-key fa-2x form-icon"></i>
             </td>
             <td>
               <mat-form-field>
-                <input matInput type="password" placeholder="Wachtwoord" required aria-label="Wachtwoord" formControlName="password">
-                <mat-error *ngIf="userRegister.get('password')['errors']  && 
-                userRegister.get('password').touched">
-                  {{getErrorMessage(userRegister.get('password')['errors']) }}
+                <input matInput [type]="hide1 ? 'text' : 'password'" placeholder="Wachtwoord" required
+                  aria-label="Wachtwoord" formControlName="password">
+                <mat-icon matSuffix (click)="hide1 = !hide1">
+                  {{hide1 ? "visibility_off" : "visibility"}}
+                </mat-icon>
+                <mat-error *ngIf="
+                userRegister.get('passwordGroup').get('password').errors &&
+                userRegister.get('passwordGroup').get('password').touched">
+                  {{getErrorMessage(userRegister.get('passwordGroup').get('password').errors) }}
                 </mat-error>
               </mat-form-field>
             </td>
@@ -153,12 +160,19 @@
             </td>
             <td>
               <mat-form-field>
-                <input matInput type="password" placeholder=" Bevestig Wachtwoord" required aria-label="Bevestig Wachtwoord" formControlName="passwordConfirm">
-                <mat-error *ngIf="userRegister.get('passwordConfirm')['errors']  && 
-                userRegister.get('passwordConfirm').touched">
-                  {{getErrorMessage(userRegister.get('passwordConfirm')['errors']) }}
-                </mat-error>
+                <input matInput [type]="hide2 ? 'text' : 'password'" placeholder=" Bevestig Wachtwoord" required
+                  aria-label="Bevestig Wachtwoord" formControlName="passwordConfirm">
+                <mat-icon matSuffix (click)="hide2 = !hide2">
+                  {{hide2 ? "visibility_off" : "visibility"}}
+                </mat-icon>
               </mat-form-field>
+              <mat-error style="font-size: 12px; margin-top: -6%" *ngIf="
+              userRegister.get('passwordGroup').errors &&
+              userRegister.get('passwordGroup').get('passwordConfirm').touched &&
+              userRegister.get('passwordGroup').get('password').touched
+            ">
+                {{ getErrorMessage(userRegister.get('passwordGroup').errors) }}
+              </mat-error>
             </td>
           </tr>
           <tr>

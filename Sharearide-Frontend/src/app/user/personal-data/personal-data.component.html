@@ -1,3 +1,96 @@
-<p>
-  personal-data works!
-</p>
+<div class="personal-data">
+  <h1>Wijzig je persoonlijke gegevens</h1>
+  <form [formGroup]="userEdit" (ngSubmit)='edit()'>
+    <table class="table">
+      <tr>
+        <td class="form-icon-td">
+          <i class="far fa-user fa-2x form-icon"></i>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Voornaam" required aria-label="Voornaam" formControlName="firstname">
+            <mat-error *ngIf="userEdit.get('firstname')['errors']  && userEdit.get('firstname').touched">
+              {{getErrorMessage(userEdit.get('firstname')['errors']) }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td class="form-icon-td">
+          <i class="far fa-user fa-2x form-icon"></i>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Familienaam" required aria-label="Voornaam" formControlName="lastname">
+            <mat-error *ngIf="userEdit.get('lastname')['errors']  && userEdit.get('lastname').touched">
+              {{getErrorMessage(userEdit.get('lastname')['errors']) }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td class="form-icon-td">
+          <i class="fas fa-phone fa-2x form-icon"></i>
+        </td>
+        <td>
+          <mat-form-field>
+            <span matPrefix>+ &nbsp;</span>
+            <input type="tel" matInput placeholder="Telefoonnummer" required aria-label="Telefoonnummer"
+              formControlName="telnr">
+            <mat-error *ngIf="userEdit.get('telnr')['errors']  && userEdit.get('telnr').touched">
+              {{getErrorMessage(userEdit.get('telnr')['errors']) }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td class="form-icon-td">
+          <i class="fas fa-birthday-cake fa-2x form-icon"></i>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Geboortedatum" required aria-label="Geboortedatum"
+              formControlName="borndate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="userEdit.get('borndate')['errors']  && userEdit.get('borndate').touched">
+              {{getErrorMessage(userEdit.get('borndate')['errors']) }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td class="form-icon-td">
+          <i class="far fa-envelope fa-2x form-icon"></i>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="E-mailadres" aria-label="E-mailadres" type="email" formControlName="email"
+              required>
+            <mat-error *ngIf="userEdit.get('email')['errors']  && userEdit.get('email').touched">
+              {{getErrorMessage(userEdit.get('email')['errors']) }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td class="form-icon-td">
+          <i class="fas fa-transgender-alt fa-2x form-icon"></i>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-label>Geslacht</mat-label>
+            <mat-select aria-placeholder="Geslacht" formControlName="gender" required (ngModel)="1">
+              <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                {{gender.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="userEdit.get('gender')['errors']  && 
+                  userEdit.get('gender').touched">
+              {{getErrorMessage(userEdit.get('gender')['errors']) }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <button mat-button [disabled]='!userEdit.valid' class="button-confirm">Wijzig gegevens</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

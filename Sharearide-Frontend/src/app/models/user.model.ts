@@ -7,7 +7,7 @@ export class User {
         private _lastName: string,
         private _dateOfBirth: Date,
         private _email: string,
-        private _phonenumber: string,
+        private _phoneNumber: string,
         private _gender: string,
         private _rides: Ride[],
         private _token : string,
@@ -31,8 +31,8 @@ export class User {
     get email(): string {
         return this._email;
     }
-    get phonenumber(): string {
-        return this._phonenumber;
+    get phoneNumber(): string {
+        return this._phoneNumber;
     }
     get gender(): string {
         return this._gender;

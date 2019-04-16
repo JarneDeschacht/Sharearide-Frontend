@@ -24,6 +24,7 @@ import { ParticipatedRidesComponent } from './user/participated-rides/participat
 import { RideComponent } from './ride/ride.component';
 import { LocationComponent } from './ride/location/location.component';
 import { CityComponent } from './ride/location/city/city.component';
+import { httpInterceptorProviders } from './interceptors';
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import { CityComponent } from './ride/location/city/city.component';
     ReactiveFormsModule,
     MatBadgeModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' },],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' },httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

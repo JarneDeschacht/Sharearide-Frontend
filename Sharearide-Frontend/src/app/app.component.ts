@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './models/user.model';
+import { SharearideDataService } from './dataservice/sharearide-data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,10 @@ import { User } from './models/user.model';
 export class AppComponent{
   private user : User = JSON.parse(localStorage.getItem('currentUser')); 
   public loggedin : boolean = this.user != null ? true : false;
-  public userName : string = this.user != null ? this.user.firstName : "";
-  constructor(){}
-
+  constructor(private _dataService: SharearideDataService,){}
   logout()
   {
-    localStorage.removeItem("currentUser");
+    this._dataService.logout();
     location.reload();
   }
 }
