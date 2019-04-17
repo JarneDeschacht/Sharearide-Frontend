@@ -1,8 +1,108 @@
-.ride-items{
-    display: block;
-    border: 2px solid black;
-    text-align: center;
-    width: 40%;
-    margin: 1% auto;
-    color: blue;
+$maincolor:rgb(63, 169, 245);
+$black:#45474c;
+
+* {
+  color: $black;
+
 }
+
+.title {
+  font-size: 150%;
+  text-align: center;
+  margin-top: 3%;
+  margin-bottom: .5%;
+}
+
+.ride-items {
+  display: block;
+  border: 2px solid $black;
+  background: #8e9eab;
+  background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+  background: linear-gradient(to right, #eef2f3, #8e9eab);
+
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 0 3%;
+
+  .locations {
+    padding: 2% 1%;
+    width: 85%;
+    .line {
+      width: 20px;
+      height: 35px;
+      display: block;
+      border-right: 3px solid $black;
+      margin: 0 !important;
+      padding: 0;
+    }
+    
+    .dot {
+      width: 43px;
+      height: 11px;
+      display: block;
+      margin: 0 !important;
+      padding: 0;
+    
+      i {
+        text-align: center;
+      }
+    }
+
+    tr {
+      margin: 0 auto;
+      display: block;
+
+      td {
+        margin: 2px;
+      }
+    }
+  }
+
+  .price-seats {
+    margin-top: 1%;
+    display: block;
+    padding: 1%;
+
+    .euro {
+      margin: 1%;
+      font-size: 25px;
+      text-transform: uppercase;
+      color: $maincolor;
+      font-weight: bold;
+    }
+  }
+
+  .user {
+    padding: 1%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: flex-start;
+    img {
+      width: 75px;
+      height: 75px;
+    }
+    p{
+      margin-left: 2%;
+      display: block;
+      font-size: 25px;
+      color: $maincolor;
+    }
+  }
+  .button-confirm {
+    color: white !important;
+    width: 50%;
+    background-color: $maincolor;
+    border-radius: 10px;
+    border: $maincolor 2px solid;
+    transition-duration: .5s;
+    display: block;
+    margin: 3% auto;
+    margin-top: 1%;
+    &:hover {
+      opacity: 0.5 !important;
+    }
+  }
+}
+
+

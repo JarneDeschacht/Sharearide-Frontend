@@ -2,10 +2,14 @@ $maincolor:rgb(63, 169, 245);
 $black:#45474c;
 
 .component-body{
-    margin-top: 6%;
+    margin-top: 10%;
     .title{
         color: $maincolor;
         text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 8%;
     }
     .spinner{
         margin: 5% auto;

@@ -7,6 +7,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 .icon {
   color: $maincolor
 }
+
 .nav {
   z-index: 1000;
   height: 60px;
@@ -32,17 +33,18 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
   .button-confirm {
     position: absolute;
     height: 64px;
-    left:1%;
+    left: 1%;
     color: white !important;
     background-color: $maincolor;
     border-radius: 10px;
     border: $maincolor 2px solid;
     transition-duration: .5s;
-  
+
     &:hover {
       opacity: 0.5 !important;
     }
   }
+
   .nav-links {
     display: flex;
     flex-direction: row;
@@ -58,12 +60,12 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
       padding-bottom: 1%;
       padding-top: 0.7%;
 
-      a{
+      a {
         padding: 15px 12px 15px 12px;
         text-decoration: none;
         font-size: 20px;
         color: $black;
-        
+
         outline: none;
 
         &:before,
@@ -128,11 +130,11 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
       left: 0px;
 
       li {
-        
+
         a {
           display: block;
           width: 100%;
-          
+
 
           &:before,
           &:after {
@@ -184,5 +186,25 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     background-color: white;
     overflow-y: auto;
     overflow: hidden;
+  }
+}
+
+footer {
+  width: 100%;
+  display: block;
+  padding: 2% 0;
+  position:relative;
+  bottom:0;
+  p {
+    color: $black;
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: $black;
+
+      &:hover {
+        border-bottom: 2px solid $maincolor;
+      }
+    }
   }
 }

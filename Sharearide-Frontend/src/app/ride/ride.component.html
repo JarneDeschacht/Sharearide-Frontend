@@ -1,17 +1,41 @@
+<p class="title">{{ride.travelDate | date:"dd/MM/yy" }} : {{ride.pickUpLocation.city.name}} <i
+    class="fas fa-arrow-right"></i> {{ride.dropOffLocation.city.name}}</p>
 <div class="ride-items">
-  <p>pickUpLocation : </p>
-  <app-location [location]="ride.pickUpLocation"></app-location>
-  <p>dropOffLocation : </p>
-  <app-location [location]="ride.dropOffLocation"></app-location>
-  <p>stopover locations : </p>
-  <div *ngFor="let loc of ride.stopovers">
-    <app-location [location]="loc"></app-location>
+  <table class="locations">
+    <tr>
+      <app-location [location]="ride.pickUpLocation"></app-location>
+    </tr>
+    <tr>
+      <td class="dot"><i class="fas fa-circle fa-xs dot"></i></td>
+    </tr>
+    <tr>
+      <td class="line">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="dot"><i class="fas fa-circle fa-xs dot"></i></td>
+    </tr>
+    <div class="stopovers" *ngFor="let loc of ride.stopovers">
+      <tr>
+        <app-location [location]="loc"></app-location>
+      </tr>
+      <tr>
+        <td class="dot"><i class="fas fa-circle fa-xs dot"></i></td>
+      <tr>
+        <td class="line">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="dot"><i class="fas fa-circle fa-xs dot"></i></td>
+    </div>
+    <tr>
+      <app-location [location]="ride.dropOffLocation"></app-location>
+    </tr>
+  </table>
+  <div class="price-seats">
+      {{ride.availableSeats}}/{{ride.totalAvailableSeats}} zitplaatsen beschikbaar:  <span class="euro">{{ride.passengerContribution}} EUR </span> per
+    zitplaats
   </div>
-  <p>travelDate : {{ride.travelDate | date:"dd/MM/yy" }}</p>
-  <p>returnDate : {{ride.returnDate | date:"dd/MM/yy" }}</p>
-  <p>isRoundTrip : {{ride.isRoundTrip}}</p>
-  <p>passengerContribution : {{ride.passengerContribution | currency : "€"}}</p>
-  <p>totalAvailableSeats : {{ride.totalAvailableSeats}}</p>
-  <p>availableSeats : {{ride.availableSeats}}</p>
-  <p>isSoldOut : {{ride.isSoldOut}}</p>
+  <div class="user">
+    <img src="/assets/Images/profilepic.png" alt="profile pic"><p>Jarne Deschacht</p>
+  </div>
+  <button mat-button class="button-confirm">Reserveer een stoel</button>
 </div>

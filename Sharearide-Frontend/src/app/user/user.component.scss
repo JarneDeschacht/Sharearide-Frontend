@@ -4,6 +4,7 @@ $black:#45474c;
 .profile {
   width: 60%;
   margin: 7% auto;
+  margin-bottom: 0;
 
   .header {
     display: flex;
@@ -58,13 +59,15 @@ $black:#45474c;
       border-radius: 10px;
       border: $maincolor 2px solid;
       margin: 2%;
-        &:hover {
-          box-shadow: 0px 7px 7px $black;
-          text-shadow: 0px 7px 7px $black;
-        }
-        a {
-          color: white;
-          text-decoration: none;
+
+      &:hover {
+        box-shadow: 0px 7px 7px $black;
+        text-shadow: 0px 7px 7px $black;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
       }
     }
   }

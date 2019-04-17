@@ -1,6 +1,9 @@
-<ul class="location-items">
+<!-- <ul class="location-items">
   <li>street : {{location.street}}</li>
   <li>number : {{location.number}}</li>
   <li>companyName : {{location.companyName}}</li>
   <app-city [city]="location.city"></app-city>
-</ul>
+</ul> -->
+<td style="width: 100%">
+  {{location.street}} {{location.number}}, <app-city [city]="location.city"></app-city>
+</td>
