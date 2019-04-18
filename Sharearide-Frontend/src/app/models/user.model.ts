@@ -2,7 +2,7 @@ import { Ride } from './ride.model';
 
 export class User {
     constructor(
-        private _id : number,
+        private _id: number,
         private _firstName: string,
         private _lastName: string,
         private _dateOfBirth: Date,
@@ -10,12 +10,15 @@ export class User {
         private _phoneNumber: string,
         private _gender: string,
         private _rides: Ride[],
-        private _token : string,
-        private _nrOfParticipatedRides : number,
+        private _token: string,
+        private _nrOfParticipatedRides: number,
+        private _nrOfOfferedRides: number,
     ) { }
 
     static fromJSON(json: any): User {
-        const ride = new User(json.userId,json.firstName, json.lastName, json.dateOfBirth, json.email, json.phoneNumber, json.gender, json.rides,json.token,json.nrOfParticipatedRides);
+        const ride = new User(json.userId, json.firstName, json.lastName, json.dateOfBirth,
+            json.email, json.phoneNumber, json.gender, json.rides, json.token,
+            json.nrOfOfferedRides, json.nrOfParticipatedRides);
         return ride;
     }
 
@@ -46,7 +49,13 @@ export class User {
     get id(): number {
         return this._id;
     }
-    get nrOfParticipatedRides() : number{
+    get nrOfParticipatedRides(): number {
         return this._nrOfParticipatedRides;
+    }
+    get nrOfOfferedRides(): number {
+        return this._nrOfOfferedRides;
+    }
+    set nrOfParticipatedRides(value){
+        this._nrOfParticipatedRides = value;
     }
 }

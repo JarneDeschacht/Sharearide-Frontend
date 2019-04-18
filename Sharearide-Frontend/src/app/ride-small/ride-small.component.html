@@ -14,26 +14,12 @@
     <tr>
       <td class="dot"><i class="fas fa-circle fa-xs dot"></i></td>
     </tr>
-    <div class="stopovers" *ngFor="let loc of ride.stopovers">
-      <tr>
-        <app-location [location]="loc"></app-location>
-      </tr>
-      <tr>
-        <td class="dot"><i class="fas fa-circle fa-xs dot"></i></td>
-      <tr>
-        <td class="line">&nbsp;</td>
-      </tr>
-      <tr>
-        <td class="dot"><i class="fas fa-circle fa-xs dot"></i></td>
-    </div>
     <tr>
       <app-location [location]="ride.dropOffLocation"></app-location>
     </tr>
   </table>
   <div *ngIf="!isSoldOut()" class="price-seats">
-    {{ride.availableSeats}}/{{ride.totalAvailableSeats}} zitplaatsen beschikbaar:
-    <span class="euro">{{ride.passengerContribution}} EUR </span> per
-    zitplaats
+    {{ride.availableSeats}}/{{ride.totalAvailableSeats}} zitplaatsen beschikbaar
   </div>
   <div *ngIf="isSoldOut()" class="sold-out price-seats">
     Uitverkocht
@@ -42,5 +28,4 @@
     <img src="/assets/Images/profilepic.png" alt="profile pic">
     <p>{{ride.owner.firstName}} {{ride.owner.lastName}}</p>
   </div>
-  <button mat-button class="button-confirm" (click)="addUserToRide()">Reserveer een stoel</button>
 </div>

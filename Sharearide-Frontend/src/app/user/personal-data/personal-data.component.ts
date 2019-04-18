@@ -33,7 +33,7 @@ export class PersonalDataComponent implements OnInit {
       firstname: new FormControl(this.user.firstName, [Validators.required]),
       lastname: new FormControl(this.user.lastName, [Validators.required]),
       gender: new FormControl(this.user.gender, [Validators.required]),
-      telnr: new FormControl(this.user.phoneNumber, [Validators.required, Validators.pattern('^[0-9]{10,}')]),
+      telnr: new FormControl(this.user.phoneNumber.substring(1), [Validators.required, Validators.pattern('^[0-9]{10,}')]),
       borndate: new FormControl(this.user.dateOfBirth, [Validators.required]),
       email: new FormControl(this.user.email, [Validators.required, Validators.email]),
     });
@@ -41,7 +41,7 @@ export class PersonalDataComponent implements OnInit {
 
   edit() {
     this._dataService.edit(this.user.id, this.userEdit.value.email, this.userEdit.value.firstname, this.userEdit.value.lastname,
-      this.userEdit.value.gender, this.userEdit.value.borndate, this.userEdit.value.telnr
+      this.userEdit.value.gender, this.userEdit.value.borndate,"+"+this.userEdit.value.telnr
     ).pipe()
       .subscribe(
         val => {

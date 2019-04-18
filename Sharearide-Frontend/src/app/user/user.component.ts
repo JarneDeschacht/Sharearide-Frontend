@@ -13,8 +13,9 @@ export class UserComponent implements OnInit {
 
   private user : User = JSON.parse(localStorage.getItem('currentUser')); 
   public pRides : number = this.user.nrOfParticipatedRides;
+  public oRides : number = this.user.nrOfOfferedRides;
 
-  constructor() { }
+  constructor(private _dataService : SharearideDataService) { }
 
   ngOnInit() {
   }

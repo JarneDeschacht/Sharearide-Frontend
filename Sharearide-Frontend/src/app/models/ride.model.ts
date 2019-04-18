@@ -1,22 +1,25 @@
+import { User } from './user.model';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export class Ride {
     constructor(
+        private _id : number,
         private _pickUpLocation: Location,
         private _dropOffLocation: Location,
         private _stopovers: Location[],
         private _travelDate: Date,
-        private _returnDate: Date,
-        private _isRoundTrip: boolean,
         private _passengerContribution: number,
         private _totalAvailableSeats: number,
         private _availableSeats: number,
         private _isSoldOut: boolean,
+        private _owner : User,
+        private _departure : Date,
     ) { }
 
     static fromJSON(json : any) : Ride{
-        const ride = new Ride(json.pickUpLocation,json.dropOffLocation,
-            json.stopovers,json.travelDate,json.returnDate,json.isRoundTrip,
-            json.passengerContribution,json.totalAvailableSeats,json.availableSeats,
-            json.isSoldOut);
+        const ride = new Ride(json.rideId,json.pickUpLocation,json.dropOffLocation,
+            json.stopovers,json.travelDate,json.passengerContribution,
+            json.totalAvailableSeats,json.availableSeats,json.isSoldOut,json.owner,json.departure);
         return ride;
     }
 
@@ -32,12 +35,6 @@ export class Ride {
     get travelDate(): Date {
         return this._travelDate;
     }
-    get returnDate(): Date {
-        return this._returnDate;
-    }
-    get isRoundTrip(): boolean{
-        return this._isRoundTrip;
-    }
     get isSoldOut(): boolean{
         return this._isSoldOut;
     }
@@ -49,5 +46,14 @@ export class Ride {
     }
     get availableSeats(): number{
         return this._availableSeats;
+    }
+    get owner() : User{
+        return this._owner;
+    }
+    get departure() : Date{
+        return this._departure;
+    }
+    get id() : number{
+        return this._id;
     }
 }

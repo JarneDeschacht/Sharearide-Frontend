@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ride } from '../models/ride.model';
 import { Observable } from 'rxjs';
 import { SharearideDataService } from '../dataservice/sharearide-data.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-search-ride',
@@ -10,7 +11,8 @@ import { SharearideDataService } from '../dataservice/sharearide-data.service';
 })
 export class SearchRideComponent implements OnInit {
 
-  private _fetchRides$: Observable<Ride[]> = this._dataService.rides$;
+  private user : User = JSON.parse(localStorage.getItem('currentUser')); 
+  private _fetchRides$: Observable<Ride[]> = this._dataService.rides$(this.user.id);
 
   constructor(private _dataService: SharearideDataService) { }
 

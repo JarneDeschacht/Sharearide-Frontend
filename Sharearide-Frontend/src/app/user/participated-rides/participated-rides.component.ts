@@ -12,14 +12,14 @@ import { User } from 'src/app/models/user.model';
 export class ParticipatedRidesComponent implements OnInit {
 
   private user : User = JSON.parse(localStorage.getItem('currentUser')); 
-  private _fetchRidesByUser$: Observable<Ride[]> = this._dataService.ridesByUser$(this.user.id);
+  private _fetchRidesByUser$: Observable<Ride[]> = this._dataService.participatedRidesByUser$(this.user.id);
 
   constructor(private _dataService: SharearideDataService) { }
 
   ngOnInit() {
   }
 
-  get ridesByUser$(): Observable<Ride[]> {
+  get participatedRidesByUser$(): Observable<Ride[]> {
     return this._fetchRidesByUser$;
   }
 

@@ -48,15 +48,28 @@ export class SharearideDataService {
     return this.http.get(`${environment.apiUrl}/user/`).pipe(
       map((list: any[]): User[] => list.map(User.fromJSON)));
   }
-  get rides$(): Observable<Ride[]> {
-    return this.http.get(`${environment.apiUrl}/ride/`).pipe(
-      // delay(400), //moet nog weg
+  rides$(id: number): Observable<Ride[]> {
+    return this.http.get(`${environment.apiUrl}/ride/${id}`).pipe(
       map((list: any[]): Ride[] => list.map(Ride.fromJSON)));
   }
-  ridesByUser$(id: number): Observable<Ride[]> {
-    return this.http.get(`${environment.apiUrl}/user/${id}/rides`).pipe(
-      // delay(400), //moet nog weg
+  participatedRidesByUser$(id: number): Observable<Ride[]> {
+    return this.http.get(`${environment.apiUrl}/user/${id}/participatedrides`).pipe(
       map((list: any[]): Ride[] => list.map(Ride.fromJSON)));
+  }
+  offeredRidesByUser$(id: number): Observable<Ride[]> {
+    return this.http.get(`${environment.apiUrl}/user/${id}/offeredrides`).pipe(
+      map((list: any[]): Ride[] => list.map(Ride.fromJSON)));
+  }
+  addUserToRide(rideId: number, userId: number) {
+    return this.http.post(`${environment.apiUrl}/ride/${rideId}/adduser/${userId}`, { rideId, userId });
+  }
+  checkUserNameAvailability = (email: string): Observable<boolean> => {
+    return this.http.get<boolean>(
+      `${environment.apiUrl}/account/checkusername`,
+      {
+        params: { email }
+      }
+    );
   }
   login(email: string, password: string): Observable<boolean> {
     return this.http
@@ -67,11 +80,10 @@ export class SharearideDataService {
       .pipe(
         map((user: any) => {
           if (user) {
-            console.log(user);
-            localStorage.setItem(this._tokenKey,user.token);
+            localStorage.setItem(this._tokenKey, user.token);
             // this._currentuser$.next(user);
             // console.log(this._currentuser$);
-            localStorage.setItem(this._userKey,JSON.stringify(user))
+            localStorage.setItem(this._userKey, JSON.stringify(user))
             return true;
           } else {
             return false;
@@ -85,21 +97,21 @@ export class SharearideDataService {
       localStorage.removeItem(this._userKey);
     }
   }
-  edit(id : number,email: string, firstName: string, lastName: string,gender: number,
-     dateOfBirth: Date, phoneNumber: string) : Observable<boolean>{
+  edit(id: number, email: string, firstName: string, lastName: string, gender: number,
+    dateOfBirth: Date, phoneNumber: string): Observable<boolean> {
     return this.http.put(`${environment.apiUrl}/user/${id}`,
-    {
-      id,email,firstName,lastName,gender,dateOfBirth,phoneNumber
-    }).pipe(
-      map((user: any) => {
-        if (user) {
-          localStorage.setItem(this._userKey,JSON.stringify(user))
-          return true;
-        } else {
-          return false;
-        }
-      })
-    );
+      {
+        id, email, firstName, lastName, gender, dateOfBirth, phoneNumber
+      }).pipe(
+        map((user: any) => {
+          if (user) {
+            localStorage.setItem(this._userKey, JSON.stringify(user))
+            return true;
+          } else {
+            return false;
+          }
+        })
+      );
   }
 
   register(email: string, password: string, firstName: string, lastName: string,
@@ -117,10 +129,10 @@ export class SharearideDataService {
         map((user: any) => {
           if (user) {
             console.log(user);
-            localStorage.setItem(this._tokenKey,user.token);
+            localStorage.setItem(this._tokenKey, user.token);
             // this._currentuser$.next(user);
             // console.log(this._currentuser$);
-            localStorage.setItem(this._userKey,JSON.stringify(user))
+            localStorage.setItem(this._userKey, JSON.stringify(user))
             return true;
           } else {
             return false;

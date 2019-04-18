@@ -5,7 +5,7 @@ import { SharearideDataService } from '../dataservice/sharearide-data.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 export interface Gender {
   value: number;
@@ -55,7 +55,8 @@ export class AccountComponent implements OnInit {
     private ulfb: FormBuilder,
     private urfb: FormBuilder,
     private _dataService: SharearideDataService,
-    private router: Router) {
+    private router: Router,
+    private snackBar: MatSnackBar) {
   }
   login() {
     this._dataService
@@ -70,6 +71,7 @@ export class AccountComponent implements OnInit {
               this.router.navigate(['/home']);
             }
           } else {
+            this.openSnackBar("Logingegevens zijn niet correct!");
             this.errorMsg = `Could not login`;
           }
           location.reload();
@@ -77,10 +79,12 @@ export class AccountComponent implements OnInit {
         (err: HttpErrorResponse) => {
 
           if (err.error instanceof Error) {
+            this.openSnackBar("Logingegevens zijn niet correct!");
             this.errorMsg = `Error while trying to login user ${
               this.userLogin.value.firstname
               }: ${err.error.message}`;
           } else {
+            this.openSnackBar("Logingegevens zijn niet correct!");
             this.errorMsg = `Error ${err.status} while trying to login user ${
               this.userLogin.value.firstname
               }: ${err.error}`;
@@ -104,6 +108,7 @@ export class AccountComponent implements OnInit {
               this.router.navigate(['/home']);
             }
           } else {
+            this.openSnackBar("Er is een fout opgetreden!");
             this.errorMsg = `Could not register`;
           }
           location.reload();
@@ -111,10 +116,12 @@ export class AccountComponent implements OnInit {
         (err: HttpErrorResponse) => {
 
           if (err.error instanceof Error) {
+            this.openSnackBar("Er is een fout opgetreden!");
             this.errorMsg = `Error while trying to register user ${
               this.userRegister.value.firstname
               }: ${err.error.message}`;
           } else {
+            this.openSnackBar("Er is een fout opgetreden!");
             this.errorMsg = `Error ${err.status} while trying to register user ${
               this.userRegister.value.firstname
               }: ${err.error}`;
@@ -136,10 +143,11 @@ export class AccountComponent implements OnInit {
       gender: new FormControl('', [Validators.required]),
       telnr: new FormControl('', [Validators.required,Validators.pattern('^[0-9]{10,}')]),
       borndate: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: ['', [Validators.required, Validators.email],
+      serverSideValidateUsername(this._dataService.checkUserNameAvailability)],
       passwordGroup: this.urfb.group(
         {
-          password: ['', [Validators.required, Validators.minLength(8)]],
+          password: ['', [Validators.required, Validators.minLength(8),]],
           passwordConfirm: ['', Validators.required]
         },
         { validator: comparePasswords }
@@ -165,8 +173,14 @@ export class AccountComponent implements OnInit {
     }
      else if (errors.passwordsDiffer) {
       return `Wachtwoorden zijn niet hetzelfde`;
+    }else if (errors.userAlreadyExists) {
+      return `Er bestaat al een gebruiker met dit E-mailadres`;
     }
-
+  }
+  openSnackBar(message: string) {
+    this.snackBar.open(message,"OK", {
+      duration: 5000,
+    });
   }
 
 }

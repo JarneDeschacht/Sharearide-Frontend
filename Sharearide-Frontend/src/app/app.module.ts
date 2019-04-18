@@ -22,9 +22,11 @@ import { PersonalDataComponent } from './user/personal-data/personal-data.compon
 import { OfferedRidesComponent } from './user/offered-rides/offered-rides.component';
 import { ParticipatedRidesComponent } from './user/participated-rides/participated-rides.component';
 import { RideComponent } from './ride/ride.component';
-import { LocationComponent } from './ride/location/location.component';
-import { CityComponent } from './ride/location/city/city.component';
+import { LocationComponent } from './location/location.component';
+import { CityComponent } from './location/city/city.component';
 import { httpInterceptorProviders } from './interceptors';
+import { RideSmallComponent } from './ride-small/ride-small.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import { httpInterceptorProviders } from './interceptors';
     PersonalDataComponent,
     OfferedRidesComponent,
     ParticipatedRidesComponent,
+    RideSmallComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import { httpInterceptorProviders } from './interceptors';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatBadgeModule,
+    MatSnackBarModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' },httpInterceptorProviders],
   bootstrap: [AppComponent]

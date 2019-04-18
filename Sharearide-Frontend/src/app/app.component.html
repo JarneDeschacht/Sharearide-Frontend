@@ -1,29 +1,31 @@
-<div *ngIf="loggedin">
-  <div class="nav">
-    <div class="nav-header">
+<div class="app-comp">
+  <div *ngIf="loggedin">
+    <div class="nav">
+      <div class="nav-header">
+      </div>
+      <div class="nav-btn">
+        <label for="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+      <input type="checkbox" id="nav-check">
+      <div class="nav-links">
+        <button title="uiloggen" class="button-confirm" mat-button (click)="logout()"><i
+            class="fas fa-sign-out-alt fa-2x "></i></button>
+        <li><a [routerLink]="['/home']"><i class="fas fa-home icon"></i> Home</a></li>
+        <li><a [routerLink]="['/searchRide']"><i class="fas fa-search icon"></i> Zoek</a></li>
+        <li><a [routerLink]="['/offerRide']"><i class="fas fa-plus-circle icon"></i> Plaats een rit</a></li>
+        <li><a [routerLink]="['/profile']"><i class="fas fa-user-alt icon"></i> {{user.firstName}}</a></li>
+      </div>
     </div>
-    <div class="nav-btn">
-      <label for="nav-check">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-    </div>
-    <input type="checkbox" id="nav-check">
-    <div class="nav-links">
-      <button title="uiloggen" class="button-confirm" mat-button (click)="logout()"><i
-          class="fas fa-sign-out-alt fa-2x "></i></button>
-      <li><a [routerLink]="['/home']"><i class="fas fa-home icon"></i> Home</a></li>
-      <li><a [routerLink]="['/searchRide']"><i class="fas fa-search icon"></i> Zoek</a></li>
-      <li><a [routerLink]="['/offerRide']"><i class="fas fa-plus-circle icon"></i> Plaats een rit</a></li>
-      <li><a [routerLink]="['/profile']"><i class="fas fa-user-alt icon"></i> {{user.firstName}}</a></li>
-    </div>
+    <router-outlet></router-outlet>
+    <footer>
+      <p>&copy; 2019 Share a Ride | Design & Development: <a href="#">Jarne Deschacht</a></p>
+    </footer>
   </div>
-  <router-outlet></router-outlet>
-  <footer>
-    <p>&copy; 2019 Share a Ride | Design & Development: <a href="#">Jarne Deschacht</a></p>
-  </footer>
-</div>
-<div *ngIf="!loggedin">
-  <app-account></app-account>
+  <div *ngIf="!loggedin">
+    <app-account [routerLink]="['/home']"></app-account>
+  </div>
 </div>

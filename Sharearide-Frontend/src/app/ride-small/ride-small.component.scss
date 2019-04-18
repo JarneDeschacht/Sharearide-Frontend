@@ -3,7 +3,6 @@ $black:#45474c;
 
 * {
   color: $black;
-
 }
 
 .title {
@@ -20,7 +19,8 @@ $black:#45474c;
   background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
   background: linear-gradient(to right, #eef2f3, #8e9eab);
 
-  width: 40%;
+  margin-top: 2%;
+  width: 60%;
   margin: 0 auto;
   border-radius: 20px;
   padding: 0 3%;
@@ -28,6 +28,7 @@ $black:#45474c;
   .locations {
     padding: 2% 1%;
     width: 85%;
+
     .line {
       width: 20px;
       height: 35px;
@@ -36,14 +37,14 @@ $black:#45474c;
       margin: 0 !important;
       padding: 0;
     }
-    
+
     .dot {
       width: 43px;
       height: 11px;
       display: block;
       margin: 0 !important;
       padding: 0;
-    
+
       i {
         text-align: center;
       }
@@ -58,7 +59,8 @@ $black:#45474c;
       }
     }
   }
-  .sold-out{
+
+  .sold-out {
     text-transform: uppercase;
   }
 
@@ -66,14 +68,6 @@ $black:#45474c;
     margin-top: 1%;
     display: block;
     padding: 1%;
-
-    .euro {
-      margin: 1%;
-      font-size: 25px;
-      text-transform: uppercase;
-      color: $maincolor;
-      font-weight: bold;
-    }
   }
 
   .user {
@@ -81,31 +75,17 @@ $black:#45474c;
     margin-top: 2%;
     display: flex;
     justify-content: flex-start;
+
     img {
       width: 75px;
       height: 75px;
     }
-    p{
+
+    p {
       margin-left: 2%;
       display: block;
       font-size: 25px;
       color: $maincolor;
     }
   }
-  .button-confirm {
-    color: white !important;
-    width: 50%;
-    background-color: $maincolor;
-    border-radius: 10px;
-    border: $maincolor 2px solid;
-    transition-duration: .5s;
-    display: block;
-    margin: 3% auto;
-    margin-top: 1%;
-    &:hover {
-      opacity: 0.5 !important;
-    }
-  }
 }
-
-
