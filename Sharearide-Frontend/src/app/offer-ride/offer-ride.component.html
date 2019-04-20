@@ -1,0 +1,287 @@
+<div class="component-body">
+  <h1 class="title">Plaats een Rit</h1>
+  <div class="stepper">
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="locationsGroup">
+        <form [formGroup]="locationsGroup">
+          <ng-template matStepLabel>Bestemming en tussenstops</ng-template>
+          <p>Waar vertrek je?</p>
+          <table class="table">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Straat" aria-label="Straat" type="text" formControlName="streetStart"
+                    required>
+                  <mat-error
+                    *ngIf="locationsGroup.get('streetStart')['errors']  && locationsGroup.get('streetStart').touched">
+                    {{getErrorMessage(locationsGroup.get('streetStart')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Nummer" aria-label="Nummer" type="text" formControlName="numberStart"
+                    required>
+                  <mat-error
+                    *ngIf="locationsGroup.get('numberStart')['errors']  && locationsGroup.get('numberStart').touched">
+                    {{getErrorMessage(locationsGroup.get('numberStart')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Bedrijfsnaam" aria-label="Bedrijfsnaam" type="text"
+                    formControlName="companyNameStart">
+                  <mat-error
+                    *ngIf="locationsGroup.get('companyNameStart')['errors']  && locationsGroup.get('companyNameStart').touched">
+                    {{getErrorMessage(locationsGroup.get('companyNameStart')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Stad" aria-label="Stad" type="text" formControlName="cityStart" required>
+                  <mat-error
+                    *ngIf="locationsGroup.get('cityStart')['errors']  && locationsGroup.get('cityStart').touched">
+                    {{getErrorMessage(locationsGroup.get('cityStart')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <mat-label>Land</mat-label>
+                  <mat-select aria-placeholder="Land" formControlName="countryStart" required>
+                    <mat-option *ngFor="let country of countries" [value]="country.value">
+                      {{country.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="locationsGroup.get('countryStart')['errors']  && locationsGroup.get('countryStart').touched">
+                    {{getErrorMessage(locationsGroup.get('countryStart')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Postcode" aria-label="Postcode" type="text"
+                    formControlName="postalcodeStart" required>
+                  <mat-error
+                    *ngIf="locationsGroup.get('postalcodeStart')['errors']  && locationsGroup.get('postalcodeStart').touched">
+                    {{getErrorMessage(locationsGroup.get('postalcodeStart')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <p>Waar ga je naartoe?</p>
+          <table class="table">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Straat" aria-label="Straat" type="text" formControlName="streetEnd"
+                    required>
+                  <mat-error
+                    *ngIf="locationsGroup.get('streetEnd')['errors']  && locationsGroup.get('streetEnd').touched">
+                    {{getErrorMessage(locationsGroup.get('streetEnd')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Nummer" aria-label="Nummer" type="text" formControlName="numberEnd"
+                    required>
+                  <mat-error
+                    *ngIf="locationsGroup.get('numberEnd')['errors']  && locationsGroup.get('numberEnd').touched">
+                    {{getErrorMessage(locationsGroup.get('numberEnd')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Bedrijfsnaam" aria-label="Bedrijfsnaam" type="text"
+                    formControlName="companyNameEnd">
+                  <mat-error
+                    *ngIf="locationsGroup.get('companyNameEnd')['errors']  && locationsGroup.get('companyNameEnd').touched">
+                    {{getErrorMessage(locationsGroup.get('companyNameEnd')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Stad" aria-label="Stad" type="text" formControlName="cityEnd" required>
+                  <mat-error *ngIf="locationsGroup.get('cityEnd')['errors']  && locationsGroup.get('cityEnd').touched">
+                    {{getErrorMessage(locationsGroup.get('cityEnd')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <mat-label>Land</mat-label>
+                  <mat-select aria-placeholder="Land" formControlName="countryEnd" required>
+                    <mat-option *ngFor="let country of countries" [value]="country.value">
+                      {{country.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="locationsGroup.get('countryEnd')['errors']  && locationsGroup.get('countryEnd').touched">
+                    {{getErrorMessage(locationsGroup.get('countryEnd')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Postcode" aria-label="Postcode" type="text"
+                    formControlName="postalcodeEnd" required>
+                  <mat-error
+                    *ngIf="locationsGroup.get('postalcodeEnd')['errors']  && locationsGroup.get('postalcodeEnd').touched">
+                    {{getErrorMessage(locationsGroup.get('postalcodeEnd')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <div>
+            <button mat-button matStepperNext>Volgende</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="stopoverLocations">
+        <form [formGroup]="stopoverLocations">
+          <ng-template matStepLabel>tussenstops</ng-template>
+          <p>Waar stop je onderweg? (niet verplicht)</p>
+          <div formArrayName="stopovers" *ngFor="let item of stopovers.controls; let i = index">
+            <p class="subtitle">Tussenstop {{i+1}}</p>
+            <div [formGroupName]="i">
+              <table class="table">
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Straat" aria-label="Straat" type="text" formControlName="street">
+                      <mat-error *ngIf="item.errors && item.get('street').touched">
+                        {{ getErrorMessage(item.errors) }}
+                      </mat-error>
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Nummer" aria-label="Nummer" type="text" formControlName="number">
+                      <mat-error *ngIf="item.errors && item.get('number').touched">
+                        {{ getErrorMessage(item.errors) }}
+                      </mat-error>
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Bedrijfsnaam" aria-label="Bedrijfsnaam" type="text"
+                        formControlName="companyName">
+                      <mat-error *ngIf="item.errors && item.get('companyName').touched">
+                        {{ getErrorMessage(item.errors) }}
+                      </mat-error>
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Stad" aria-label="Stad" type="text" formControlName="city">
+                      <mat-error *ngIf="item.errors && item.get('city').touched">
+                        {{ getErrorMessage(item.errors) }}
+                      </mat-error>
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field>
+                      <mat-label>Land</mat-label>
+                      <mat-select aria-placeholder="Land" formControlName="country">
+                        <mat-option *ngFor="let country of countries" [value]="country.value">
+                          {{country.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="item.errors && item.get('country').touched">
+                        {{ getErrorMessage(item.errors) }}
+                      </mat-error>
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Postcode" aria-label="Postcode" type="text"
+                        formControlName="postalcode">
+                      <mat-error *ngIf="item.errors && item.get('postalcode').touched">
+                        {{ getErrorMessage(item.errors) }}
+                      </mat-error>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Terug</button>
+            <button mat-button matStepperNext>Volgende</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="details">
+        <form [formGroup]="details">
+          <ng-template matStepLabel>Prijs, plaatsen en andere algemene info</ng-template>
+          <table class="details">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Reisdatum" required aria-label="Reisdatum"
+                    formControlName="travelDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="details.get('travelDate')['errors']  && details.get('travelDate').touched">
+                    {{getErrorMessage(details.get('travelDate')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Prijs" aria-label="Prijs" type="number" formControlName="price" required>
+                  <mat-error *ngIf="details.get('price')['errors']  && details.get('price').touched">
+                    {{getErrorMessage(details.get('price')['errors']) }}
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Beschikbare Zitplaatsen" aria-label="Beschikbare Zitplaatsen" type="number"
+                     formControlName="seats" required>
+                    <mat-error *ngIf="details.get('seats')['errors']  && details.get('seats').touched">
+                      {{getErrorMessage(details.get('seats')['errors']) }}
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+            </tr>
+          </table>
+          <div>
+            <button mat-button matStepperPrevious>Terug</button>
+            <button mat-button matStepperNext>Volgende</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Klaar</ng-template>
+        <div class="ready">
+          <p>Je bent klaar nu.</p>
+          <div>
+            <button mat-button matStepperPrevious>Terug</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button (click)="createRide()">Maak rit aan</button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+</div>

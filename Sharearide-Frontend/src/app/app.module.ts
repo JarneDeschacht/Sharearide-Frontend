@@ -16,8 +16,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchRideComponent } from './search-ride/search-ride.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatBadgeModule } from '@angular/material/badge';
 import { PersonalDataComponent } from './user/personal-data/personal-data.component';
 import { OfferedRidesComponent } from './user/offered-rides/offered-rides.component';
 import { ParticipatedRidesComponent } from './user/participated-rides/participated-rides.component';
@@ -26,7 +26,10 @@ import { LocationComponent } from './location/location.component';
 import { CityComponent } from './location/city/city.component';
 import { httpInterceptorProviders } from './interceptors';
 import { RideSmallComponent } from './ride-small/ride-small.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { OfferRideComponent } from './offer-ride/offer-ride.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -43,6 +46,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     OfferedRidesComponent,
     ParticipatedRidesComponent,
     RideSmallComponent,
+    OfferRideComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,8 +69,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatTooltipModule,
+    MatStepperModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' },httpInterceptorProviders],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' }, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

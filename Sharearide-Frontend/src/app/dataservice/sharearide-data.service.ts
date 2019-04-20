@@ -49,7 +49,7 @@ export class SharearideDataService {
       map((list: any[]): User[] => list.map(User.fromJSON)));
   }
   rides$(id: number): Observable<Ride[]> {
-    return this.http.get(`${environment.apiUrl}/ride/${id}`).pipe(
+    return this.http.get(`${environment.apiUrl}/ride/user/${id}`).pipe(
       map((list: any[]): Ride[] => list.map(Ride.fromJSON)));
   }
   participatedRidesByUser$(id: number): Observable<Ride[]> {
@@ -139,5 +139,8 @@ export class SharearideDataService {
           }
         })
       );
+  }
+  addRide(ride:Ride){
+    return this.http.post(`${environment.apiUrl}/ride`,ride.toJSON());
   }
 }

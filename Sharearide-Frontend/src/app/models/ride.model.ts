@@ -1,5 +1,6 @@
 import { User } from './user.model';
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
+import {Location} from'./location.model';
+    import { from } from 'rxjs';
 
 export class Ride {
     constructor(
@@ -13,14 +14,26 @@ export class Ride {
         private _availableSeats: number,
         private _isSoldOut: boolean,
         private _owner : User,
-        private _departure : Date,
     ) { }
 
     static fromJSON(json : any) : Ride{
-        const ride = new Ride(json.rideId,json.pickUpLocation,json.dropOffLocation,
-            json.stopovers,json.travelDate,json.passengerContribution,
-            json.totalAvailableSeats,json.availableSeats,json.isSoldOut,json.owner,json.departure);
+        const ride = new Ride(json.rideId,Location.fromJson(json.pickUpLocation),Location.fromJson(json.dropOffLocation),
+        json.stopovers.map(Location.fromJson),json.travelDate,json.passengerContribution,
+            json.totalAvailableSeats,json.availableSeats,json.isSoldOut,User.fromJSON(json.owner));
         return ride;
+    }
+    toJSON() : any{
+        return {
+            PickUpLocation: this.pickUpLocation.toJSON(),
+            DropOffLocation: this.dropOffLocation.toJSON(),
+            Stopovers: this.stopovers.map(stop => stop.toJSON()),
+            TravelDate: this.travelDate,
+            passengerContribution: this.passengerContribution,
+            totalAvailableSeats: this.totalAvailableSeats,
+            availableSeats:this._availableSeats,
+            isSoldOut: this.isSoldOut,
+            owner: this.owner.toJSON(),
+        };
     }
 
     get pickUpLocation(): Location {
@@ -49,9 +62,6 @@ export class Ride {
     }
     get owner() : User{
         return this._owner;
-    }
-    get departure() : Date{
-        return this._departure;
     }
     get id() : number{
         return this._id;

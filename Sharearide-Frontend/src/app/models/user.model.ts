@@ -9,17 +9,30 @@ export class User {
         private _email: string,
         private _phoneNumber: string,
         private _gender: string,
-        private _rides: Ride[],
         private _token: string,
         private _nrOfParticipatedRides: number,
         private _nrOfOfferedRides: number,
     ) { }
 
     static fromJSON(json: any): User {
-        const ride = new User(json.userId, json.firstName, json.lastName, json.dateOfBirth,
-            json.email, json.phoneNumber, json.gender, json.rides, json.token,
+        const ride = new User(json.id, json.firstName, json.lastName, json.dateOfBirth,
+            json.email, json.phoneNumber, json.gender, json.token,
             json.nrOfOfferedRides, json.nrOfParticipatedRides);
         return ride;
+    }
+    toJSON(): any {
+        return {
+            id: this.id,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            dateOfBirth: this.dateOfBirth,
+            email: this.email,
+            phoneNumber: this.phoneNumber,
+            gender: this.gender,
+            token: this.token,
+            nrOfOfferedRides: this.nrOfOfferedRides,
+            nrOfParticipatedRides: this.nrOfParticipatedRides,
+        }
     }
 
     get firstName(): string {
@@ -40,9 +53,6 @@ export class User {
     get gender(): string {
         return this._gender;
     }
-    get rides(): Ride[] {
-        return this._rides;
-    }
     get token(): string {
         return this._token;
     }
@@ -55,7 +65,10 @@ export class User {
     get nrOfOfferedRides(): number {
         return this._nrOfOfferedRides;
     }
-    set nrOfParticipatedRides(value){
+    set nrOfParticipatedRides(value) {
         this._nrOfParticipatedRides = value;
+    }
+    set nrOfOfferedRides(value) {
+        this._nrOfOfferedRides = value;
     }
 }

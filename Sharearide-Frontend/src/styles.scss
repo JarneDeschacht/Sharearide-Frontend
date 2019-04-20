@@ -8,8 +8,19 @@ body {
   font-family: 'Ubuntu', sans-serif;
   overflow-x: auto;
   overflow-y: scroll;
+   // background: url('../src/assets/Images/bg.jpg') center fixed;
 }
-
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done,
+ .mat-step-header .mat-step-icon-state-edit{
+  background-color: $maincolor !important;
+}
+.mat-step-header .mat-step-icon{
+  background-color: $black;
+}
+.mat-step-header .mat-step-label.mat-step-label-active{
+  color:$black;
+  font-size: 16px;
+}
 .mat-tab-group.mat-primary .mat-ink-bar,
 .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: $maincolor;

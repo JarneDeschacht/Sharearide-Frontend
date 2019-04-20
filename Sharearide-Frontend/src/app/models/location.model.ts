@@ -10,8 +10,16 @@ export class Location{
 
     static fromJson(json : any) : Location{
         const location = new Location(json.number,json.companyName,json.street,
-            json.city);
+            City.fromJSON(json.city));
         return location;
+    }
+    toJSON() : any{
+        return {
+            Number: this.number,
+            CompanyName: this.companyName,
+            Street: this.street,
+            City: this.city.toJSON()
+        }
     }
     get number() : string{
         return this._number;

@@ -9,11 +9,12 @@ import { PersonalDataComponent } from './user/personal-data/personal-data.compon
 import { OfferedRidesComponent } from './user/offered-rides/offered-rides.component';
 import { ParticipatedRidesComponent } from './user/participated-rides/participated-rides.component';
 import { AuthGuard } from './dataservice/auth-guard.service';
+import { OfferRideComponent } from './offer-ride/offer-ride.component';
 
 
 const appRoutes: Routes = [
   { path: 'searchRide', component: SearchRideComponent,canActivate: [ AuthGuard ], },
-  { path: 'offerRide', component: AppComponent,canActivate: [ AuthGuard ], },
+  { path: 'offerRide', component: OfferRideComponent,canActivate: [ AuthGuard ], },
   {
     path: 'profile', component: UserComponent,canActivate: [ AuthGuard ],
     children: [

@@ -9,6 +9,13 @@ export class City {
         const city = new City(json.postalCode, json.name, json.country);
         return city;
     }
+    toJSON() : any{
+        return {
+            PostalCode : this.postalCode,
+            Name : this.name,
+            Country : this.country, 
+        };
+    }
     get postalCode(): string {
         return this._postalCode;
     }
