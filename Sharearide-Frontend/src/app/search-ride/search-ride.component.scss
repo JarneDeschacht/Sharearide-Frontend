@@ -1,15 +1,17 @@
 $maincolor:rgb(63, 169, 245);
 $black:#45474c;
 
+
 .component-body{
     padding-top: 3%;
     .title{
-        color: $maincolor;
+        color: white;
         text-align: center;
         font-size: 50px;
         font-weight: bold;
         text-transform: uppercase;
         margin-top: 8%;
+        text-shadow: 2px 2px 3px $black;
     }
     .spinner{
         margin: 5% auto;

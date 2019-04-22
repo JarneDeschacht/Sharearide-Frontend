@@ -278,7 +278,7 @@
           <div>
             <button mat-button matStepperPrevious>Terug</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
-            <button mat-button (click)="createRide()">Maak rit aan</button>
+            <button mat-button [disabled]='!details.valid' (click)="createRide()">Maak rit aan</button>
           </div>
         </div>
       </mat-step>

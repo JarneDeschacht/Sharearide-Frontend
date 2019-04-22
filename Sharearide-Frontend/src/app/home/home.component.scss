@@ -1,5 +1,6 @@
 $maincolor: rgb(63, 169, 245);
 $black:#45474c;
+$darkblue:rgb(20,30,48);
 
 .user {
   border: 2px solid black;
@@ -17,7 +18,8 @@ $black:#45474c;
     text-align: center;
     margin: 2%;
     margin-top: 8%;
-    color: $maincolor;
+    color: white;
+    text-shadow: 2px 2px 3px $black;
   }
 
   .intro-img {
@@ -42,19 +44,21 @@ $black:#45474c;
       float: right;
       width: 50%;
       margin-right: 10%;
+      border: 1px solid $darkblue;
     }
     width: 60%;
   }
   .content {
-    color: $black;
+    color: white;
+    text-shadow: 2px 2px 3px $black;
     width: 40%;
     margin-right: 10%;
     h2 {
-      font-size: 28px;
+      font-size: 30px;
     }
 
     p {
-      font-size: 15px;
+      font-size: 18px;
     }
   }
   .button {
@@ -70,10 +74,11 @@ $black:#45474c;
     background-color: $maincolor;
     color: white;
     transition-duration: .5s;
+    text-shadow: none;
   
     &:hover {
       color: $black;
-      border: $black 2px solid;
+      border: $darkblue 2px solid;
       background-color: white;
       transition-duration: .5s;
       border-radius: 30px;

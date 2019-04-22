@@ -2,13 +2,14 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 $maincolor: rgb(63, 169, 245);
 $black:#45474c;
+$darkblue:rgb(20,30,48);
 
 body {
   margin: 0px;
   font-family: 'Ubuntu', sans-serif;
   overflow-x: auto;
   overflow-y: scroll;
-   // background: url('../src/assets/Images/bg.jpg') center fixed;
+  background: url('../src/assets/Images/bg.jpg') center fixed;
 }
 .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done,
  .mat-step-header .mat-step-icon-state-edit{
@@ -26,9 +27,9 @@ body {
   background-color: $maincolor;
 }
 
-// .mat-form-field-label {
-//   color: white !important;
-// }
+.mat-form-field-label {
+  color: white !important;
+}
 
 mat-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-label {
   color: $maincolor;
@@ -62,78 +63,94 @@ mat-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-ripp
 }
 .mat-progress-spinner circle,
 .mat-spinner circle {
-  stroke: $maincolor;
+  stroke: white;
 }
-
+.mat-stepper-horizontal, .mat-stepper-vertical{
+  background: rgba(20, 30, 48, 0.8);
+  border-radius: 20px;
+  border: 4px solid $maincolor;
+  color: white;
+}
+.mat-stepper-vertical .mat-button, .mat-flat-button, .mat-stroked-button{
+  background-color: $maincolor;
+  margin: 1% !important;
+}
+.mat-step-header .mat-step-label.mat-step-label-active{
+  color:white;
+  font-weight: bold;
+}
+.mat-step-header .mat-step-label, .mat-step-header .mat-step-optional{
+  color:white;
+}
 .mat-badge-content {
   background-color: $black;
   color: white;
 }
 
-// .mat-tab-label,
-// .mat-tab-link {
-//   color: white;
-//   caret-color: white;
-// }
+.mat-tab-label,
+.mat-tab-link {
+  color: white;
+  caret-color: white;
+}
 
-// .mat-select-panel {
-//   background: #141E30;
-//   background: -webkit-linear-gradient(to right, #243B55, #141E30);
-//   background: linear-gradient(to right, #243B55, #141E30);
-//   border: 1px solid $maincolor;
-// }
+.mat-select-panel {
+  background: $darkblue;
+  background: -webkit-linear-gradient(to right, #243B55, $darkblue);
+  background: linear-gradient(to right, #243B55, $darkblue);
+  border: 1px solid $maincolor;
+}
 
-// .mat-option {
-//   color: white;
-// }
+.mat-option {
+  color: white;
+}
 
-// .mat-select-value {
-//   color: white;
-// }
+.mat-select-value {
+  color: white;
+}
 
-// .mat-datepicker-content {
-//   border: 1px solid $maincolor;
-//   background-color: #141E30;
-//   background: -webkit-linear-gradient(to right, #243B55, #141E30);
-//   background: linear-gradient(to right, #243B55, #141E30);
-//   color: white;
+.mat-datepicker-content {
+  border: 1px solid $maincolor;
+  background-color: $darkblue;
+  background: -webkit-linear-gradient(to right, #243B55, $darkblue);
+  background: linear-gradient(to right, #243B55, $darkblue);
+  color: white;
 
-//   .mat-calendar-body-cell-content {
-//     color: white;
-//   }
+  .mat-calendar-body-cell-content {
+    color: white;
+  }
 
-//   .mat-calendar-body-label {
-//     color: white;
-//   }
+  .mat-calendar-body-label {
+    color: white;
+  }
 
-//   .mat-calendar-table-header {
-//     color: white;
-//   }
+  .mat-calendar-table-header {
+    color: white;
+  }
 
-//   .mat-calendar-arrow {
-//     border-top-color: white;
-//   }
+  .mat-calendar-arrow {
+    border-top-color: white;
+  }
 
-//   .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-//     border-color: white;
-//   }
-// }
+  .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+    border-color: white;
+  }
+}
 
-// .mat-option.mat-active {
-//   color: $maincolor;
-// }
+.mat-option.mat-active {
+  color: $maincolor;
+}
 
-// .mat-tab-label,
-// .mat-tab-link {
-//   color: white;
-// }
+.mat-tab-label,
+.mat-tab-link {
+  color: white;
+}
 
-// .mat-datepicker-content .mat-calendar-next-button,
-// .mat-datepicker-content .mat-calendar-previous-button,
-// .mat-datepicker-toggle {
-//   color: white;
-// }
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button,
+.mat-datepicker-toggle {
+  color: white;
+}
 
-// .mat-select-arrow {
-//   color: white;
-// }
+.mat-select-arrow {
+  color: white;
+}

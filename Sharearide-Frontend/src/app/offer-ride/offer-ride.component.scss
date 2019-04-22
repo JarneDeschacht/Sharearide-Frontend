@@ -1,5 +1,6 @@
 $maincolor:rgb(63, 169, 245);
 $black:#45474c;
+$darkblue:rgb(20,30,48);
 
 .component-body {
   padding-top: 3%;
@@ -23,6 +24,7 @@ $black:#45474c;
   .stepper {
     width: 60%;
     margin: 1% auto;
+    background-color: inherit;
 
     .table{
       width: 60%;

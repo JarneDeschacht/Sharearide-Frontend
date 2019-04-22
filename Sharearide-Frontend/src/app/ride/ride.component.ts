@@ -12,19 +12,20 @@ import { Router } from '@angular/router';
 export class RideComponent implements OnInit {
 
   @Input() public ride: Ride;
-  private user : User = JSON.parse(localStorage.getItem('currentUser')); 
+  private user: User = JSON.parse(localStorage.getItem('currentUser'));
 
 
-  addUserToRide(){
-    this._dataservice.addUserToRide(this.ride.id,this.user.id).subscribe();
+  addUserToRide() {
+    this._dataservice.addUserToRide(this.ride.id, this.user.id).subscribe(); //TODO
     this.user.nrOfParticipatedRides++;
-    localStorage.setItem("currentUser",JSON.stringify(this.user));
-    this.router.navigateByUrl("/profile/offeredRides");
+    localStorage.setItem("currentUser", JSON.stringify(this.user));
+    location.reload(); //TODO
+    this.router.navigateByUrl("/profile/participatedRides");
   }
 
-  constructor(private _dataservice : SharearideDataService,private router: Router) { }
+  constructor(private _dataservice: SharearideDataService, private router: Router) { }
 
-  isSoldOut() : boolean{
+  isSoldOut(): boolean {
     return this.ride.availableSeats <= 0;
   }
   ngOnInit() {

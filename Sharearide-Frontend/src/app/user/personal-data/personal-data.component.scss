@@ -1,12 +1,17 @@
 $maincolor: rgb(63, 169, 245);
 $black:#45474c;
+$darkblue:rgb(20, 30, 48);
 
 .personal-data {
-
+  color: white;
+  background: rgba(20, 30, 48, 0.8);
+  border: 4px solid $maincolor;
+  border-radius: 50px;
+  color: white;
   h1 {
     text-align: center;
     margin: 5% 0;
-    color: $black;
+
   }
 
   .table {
@@ -33,9 +38,10 @@ $black:#45474c;
   }
 
   .button-confirm {
-    margin-top: 4%;
+    margin: 2% auto;
     color: white !important;
-    width: 100%;
+    width: 80%;
+    display: block;
     background-color: $maincolor;
     border-radius: 10px;
     border: $maincolor 2px solid;

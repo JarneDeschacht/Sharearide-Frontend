@@ -1,15 +1,18 @@
 $maincolor:rgb(63, 169, 245);
 $black:#45474c;
+$darkblue:rgb(20, 30, 48);
 
 .profile {
   padding-top: 3%;
   width: 60%;
   margin: 5% auto;
   margin-bottom: 0;
+  text-shadow: 2px 2px 3px $black;
 
   .header {
     display: flex;
     flex-direction: row;
+    color: white;
 
     .profilepic {
       width: 25%;
@@ -17,13 +20,11 @@ $black:#45474c;
     }
 
     .header-content {
-      width: 75%;
+      width: 100%;
 
       h1 {
         font-size: 450%;
-        color: $maincolor;
         font-weight: bold;
-        text-shadow: 2px 2px 8px $black;
         text-align: center;
         margin-bottom: 2%;
       }
@@ -37,11 +38,11 @@ $black:#45474c;
 
         i {
           color: $maincolor;
+          text-shadow: none;
         }
 
         span {
           font-size: 140%;
-          color: $black;
           margin-left: 1%;
         }
 
@@ -62,8 +63,11 @@ $black:#45474c;
       margin: 2%;
 
       &:hover {
-        box-shadow: 0px 7px 7px $black;
+        box-shadow: 0px 7px 7px white;
         text-shadow: 0px 7px 7px $black;
+        a{
+          color:$black;
+        }
       }
 
       a {

@@ -3,6 +3,7 @@ $black:#45474c;
 $duration: .2s;
 $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+$darkblue:rgb(20,30,48);
 
 .icon {
   color: $maincolor
@@ -19,7 +20,8 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
   top: 0;
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: white;
+  background: rgba(20,30,48, 0.6);
+  box-shadow: 0px 1px 10px $darkblue;
 
   #nav-check {
     display: none;
@@ -44,7 +46,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     transition-duration: .5s;
 
     &:hover {
-      opacity: 0.5 !important;
+      opacity: 0.6 !important;
     }
   }
 
@@ -55,6 +57,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     font-size: 18px;
     text-transform: uppercase;
     margin-right: 3%;
+    opacity: 1;
 
     li {
       list-style-type: none;
@@ -67,7 +70,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
         padding: 15px 12px 15px 12px;
         text-decoration: none;
         font-size: 20px;
-        color: $black;
+        color:white;
 
         outline: none;
 
@@ -199,12 +202,13 @@ footer {
   padding: 2% 0;
   position:relative;
   bottom:0;
+  text-shadow: 2px 2px 3px $black;
   p {
-    color: $black;
+    color: white;
     text-align: center;
     a {
       text-decoration: none;
-      color: $black;
+      color: white;
 
       &:hover {
         border-bottom: 2px solid $maincolor;
