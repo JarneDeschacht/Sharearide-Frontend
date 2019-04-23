@@ -2,7 +2,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 $maincolor: rgb(63, 169, 245);
 $black:#45474c;
-$darkblue:rgb(20,30,48);
+$darkblue:rgb(20, 30, 48);
 
 body {
   margin: 0px;
@@ -11,17 +11,22 @@ body {
   overflow-y: scroll;
   background: url('../src/assets/Images/bg.jpg') center fixed;
 }
-.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done,
- .mat-step-header .mat-step-icon-state-edit{
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
   background-color: $maincolor !important;
 }
-.mat-step-header .mat-step-icon{
+
+.mat-step-header .mat-step-icon {
   background-color: $black;
 }
-.mat-step-header .mat-step-label.mat-step-label-active{
-  color:$black;
+
+.mat-step-header .mat-step-label.mat-step-label-active {
+  color: $black;
   font-size: 16px;
 }
+
 .mat-tab-group.mat-primary .mat-ink-bar,
 .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: $maincolor;
@@ -54,34 +59,46 @@ mat-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-ripp
 .mat-datepicker-toggle-active {
   color: $maincolor;
 }
-.mat-snack-bar-container{
+
+.mat-snack-bar-container {
   background-color: $black;
-  color:white;
+  color: white;
 }
-.mat-simple-snackbar-action{
-  color:$maincolor;
+
+.mat-simple-snackbar-action {
+  color: $maincolor;
 }
+
 .mat-progress-spinner circle,
 .mat-spinner circle {
   stroke: white;
 }
-.mat-stepper-horizontal, .mat-stepper-vertical{
+
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
   background: rgba(20, 30, 48, 0.8);
   border-radius: 20px;
   border: 4px solid $maincolor;
   color: white;
 }
-.mat-stepper-vertical .mat-button, .mat-flat-button, .mat-stroked-button{
+
+.mat-stepper-vertical .mat-button,
+.mat-flat-button,
+.mat-stroked-button {
   background-color: $maincolor;
   margin: 1% !important;
 }
-.mat-step-header .mat-step-label.mat-step-label-active{
-  color:white;
+
+.mat-step-header .mat-step-label.mat-step-label-active {
+  color: white;
   font-weight: bold;
 }
-.mat-step-header .mat-step-label, .mat-step-header .mat-step-optional{
-  color:white;
+
+.mat-step-header .mat-step-label,
+.mat-step-header .mat-step-optional {
+  color: white;
 }
+
 .mat-badge-content {
   background-color: $black;
   color: white;
@@ -153,4 +170,8 @@ mat-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-ripp
 
 .mat-select-arrow {
   color: white;
+}
+
+.mat-stepper-vertical-line::before {
+  border-left-color: $maincolor;
 }

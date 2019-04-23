@@ -13,7 +13,8 @@ $darkblue:rgb(20,30,48);
   }
 
   .title {
-    color: $maincolor;
+    color: white;
+    text-shadow: 2px 2px 3px $black;
     text-align: center;
     font-size: 50px;
     font-weight: bold;

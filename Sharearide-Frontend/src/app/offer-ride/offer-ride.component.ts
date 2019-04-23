@@ -26,7 +26,7 @@ export class OfferRideComponent implements OnInit {
     { value: 48, viewValue: 'Denemarken' },
     { value: 61, viewValue: 'Frankrijk' },
   ];
-  isLinear = true; //TODO
+  isLinear = true;
   locationsGroup: FormGroup;
   stopoverLocations: FormGroup;
   details: FormGroup;
