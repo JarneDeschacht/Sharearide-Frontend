@@ -6,6 +6,11 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+//facebook login
+declare var FB: any;
+declare var name: string;
 
 export interface Gender {
   value: number;
@@ -34,7 +39,6 @@ function serverSideValidateUsername(
   };
 }
 
-
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -51,12 +55,14 @@ export class AccountComponent implements OnInit {
   public userRegister: FormGroup;
   public errorMsg: string;
 
+
   constructor(
     private ulfb: FormBuilder,
     private urfb: FormBuilder,
     private _dataService: SharearideDataService,
     private router: Router,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog) {
   }
   login() {
     this._dataService
@@ -96,7 +102,7 @@ export class AccountComponent implements OnInit {
   register() {
     this._dataService.register(this.userRegister.value.email, this.userRegister.value.passwordGroup.password,
       this.userRegister.value.firstname, this.userRegister.value.lastname, this.userRegister.value.passwordGroup.passwordConfirm,
-      this.userRegister.value.gender, this.userRegister.value.borndate,"+"+this.userRegister.value.telnr)
+      this.userRegister.value.gender, this.userRegister.value.borndate, "+" + this.userRegister.value.telnr)
       .pipe()
       .subscribe(
         val => {
@@ -141,10 +147,10 @@ export class AccountComponent implements OnInit {
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
-      telnr: new FormControl('', [Validators.required,Validators.pattern('^[0-9]{10,}')]),
+      telnr: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10,}')]),
       borndate: new FormControl('', [Validators.required]),
       email: ['', [Validators.required, Validators.email],
-      serverSideValidateUsername(this._dataService.checkUserNameAvailability)],
+        serverSideValidateUsername(this._dataService.checkUserNameAvailability)],
       passwordGroup: this.urfb.group(
         {
           password: ['', [Validators.required, Validators.minLength(8),]],
@@ -153,6 +159,60 @@ export class AccountComponent implements OnInit {
         { validator: comparePasswords }
       )
     });
+
+    //Facebook login
+    (window as any).fbAsyncInit = function () {
+      FB.init({
+        appId: '2615325188537680',
+        cookie: true,
+        xfbml: true,
+        version: 'v3.2'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  }
+  loginregisterFB() {
+    console.log("submit login to facebook");
+    // FB.login();
+    FB.login((response) => {
+      console.log('submitLogin', response);
+      if (response.status === 'connected') {
+        FB.api(
+          `/me?fields=id,first_name,last_name,email`,
+          function (response2) {
+            if (response2 && !response2.error) {
+              console.log(response2);
+              this.name = response2.first_name + "§" + response2.last_name + "§" + response2.email + "§" + response2.id;
+            }
+            else console.log(response2.error)
+          }
+        );
+      }
+      else {
+        
+        FB.logout();
+      }
+      FB.logout();
+    }
+      ,
+      { scope: 'email' });
+
+    this._dataService.checkUserNameAvailability(name.split("§")[2]).subscribe(data => {
+      if (data) {
+        this.openDialog();
+      } else {
+        this.loginFB();
+      }
+    })
   }
 
   getErrorMessage(errors: any) {
@@ -168,19 +228,66 @@ export class AccountComponent implements OnInit {
         karakters bevatten (nu ${errors.minlength.actualLength})`;
     } else if (errors.email) {
       return `Dit veld bevat geen geldig e-mailadres`;
-    }else if (errors.pattern) {
+    } else if (errors.pattern) {
       return `Geen geldig telefoonnummer`;
     }
-     else if (errors.passwordsDiffer) {
+    else if (errors.passwordsDiffer) {
       return `Wachtwoorden zijn niet hetzelfde`;
-    }else if (errors.userAlreadyExists) {
+    } else if (errors.userAlreadyExists) {
       return `Er bestaat al een gebruiker met dit E-mailadres`;
     }
   }
   openSnackBar(message: string) {
-    this.snackBar.open(message,"OK", {
+    this.snackBar.open(message, "OK", {
       duration: 5000,
     });
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RegisterDialogComponent, {
+      height: '450px',
+      width: '500px',
+      data: { firstname: name.split("§")[0], lastname: name.split("§")[1], email: name.split("§")[2], id: name.split("§")[3] },
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  loginFB() {
+    this._dataService
+      .login(name.split("§")[2], name.split("§")[3] + "Fb@")
+      .subscribe(
+        val => {
+          if (val) {
+            if (this._dataService.redirectUrl) {
+              this.router.navigateByUrl(this._dataService.redirectUrl);
+              this._dataService.redirectUrl = undefined;
+            } else {
+              this.router.navigate(['/home']);
+            }
+          } else {
+            this.openSnackBar("Er liep iets mis!");
+            this.errorMsg = `Could not login`;
+          }
+          location.reload();
+        },
+        (err: HttpErrorResponse) => {
+
+          if (err.error instanceof Error) {
+            this.openSnackBar("Er liep iets mis!");
+            this.errorMsg = `Error while trying to login user ${
+              this.userLogin.value.firstname
+              }: ${err.error.message}`;
+          } else {
+            this.openSnackBar("Er liep iets mis!");
+            this.errorMsg = `Error ${err.status} while trying to login user ${
+              this.userLogin.value.firstname
+              }: ${err.error}`;
+          }
+          console.log(this.errorMsg);
+        }
+      );
   }
 
 }

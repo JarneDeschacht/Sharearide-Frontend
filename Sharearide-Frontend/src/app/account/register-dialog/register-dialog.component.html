@@ -1,0 +1,38 @@
+<div class="dialog">
+  <h1 class="title" mat-dialog-title>Dag {{data.firstname}}</h1>
+  <div mat-dialog-content class="content">
+    <p>We hebben nog enkele gegevens te kort van je</p>
+    <form [formGroup]="userData" (ngSubmit)='confirm()'>
+      <mat-form-field>
+        <span matPrefix>+ &nbsp;</span>
+        <input type="tel" matInput placeholder="Telefoonnummer" required aria-label="Telefoonnummer"
+          formControlName="telnr">
+        <mat-error *ngIf="userData.get('telnr')['errors']  && userData.get('telnr').touched">
+          {{getErrorMessage(userData.get('telnr')['errors']) }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Geboortedatum" required aria-label="Geboortedatum"
+          formControlName="borndate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="userData.get('borndate')['errors']  && userData.get('borndate').touched">
+          {{getErrorMessage(userData.get('borndate')['errors']) }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Geslacht</mat-label>
+        <mat-select aria-placeholder="Geslacht" formControlName="gender" required>
+          <mat-option *ngFor="let gender of genders" [value]="gender.value">
+            {{gender.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="userData.get('gender')['errors']  && 
+      userData.get('gender').touched">
+          {{getErrorMessage(userData.get('gender')['errors']) }}
+        </mat-error>
+      </mat-form-field>
+      <button mat-button [disabled]='!userData.valid' class="btn">Bevestig</button>
+    </form>
+  </div>
+</div>

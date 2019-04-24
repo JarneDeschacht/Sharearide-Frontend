@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule, MatCardModule, MatIconModule, MatFormFieldModule, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AccountComponent } from './account/account.component';
+import { AccountComponent} from './account/account.component';
 import { MatButtonModule, MatCheckboxModule, MatTabsModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -30,6 +30,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { OfferRideComponent } from './offer-ride/offer-ride.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatDialogModule} from '@angular/material/dialog';
+import { RegisterDialogComponent } from './account/register-dialog/register-dialog.component';
 
 
 @NgModule({
@@ -47,6 +49,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     ParticipatedRidesComponent,
     RideSmallComponent,
     OfferRideComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,12 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSnackBarModule,
     MatTooltipModule,
     MatStepperModule,
+    MatDialogModule,
   ],
+  entryComponents: [
+    RegisterDialogComponent
+  ],
+
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' }, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })

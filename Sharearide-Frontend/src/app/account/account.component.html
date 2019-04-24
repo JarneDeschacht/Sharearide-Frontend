@@ -44,7 +44,12 @@
               <button class="button-confirm" mat-button [disabled]='!userLogin.valid'>Inloggen</button>
             </td>
           </tr>
+         
         </table>
+        <p class="subtitle">Je kunt ook inloggen op de volgende manieren</p>
+        <div class="login-icons">
+          <i (click)="loginregisterFB()" class="fab fa-facebook fa-3x"></i>
+        </div>
       </form>
     </mat-tab>
     <mat-tab label="Registreren">
@@ -180,6 +185,7 @@
               <button mat-button [disabled]='!userRegister.valid' class="button-confirm">Bevestigen</button>
             </td>
           </tr>
+          
         </table>
       </form>
     </mat-tab>

@@ -60,9 +60,7 @@ export class SharearideDataService {
     return this.http.get(`${environment.apiUrl}/user/${id}/offeredrides`).pipe(
       map((list: any[]): Ride[] => list.map(Ride.fromJSON)));
   }
-  addUserToRide(rideId: number, userId: number) {
-    return this.http.post(`${environment.apiUrl}/ride/${rideId}/adduser/${userId}`, { rideId, userId });
-  }
+
   checkUserNameAvailability = (email: string): Observable<boolean> => {
     return this.http.get<boolean>(
       `${environment.apiUrl}/account/checkusername`,
@@ -140,7 +138,10 @@ export class SharearideDataService {
         })
       );
   }
-  addRide(ride:Ride){
-    return this.http.post(`${environment.apiUrl}/ride`,ride.toJSON());
+  addUserToRide(rideId: number, userId: number) {
+    return this.http.post(`${environment.apiUrl}/ride/${rideId}/adduser/${userId}`, { rideId, userId });
+  }
+  addRide(ride: Ride) {
+    return this.http.post(`${environment.apiUrl}/ride`, ride.toJSON());
   }
 }
