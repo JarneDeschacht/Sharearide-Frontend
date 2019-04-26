@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, Validators, FormControl, FormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormBuilder, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { first, map } from 'rxjs/operators';
 import { SharearideDataService } from '../dataservice/sharearide-data.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+//MomentJS library
+import * as moment from 'moment';
 //facebook login
 declare var FB: any;
 declare var name: string;
@@ -38,6 +40,22 @@ function serverSideValidateUsername(
     );
   };
 }
+export const isValidDate = (c: FormControl) => {
+  const date = new Date(c.value);
+  const age = moment().diff(date,'years');
+  return age >= 18
+  ? null
+  : { InvalidBirthDate: true };
+};
+export const isValidPassword = (c: FormControl) => {
+  const password = c.value;
+  var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/;
+
+  return regex.test(password)
+  ? null
+  : { InvalidPassword: true };
+}
+  
 
 @Component({
   selector: 'app-account',
@@ -148,12 +166,12 @@ export class AccountComponent implements OnInit {
       lastname: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
       telnr: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10,}')]),
-      borndate: new FormControl('', [Validators.required]),
+      borndate: new FormControl('', [Validators.required,isValidDate]),
       email: ['', [Validators.required, Validators.email],
         serverSideValidateUsername(this._dataService.checkUserNameAvailability)],
       passwordGroup: this.urfb.group(
         {
-          password: ['', [Validators.required, Validators.minLength(8),]],
+          password: ['', [Validators.required, Validators.minLength(8),isValidPassword]],
           passwordConfirm: ['', Validators.required]
         },
         { validator: comparePasswords }
@@ -234,7 +252,12 @@ export class AccountComponent implements OnInit {
     else if (errors.passwordsDiffer) {
       return `Wachtwoorden zijn niet hetzelfde`;
     } else if (errors.userAlreadyExists) {
-      return `Er bestaat al een gebruiker met dit E-mailadres`;
+      return `Er bestaat al een gebruiker met dit e-mailadres`;
+    }else if(errors.InvalidBirthDate){
+    return 'Je moet minstens 18 jaar oud zijn';
+    }else if (errors.InvalidPassword)
+    {
+      return 'Een wachtwoord moet minsten 1 kleine letter, 1 hoofdletter, 1 nummer en 1 speciaal teken bevatten'
     }
   }
   openSnackBar(message: string) {

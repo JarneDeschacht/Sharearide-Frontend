@@ -2,9 +2,15 @@ $maincolor: rgb(63, 169, 245);
 $black:#45474c;
 $darkblue:rgb(20, 30, 48);
 
+.loginregister{
+  display: flex;
+  justify-content: center;
+}
+
 .account-forms {
+  margin-top: 7%;
+  display: block;
   width: 50%;
-  margin: 5% auto;
   padding: 4% 2%;
   border-radius: 50px;
   transition-duration: 1s;
