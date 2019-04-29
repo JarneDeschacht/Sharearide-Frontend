@@ -1,0 +1,49 @@
+$maincolor:rgb(63, 169, 245);
+$black:#45474c;
+$darkblue:rgb(20, 30, 48);
+
+div {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 5%;
+
+  h1 {
+    font-size: 300%;
+    color: white;
+    text-align: center;
+    padding-top: 4%;
+    text-shadow: 2px 2px 3px $black;
+    text-transform: uppercase;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 35%;
+    height: 35%;
+  }
+
+  button {
+    width: 25%;
+    border: $maincolor 2px solid;
+    display: block;
+    margin: 0 auto;
+    margin-top: 3%;
+    text-decoration: none;
+    border-radius: 7px;
+    text-align: center;
+    background-color: $maincolor;
+    color: white;
+    transition-duration: .5s;
+    text-shadow: none;
+
+    &:hover {
+      color: $black;
+      border: $darkblue 2px solid;
+      background-color: white;
+      transition-duration: .5s;
+      border-radius: 30px;
+    }
+  }
+}

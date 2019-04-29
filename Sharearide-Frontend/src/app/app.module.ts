@@ -32,6 +32,7 @@ import { OfferRideComponent } from './offer-ride/offer-ride.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterDialogComponent } from './account/register-dialog/register-dialog.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { RegisterDialogComponent } from './account/register-dialog/register-dial
     ParticipatedRidesComponent,
     RideSmallComponent,
     OfferRideComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

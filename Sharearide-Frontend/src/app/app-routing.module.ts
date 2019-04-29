@@ -10,6 +10,7 @@ import { OfferedRidesComponent } from './user/offered-rides/offered-rides.compon
 import { ParticipatedRidesComponent } from './user/participated-rides/participated-rides.component';
 import { AuthGuard } from './dataservice/auth-guard.service';
 import { OfferRideComponent } from './offer-ride/offer-ride.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
 
 const appRoutes: Routes = [
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   { path: 'home', component: HomeComponent },
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

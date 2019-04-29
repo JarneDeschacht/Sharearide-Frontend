@@ -3,6 +3,7 @@ import { Ride } from 'src/app/models/ride.model';
 import { SharearideDataService } from '../dataservice/sharearide-data.service';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ride',
@@ -16,11 +17,18 @@ export class RideComponent implements OnInit {
 
 
   addUserToRide() {
-    this._dataservice.addUserToRide(this.ride.id, this.user.id).subscribe(); //TODO
-    this.user.nrOfParticipatedRides++;
-    localStorage.setItem("currentUser", JSON.stringify(this.user));
-    location.reload(); //TODO
-    this.router.navigateByUrl("/profile/participatedRides");
+    this._dataservice.addUserToRide(this.ride.id, this.user.id).subscribe(
+      val => {
+        if (val) {
+          this.user.nrOfParticipatedRides++;
+          localStorage.setItem("currentUser", JSON.stringify(this.user));
+          this.router.navigateByUrl("/profile/participatedRides");
+        }
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
   }
 
   constructor(private _dataservice: SharearideDataService, private router: Router) { }
