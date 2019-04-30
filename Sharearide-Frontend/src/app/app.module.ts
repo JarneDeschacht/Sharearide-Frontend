@@ -33,6 +33,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterDialogComponent } from './account/register-dialog/register-dialog.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RideFilterPipe } from './dataservice/ride-filter.pipe';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     RideSmallComponent,
     OfferRideComponent,
     RegisterDialogComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RideFilterPipe
   ],
   imports: [
     BrowserModule,
