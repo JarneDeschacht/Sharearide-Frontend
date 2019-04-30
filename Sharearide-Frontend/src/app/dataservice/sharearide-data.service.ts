@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { map, delay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Ride } from '../models/ride.model';
 
 function parseJwt(token) {
@@ -18,10 +18,11 @@ function parseJwt(token) {
 @Injectable({
   providedIn: 'root'
 })
+
 export class SharearideDataService {
   private readonly _tokenKey = 'currentUserKey';
   private readonly _userKey = 'currentUser';
-  // private _currentuser$: BehaviorSubject<string>;
+  private _currentuser$: BehaviorSubject<string>;
   public redirectUrl: string;
 
   constructor(private http: HttpClient) {
@@ -35,11 +36,11 @@ export class SharearideDataService {
         location.reload();
       }
     }
-    // this._currentuser$ = new BehaviorSubject<string>(parsedToken && parsedToken.unique_name);
+    this._currentuser$ = new BehaviorSubject<string>(parsedToken && parsedToken.unique_name);
   }
-  // get user$(): BehaviorSubject<string> {
-  //   return this._currentuser$;
-  // }
+  get user$(): BehaviorSubject<string> {
+    return this._currentuser$;
+  }
 
 
   get token(): string {
@@ -81,8 +82,8 @@ export class SharearideDataService {
         map((user: any) => {
           if (user) {
             localStorage.setItem(this._tokenKey, user.token);
-            // this._currentuser$.next(user);
-            // console.log(this._currentuser$);
+            this._currentuser$.next(user.firstName);
+            console.log(this._currentuser$);
             localStorage.setItem(this._userKey, JSON.stringify(user))
             return true;
           } else {
@@ -95,6 +96,7 @@ export class SharearideDataService {
     if (localStorage.getItem(this._userKey)) {
       localStorage.removeItem(this._tokenKey);
       localStorage.removeItem(this._userKey);
+      this._currentuser$.next(null);
     }
   }
   edit(id: number, email: string, firstName: string, lastName: string, gender: number,
@@ -105,6 +107,7 @@ export class SharearideDataService {
       }).pipe(
         map((user: any) => {
           if (user) {
+            this._currentuser$.next(user.firstName);
             localStorage.setItem(this._userKey, JSON.stringify(user))
             return true;
           } else {
@@ -130,8 +133,8 @@ export class SharearideDataService {
           if (user) {
             console.log(user);
             localStorage.setItem(this._tokenKey, user.token);
-            // this._currentuser$.next(user);
-            // console.log(this._currentuser$);
+            this._currentuser$.next(user.firstName);
+            console.log(this._currentuser$);
             localStorage.setItem(this._userKey, JSON.stringify(user))
             return true;
           } else {

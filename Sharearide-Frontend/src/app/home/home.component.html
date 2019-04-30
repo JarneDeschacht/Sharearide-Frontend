@@ -1,6 +1,6 @@
 <div class="intro">
-  <h1 class="title">
-    welkom {{user.firstName}} !
+  <h1 class="title" *ngIf="(loggedInUser$ | async) as user">
+    welkom {{user}} !
   </h1>
 </div>
 <div class="side-intro">

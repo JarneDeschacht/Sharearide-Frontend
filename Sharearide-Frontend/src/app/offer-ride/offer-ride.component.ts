@@ -21,10 +21,18 @@ export interface Country {
 })
 export class OfferRideComponent implements OnInit {
   countries: Country[] = [
-    { value: 15, viewValue: 'België' },
+    { value: 15,  viewValue: 'België' },
     { value: 127, viewValue: 'Nederland' },
-    { value: 48, viewValue: 'Denemarken' },
-    { value: 61, viewValue: 'Frankrijk' },
+    { value: 48,  viewValue: 'Denemarken' },
+    { value: 61,  viewValue: 'Frankrijk' },
+    { value: 168, viewValue: 'spanje'},
+    { value: 175, viewValue: "Zweden"},
+    { value: 176, viewValue: "Zwitserland"},
+    { value: 145, viewValue: "Portugal"},
+    { value: 112, viewValue: "Malta"},
+    { value: 87,  viewValue: "Italië"},
+    { value: 60, viewValue: "finland"},
+    { value: 104, viewValue: "Luxenburg"},
   ];
   isLinear = true;
   locationsGroup: FormGroup;

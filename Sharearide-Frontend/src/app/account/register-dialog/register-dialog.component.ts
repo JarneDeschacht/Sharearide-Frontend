@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { SharearideDataService } from 'src/app/dataservice/sharearide-data.service';
 import { Router } from '@angular/router';
@@ -32,9 +32,7 @@ export const isValidDate = (c: FormControl) => {
 export class RegisterDialogComponent implements OnInit {
   genders: Gender[] = [
     { value: 0, viewValue: 'Man' },
-    { value: 1, viewValue: 'Vrouw' },
-    { value: 2, viewValue: 'Transgender' },
-    { value: 3, viewValue: 'Onzijdig' },
+    { value: 1, viewValue: 'Vrouw' }
   ];
   public userData: FormGroup;
   public errorMsg: string;
@@ -73,7 +71,6 @@ export class RegisterDialogComponent implements OnInit {
             this.openSnackBar("Er is iets misgelopen!");
             this.errorMsg = `Could not login`;
           }
-          location.reload();
         },
         (err: HttpErrorResponse) => {
 

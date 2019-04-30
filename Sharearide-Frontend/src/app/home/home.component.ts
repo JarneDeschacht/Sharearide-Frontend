@@ -8,7 +8,7 @@ import { SharearideDataService } from '../dataservice/sharearide-data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private user : User = JSON.parse(localStorage.getItem('currentUser')); 
+  loggedInUser$ = this._dataService.user$;
   constructor(private _dataService: SharearideDataService) { }
 
   ngOnInit() {

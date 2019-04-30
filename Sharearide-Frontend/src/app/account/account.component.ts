@@ -42,20 +42,20 @@ function serverSideValidateUsername(
 }
 export const isValidDate = (c: FormControl) => {
   const date = new Date(c.value);
-  const age = moment().diff(date,'years');
+  const age = moment().diff(date, 'years');
   return age >= 18
-  ? null
-  : { InvalidBirthDate: true };
+    ? null
+    : { InvalidBirthDate: true };
 };
 export const isValidPassword = (c: FormControl) => {
   const password = c.value;
   var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/;
 
   return regex.test(password)
-  ? null
-  : { InvalidPassword: true };
+    ? null
+    : { InvalidPassword: true };
 }
-  
+
 
 @Component({
   selector: 'app-account',
@@ -65,9 +65,7 @@ export const isValidPassword = (c: FormControl) => {
 export class AccountComponent implements OnInit {
   genders: Gender[] = [
     { value: 0, viewValue: 'Man' },
-    { value: 1, viewValue: 'Vrouw' },
-    { value: 2, viewValue: 'Transgender' },
-    { value: 3, viewValue: 'Onzijdig' },
+    { value: 1, viewValue: 'Vrouw' }
   ];
   public userLogin: FormGroup;
   public userRegister: FormGroup;
@@ -98,7 +96,6 @@ export class AccountComponent implements OnInit {
             this.openSnackBar("Logingegevens zijn niet correct!");
             this.errorMsg = `Could not login`;
           }
-          location.reload();
         },
         (err: HttpErrorResponse) => {
 
@@ -135,7 +132,6 @@ export class AccountComponent implements OnInit {
             this.openSnackBar("Er is een fout opgetreden!");
             this.errorMsg = `Could not register`;
           }
-          location.reload();
         },
         (err: HttpErrorResponse) => {
 
@@ -166,12 +162,12 @@ export class AccountComponent implements OnInit {
       lastname: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
       telnr: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10,}')]),
-      borndate: new FormControl('', [Validators.required,isValidDate]),
+      borndate: new FormControl('', [Validators.required, isValidDate]),
       email: ['', [Validators.required, Validators.email],
         serverSideValidateUsername(this._dataService.checkUserNameAvailability)],
       passwordGroup: this.urfb.group(
         {
-          password: ['', [Validators.required, Validators.minLength(8),isValidPassword]],
+          password: ['', [Validators.required, Validators.minLength(8), isValidPassword]],
           passwordConfirm: ['', Validators.required]
         },
         { validator: comparePasswords }
@@ -216,7 +212,7 @@ export class AccountComponent implements OnInit {
         );
       }
       else {
-        
+
         FB.logout();
       }
       FB.logout();
@@ -253,10 +249,9 @@ export class AccountComponent implements OnInit {
       return `Wachtwoorden zijn niet hetzelfde`;
     } else if (errors.userAlreadyExists) {
       return `Er bestaat al een gebruiker met dit e-mailadres`;
-    }else if(errors.InvalidBirthDate){
-    return 'Je moet minstens 18 jaar oud zijn';
-    }else if (errors.InvalidPassword)
-    {
+    } else if (errors.InvalidBirthDate) {
+      return 'Je moet minstens 18 jaar oud zijn';
+    } else if (errors.InvalidPassword) {
       return 'Een wachtwoord moet minsten 1 kleine letter, 1 hoofdletter, 1 nummer en 1 speciaal teken bevatten'
     }
   }
@@ -293,7 +288,6 @@ export class AccountComponent implements OnInit {
             this.openSnackBar("Er liep iets mis!");
             this.errorMsg = `Could not login`;
           }
-          location.reload();
         },
         (err: HttpErrorResponse) => {
 

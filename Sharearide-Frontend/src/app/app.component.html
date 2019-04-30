@@ -1,5 +1,5 @@
 <div class="app-comp">
-  <div *ngIf="loggedin">
+  <div *ngIf="(loggedInUser$ | async) as user">
     <div class="nav">
       <div class="nav-header">
       </div>
@@ -17,7 +17,7 @@
         <li><a [routerLink]="['/home']"><i class="fas fa-home icon"></i> Home</a></li>
         <li><a [routerLink]="['/searchRide']"><i class="fas fa-search icon"></i> Zoek</a></li>
         <li><a [routerLink]="['/offerRide']"><i class="fas fa-plus-circle icon"></i> Plaats een rit</a></li>
-        <li><a [routerLink]="['/profile']"><i class="fas fa-user-alt icon"></i> {{user.firstName}}</a></li>
+        <li><a [routerLink]="['/profile']"><i class="fas fa-user-alt icon"></i> {{user}}</a></li>
       </div>
     </div>
     <router-outlet></router-outlet>
@@ -25,7 +25,7 @@
       <p>&copy; 2019 Share a Ride | Design & Development: <a href="#">Jarne Deschacht</a></p>
     </footer>
   </div>
-  <div *ngIf="!loggedin">
+  <div *ngIf="!(loggedInUser$ | async) as user">
     <app-account [routerLink]="['/home']"></app-account>
   </div>
 </div>

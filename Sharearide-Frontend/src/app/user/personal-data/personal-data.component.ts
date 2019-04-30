@@ -22,9 +22,7 @@ export const isValidDate = (c: FormControl) => {
 export class PersonalDataComponent implements OnInit {
   genders: Gender[] = [
     { value: 0, viewValue: 'Man' },
-    { value: 1, viewValue: 'Vrouw' },
-    { value: 2, viewValue: 'Transgender' },
-    { value: 3, viewValue: 'Onzijdig' },
+    { value: 1, viewValue: 'Vrouw' }
   ];
 
   public userEdit: FormGroup;
@@ -60,7 +58,6 @@ export class PersonalDataComponent implements OnInit {
               this._dataService.redirectUrl = undefined;
             } else {
               this.router.navigate(['/home']);
-              location.reload();
             }
           } else {
             this.errorMsg = `Could not edit`;
