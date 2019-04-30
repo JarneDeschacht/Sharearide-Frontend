@@ -107,4 +107,15 @@ $darkblue:rgb(20,30,48);
   }
 }
 
+@media (max-width:600px) {
+  .title{
+    margin-top: 5%;
+    padding: 0 2%;
+  }
+  .ride-items{
+    width: 85%;
+    margin-top: 2%;
+  }
+}
+
 

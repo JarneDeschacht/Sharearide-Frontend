@@ -47,3 +47,18 @@ div {
     }
   }
 }
+
+@media (max-width:600px) {
+  div{
+    padding-top: 5%;
+    width: 85%;
+    img{
+      width: 50%;
+      height: 50%;
+    }
+    button{
+      width: 50%;
+      margin-top: 5%;
+    }
+  }
+}

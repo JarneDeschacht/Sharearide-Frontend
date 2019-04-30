@@ -51,3 +51,15 @@ $darkblue:rgb(20, 30, 48);
     }
   }
 }
+
+@media (max-width:600px) {
+  .component-body{
+    margin-top: 5%;
+  }
+  .filter{
+    width: 85% !important;
+    mat-form-field{
+      width: 42% !important;
+    }
+  }
+}

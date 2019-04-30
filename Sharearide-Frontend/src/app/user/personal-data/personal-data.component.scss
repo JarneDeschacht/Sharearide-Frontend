@@ -48,3 +48,32 @@ $darkblue:rgb(20, 30, 48);
     transition-duration: .5s;
   }
 }
+
+@media (max-width:600px) {
+  .personal-data{
+    margin-top: 5%;
+    h1{
+      padding-top: 2%;
+    }
+    .table {
+      width: 100%;
+      margin-top: 15%;
+      overflow: hidden;
+      mat-form-field{
+        display: block;
+      }
+      tr{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        td{
+          min-width: 90%;
+          margin: 2% auto;
+        }
+      }
+      .button-confirm{
+        margin: 4% auto;
+      }
+    }
+  }
+}

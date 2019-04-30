@@ -60,6 +60,7 @@ $darkblue:rgb(20, 30, 48);
 .table {
   td {
     padding: 0 2%;
+    max-width: 50%;
   }
 
   .form-icon-td {
@@ -110,7 +111,7 @@ $darkblue:rgb(20, 30, 48);
       flex-direction: row;
       flex-wrap: wrap;
       td{
-        min-width: 90%;
+        min-width: 80%;
       }
     }
   }

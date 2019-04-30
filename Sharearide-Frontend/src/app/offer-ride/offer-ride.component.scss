@@ -1,6 +1,6 @@
 $maincolor:rgb(63, 169, 245);
 $black:#45474c;
-$darkblue:rgb(20,30,48);
+$darkblue:rgb(20, 30, 48);
 
 .component-body {
   padding-top: 3%;
@@ -27,24 +27,28 @@ $darkblue:rgb(20,30,48);
     margin: 1% auto;
     background-color: inherit;
 
-    .table{
+    .table {
       width: 60%;
       margin-bottom: 1%;
+
       td {
-          padding: 0 2%;
+        padding: 0 2%;
+
         mat-form-field {
           width: 100%;
         }
       }
     }
-    .details{
+
+    .details {
       width: 60%;
       margin-bottom: 1%;
-      mat-form-field{
+
+      mat-form-field {
         width: 40%;
       }
     }
-    
+
 
     .ready {
       margin-top: 2%;
@@ -54,5 +58,38 @@ $darkblue:rgb(20,30,48);
         font-weight: bold;
       }
     }
+  }
+}
+
+@media (max-width:600px) {
+  .component-body {
+    margin-top: 5%;
+  }
+
+  .stepper {
+    width: 90% !important;
+
+    .table {
+      width: 95% !important;
+
+      tr {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        td{
+          min-width: 100%;
+        }
+      }
+    }
+
+    .details {
+      width: 100% !important;
+
+      mat-form-field {
+        width: 100% !important;
+      }
+    }
+
+
   }
 }

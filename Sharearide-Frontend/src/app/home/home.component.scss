@@ -1,6 +1,6 @@
 $maincolor: rgb(63, 169, 245);
 $black:#45474c;
-$darkblue:rgb(20,30,48);
+$darkblue:rgb(20, 30, 48);
 
 .user {
   border: 2px solid black;
@@ -21,15 +21,6 @@ $darkblue:rgb(20,30,48);
     color: white;
     text-shadow: 2px 2px 3px $black;
   }
-
-  .intro-img {
-    display: block;
-    width: 80%;
-    margin: 0 auto;
-    border: $black 2px solid;
-    border-radius: 10px;
-
-  }
 }
 
 .side-intro {
@@ -37,6 +28,7 @@ $darkblue:rgb(20,30,48);
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 3%;
+
   .image {
     img {
       border-radius: 20px;
@@ -46,13 +38,16 @@ $darkblue:rgb(20,30,48);
       margin-right: 10%;
       border: 2px solid $darkblue;
     }
+
     width: 60%;
   }
+
   .content {
     color: white;
     text-shadow: 2px 2px 3px $black;
     width: 40%;
     margin-right: 10%;
+
     h2 {
       font-size: 30px;
     }
@@ -61,6 +56,7 @@ $darkblue:rgb(20,30,48);
       font-size: 18px;
     }
   }
+
   .button {
     width: 40%;
     height: 20px;
@@ -75,7 +71,7 @@ $darkblue:rgb(20,30,48);
     color: white;
     transition-duration: .5s;
     text-shadow: none;
-  
+
     &:hover {
       color: $black;
       border: $darkblue 2px solid;
@@ -85,14 +81,16 @@ $darkblue:rgb(20,30,48);
     }
   }
 }
-.benefits{
+
+.benefits {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 3%;
-  color:white;
-  .benefit{
+  color: white;
+
+  .benefit {
     width: 23%;
     background: rgba(20, 30, 48, 0.8);
     border: 2px solid $maincolor;
@@ -100,11 +98,13 @@ $darkblue:rgb(20,30,48);
     text-align: center;
     padding: 1%;
     border-radius: 20px;
-    h2{
+
+    h2 {
       font-size: 200%;
       text-transform: uppercase;
     }
-    p{
+
+    p {
       font-size: 90%;
     }
   }
@@ -112,38 +112,36 @@ $darkblue:rgb(20,30,48);
 
 
 @media (max-width:600px) {
-  .intro {
-    margin-top: 15%;
-
-    .intro-img {
-      width: 90%;
+.intro{
+  margin-top: 5%;
+  word-break: break-all;
+}
+.side-intro{
+  flex-direction: column;
+  .image{
+    width: 100%;
+    img{
+      width: 80%;
     }
   }
-
-  .side-intro {
-    margin: 0;
-
-    .image {
-      width: 100%;
-      margin-top: 15%;
-
-      img {
-        width: 80%;
-      }
+  .content{
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    .button{
+      margin: 0 auto;
     }
-
-    .content {
-      width: 100%;
-
-      h2,
-      p {
-        text-align: center;
-        margin: 3%;
+  }
+}
+.benefits{
+    flex-direction: column;
+    width: 100%;
+    .benefit{
+      i{
+        margin-top: 3%;
       }
-
-      .button {
-        margin: 0 auto;
-      }
+      width: 90%;
+      margin: 1.5% auto;
     }
   }
 }

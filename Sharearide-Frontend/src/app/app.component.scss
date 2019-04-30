@@ -3,12 +3,13 @@ $black:#45474c;
 $duration: .2s;
 $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
-$darkblue:rgb(20,30,48);
+$darkblue:rgb(20, 30, 48);
 
 .icon {
   color: $maincolor
 }
-*{
+
+* {
   outline: 0;
 }
 
@@ -20,7 +21,7 @@ $darkblue:rgb(20,30,48);
   top: 0;
   padding-top: 1%;
   padding-bottom: 1%;
-  background: rgba(20,30,48, 0.6);
+  background: rgba(20, 30, 48, 0.6);
   box-shadow: 0px 1px 10px $darkblue;
 
   #nav-check {
@@ -29,6 +30,10 @@ $darkblue:rgb(20,30,48);
 
   .nav-header {
     display: inline;
+
+    i {
+      display: none;
+    }
   }
 
   .nav-btn {
@@ -70,7 +75,7 @@ $darkblue:rgb(20,30,48);
         padding: 15px 12px 15px 12px;
         text-decoration: none;
         font-size: 20px;
-        color:white;
+        color: white;
 
         outline: none;
 
@@ -120,12 +125,46 @@ $darkblue:rgb(20,30,48);
   }
 }
 
+footer {
+  width: 100%;
+  display: block;
+  padding: 2% 0;
+  position: relative;
+  bottom: 0;
+  text-shadow: 2px 2px 3px $black;
+
+  p {
+    color: white;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      color: white;
+
+      &:hover {
+        border-bottom: 2px solid $maincolor;
+      }
+    }
+  }
+}
+
 @media (max-width:600px) {
   .nav {
-    background-color: $maincolor;
     margin-top: 0;
     height: 40px;
-    
+    background: $darkblue;
+    background: -webkit-linear-gradient(to right, #243B55, $darkblue);
+    background: linear-gradient(to right, #243B55, $darkblue);
+    box-shadow: none;
+
+    .nav-header {
+      i {
+        display: block;
+        color: white;
+        margin: 1%;
+        padding-left: 3%;
+      }
+    }
 
     .nav-links {
       position: absolute;
@@ -133,7 +172,7 @@ $darkblue:rgb(20,30,48);
       width: 100%;
       height: 0px;
       overflow-y: hidden;
-      top: 50px;
+      top: 40px;
       left: 0px;
 
       li {
@@ -142,15 +181,16 @@ $darkblue:rgb(20,30,48);
           display: block;
           width: 100%;
 
-
           &:before,
           &:after {
-            background-color: white;
+            background: $darkblue;
+            background: -webkit-linear-gradient(to right, #243B55, $darkblue);
+            background: linear-gradient(to right, #243B55, $darkblue);
           }
 
           &:hover {
-            color: lightgrey;
             transition-duration: 1s;
+            color: gray;
 
             i {
               transform: rotateY(360deg);
@@ -190,29 +230,14 @@ $darkblue:rgb(20,30,48);
 
   .nav>#nav-check:checked+.nav-links {
     height: auto;
-    background-color: white;
+    background: $darkblue;
+    background: -webkit-linear-gradient(to right, #243B55, $darkblue);
+    background: linear-gradient(to right, #243B55, $darkblue);
     overflow-y: auto;
     overflow: hidden;
   }
-}
 
-footer {
-  width: 100%;
-  display: block;
-  padding: 2% 0;
-  position:relative;
-  bottom:0;
-  text-shadow: 2px 2px 3px $black;
-  p {
-    color: white;
-    text-align: center;
-    a {
-      text-decoration: none;
-      color: white;
-
-      &:hover {
-        border-bottom: 2px solid $maincolor;
-      }
-    }
+  .button-confirm {
+    display: none;
   }
 }
