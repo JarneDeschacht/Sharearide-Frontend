@@ -30,7 +30,9 @@ export class SharearideDataService {
       const expires = new Date(parseInt(parsedToken.exp, 10) * 1000) < new Date();
       if (expires) {
         localStorage.removeItem(this._tokenKey);
+        localStorage.removeItem(this._userKey);
         parsedToken = null;
+        location.reload();
       }
     }
     // this._currentuser$ = new BehaviorSubject<string>(parsedToken && parsedToken.unique_name);

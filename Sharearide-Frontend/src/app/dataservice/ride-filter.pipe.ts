@@ -21,7 +21,8 @@ export class RideFilterPipe implements PipeTransform {
         rec.stopovers.forEach(stop => {
           cities.push(stop.city.name.toLowerCase());
         })
-        return rec.dropOffLocation.city.name.toLowerCase().startsWith(name.toLowerCase()) || cities.filter(city => city.startsWith(name.toLowerCase())).length > 0
+        return rec.dropOffLocation.city.name.toLowerCase().startsWith(name.toLowerCase()) 
+        || cities.filter(city => city.startsWith(name.toLowerCase())).length > 0
       }
       );
     }
@@ -31,11 +32,11 @@ export class RideFilterPipe implements PipeTransform {
       rec.stopovers.forEach(stop => {
         cities.push(stop.city.name.toLowerCase());
       })
-      return this.sameDay(new Date(rec.travelDate),new Date(date)) && (rec.dropOffLocation.city.name.toLowerCase().startsWith(name.toLowerCase()) || cities.filter(city => city.startsWith(name.toLowerCase())).length > 0)
+      return this.sameDay(new Date(rec.travelDate),new Date(date)) 
+      && (rec.dropOffLocation.city.name.toLowerCase().startsWith(name.toLowerCase()) 
+      || cities.filter(city => city.startsWith(name.toLowerCase())).length > 0)
     }
     );
-
-
   }
   sameDay(d1, d2) {
     return d1.getFullYear() === d2.getFullYear() &&

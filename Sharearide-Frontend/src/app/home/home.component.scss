@@ -39,12 +39,12 @@ $darkblue:rgb(20,30,48);
   margin-top: 3%;
   .image {
     img {
-      border-radius: 5%;
+      border-radius: 20px;
       display: block;
       float: right;
       width: 50%;
       margin-right: 10%;
-      border: 1px solid $darkblue;
+      border: 2px solid $darkblue;
     }
     width: 60%;
   }
@@ -82,6 +82,30 @@ $darkblue:rgb(20,30,48);
       background-color: white;
       transition-duration: .5s;
       border-radius: 30px;
+    }
+  }
+}
+.benefits{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3%;
+  color:white;
+  .benefit{
+    width: 23%;
+    background: rgba(20, 30, 48, 0.8);
+    border: 2px solid $maincolor;
+    margin: 1%;
+    text-align: center;
+    padding: 1%;
+    border-radius: 20px;
+    h2{
+      font-size: 200%;
+      text-transform: uppercase;
+    }
+    p{
+      font-size: 90%;
     }
   }
 }
