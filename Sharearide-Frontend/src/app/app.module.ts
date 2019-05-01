@@ -24,6 +24,7 @@ import { RegisterDialogComponent } from './account/register-dialog/register-dial
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RideFilterPipe } from './dataservice/ride-filter.pipe';
 import { MaterialModule } from './material/material.module';
+import { SearchRidesModule } from './search-rides/search-rides.module';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { MaterialModule } from './material/material.module';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SearchRidesModule,
   ],
   entryComponents: [
     RegisterDialogComponent
