@@ -1,12 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { first, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { SharearideDataService } from '../dataservice/sharearide-data.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog,} from '@angular/material';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 //MomentJS library
 import * as moment from 'moment';

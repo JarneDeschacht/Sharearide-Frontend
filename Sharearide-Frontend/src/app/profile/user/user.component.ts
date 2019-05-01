@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../models/user.model';
-import { Observable } from 'rxjs';
-import { SharearideDataService } from '../dataservice/sharearide-data.service';
-import { Ride } from '../models/ride.model';
+import { User } from 'src/app/models/user.model';
+import { SharearideDataService } from 'src/app/dataservice/sharearide-data.service';
 
 @Component({
   selector: 'app-user',

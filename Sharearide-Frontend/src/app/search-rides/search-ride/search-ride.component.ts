@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Ride } from '../models/ride.model';
+import { Ride } from '../../models/ride.model';
 import { Observable, Subject } from 'rxjs';
-import { SharearideDataService } from '../dataservice/sharearide-data.service';
-import { User } from '../models/user.model';
-import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { SharearideDataService } from '../../dataservice/sharearide-data.service';
+import { User } from '../../models/user.model';
+import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-ride',
@@ -21,6 +20,7 @@ export class SearchRideComponent implements OnInit {
   public filterRideDate$ = new Subject<Date>();
 
   constructor(private _dataService: SharearideDataService) {
+    console.log("loaded");
     this.filterRide$.pipe(
       distinctUntilChanged(),
       debounceTime(400),
@@ -28,18 +28,18 @@ export class SearchRideComponent implements OnInit {
     ).subscribe(
       val => this.filterRideDestination = val);
 
-      this.filterRideDate$.pipe(
-        distinctUntilChanged(),
-        debounceTime(400)
-      ).subscribe(
-        val => {
-          this.filterRideDate = val;
-        });
+    this.filterRideDate$.pipe(
+      distinctUntilChanged(),
+      debounceTime(400)
+    ).subscribe(
+      val => {
+        this.filterRideDate = val;
+      });
   }
   ngOnInit() {
 
   }
-  resetfilter(){
+  resetfilter() {
     this.filterRide$.next("");
     this.filterRideDate$.next(null);
   }

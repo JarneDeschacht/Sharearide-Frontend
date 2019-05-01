@@ -11,11 +11,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CityComponent } from '../location/city/city.component';
+import { LocationComponent } from '../location/location.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LocationComponent,
+    CityComponent,
+  ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatListModule,
     MatCardModule,
     MatIconModule,
@@ -36,6 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   exports: [
     MatListModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
@@ -52,6 +60,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTooltipModule,
     MatStepperModule,
     MatDialogModule,
+    LocationComponent,
+    CityComponent,
   ]
 })
-export class MaterialModule { }
+export class SharedModule { }
