@@ -26,11 +26,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'account', component: AccountComponent },
-  {
-    path: '',
-    redirectTo: "/home",
-    pathMatch: 'full'
-  },
+  { path: '',redirectTo: "/home",pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent}
 ];
