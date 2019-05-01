@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Ride } from '../models/ride.model';
-import { User } from '../models/user.model';
+import { Ride } from 'src/app/models/ride.model';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-ride-small',

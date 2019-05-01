@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Location } from '../models/location.model';
-import { Ride } from '../models/ride.model';
-import { City } from '../models/city.model';
-import { User } from '../models/user.model';
-import { SharearideDataService } from '../dataservice/sharearide-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
+import { SharearideDataService } from 'src/app/dataservice/sharearide-data.service';
+import { City } from 'src/app/models/city.model';
+import { Ride } from 'src/app/models/ride.model';
+import { Location} from 'src/app/models/location.model';
 
 export interface Country {
   value: number;

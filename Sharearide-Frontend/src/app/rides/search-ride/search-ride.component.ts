@@ -20,7 +20,6 @@ export class SearchRideComponent implements OnInit {
   public filterRideDate$ = new Subject<Date>();
 
   constructor(private _dataService: SharearideDataService) {
-    console.log("loaded");
     this.filterRide$.pipe(
       distinctUntilChanged(),
       debounceTime(400),

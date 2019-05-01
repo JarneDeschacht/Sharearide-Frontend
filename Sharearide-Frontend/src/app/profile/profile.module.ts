@@ -4,11 +4,11 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../dataservice/auth-guard.service';
-import { RideSmallComponent } from '../ride-small/ride-small.component';
 import { UserComponent } from './user/user.component';
 import { PersonalDataComponent } from './user/personal-data/personal-data.component';
 import { ParticipatedRidesComponent } from './user/participated-rides/participated-rides.component';
 import { OfferedRidesComponent } from './user/offered-rides/offered-rides.component';
+import { RideSmallComponent } from './user/ride-small/ride-small.component';
 
 const routes = [
   {

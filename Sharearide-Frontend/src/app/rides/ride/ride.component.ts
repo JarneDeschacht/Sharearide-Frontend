@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Ride } from 'src/app/models/ride.model';
-import { SharearideDataService } from '../dataservice/sharearide-data.service';
-import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { User } from 'src/app/models/user.model';
+import { SharearideDataService } from 'src/app/dataservice/sharearide-data.service';
 
 @Component({
   selector: 'app-ride',

@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './account/account.component';
-import { AuthGuard } from './dataservice/auth-guard.service';
-import { OfferRideComponent } from './offer-ride/offer-ride.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
 
 const appRoutes: Routes = [
-  { path: 'offerRide', component: OfferRideComponent,canActivate: [ AuthGuard ], },
   { path: 'account', component: AccountComponent },
   { path: '',redirectTo: "/home",pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
