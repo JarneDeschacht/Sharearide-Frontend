@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_DATE_LOCALE } from '@angular/material';
+import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter } from '@angular/material';
 import { AccountComponent } from './account/account.component';
 import { httpInterceptorProviders } from './interceptors';
 import { RegisterDialogComponent } from './account/register-dialog/register-dialog.component';
@@ -40,7 +40,10 @@ import { RidesModule } from './rides/rides.module';
     RegisterDialogComponent
   ],
 
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-NL' }, httpInterceptorProviders],
+  providers:
+  [
+    { provide: MAT_DATE_LOCALE, useValue: 'nl-NL' },
+    httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

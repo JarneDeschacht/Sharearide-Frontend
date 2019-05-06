@@ -149,4 +149,10 @@ export class SharearideDataService {
   addRide(ride: Ride) {
     return this.http.post(`${environment.apiUrl}/ride`, ride.toJSON());
   }
+  removeUserFromRide(rideId: number, userId: number) {
+    return this.http.post(`${environment.apiUrl}/ride/${rideId}/removeuser/${userId}`, { rideId, userId });
+  }
+  removeRide(rideid : number){
+    return this.http.request('delete',`${environment.apiUrl}/ride/${rideid}`,{body : rideid});
+  }
 }

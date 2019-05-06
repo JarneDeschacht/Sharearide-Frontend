@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
@@ -14,6 +14,12 @@ export interface Country {
   value: number;
   viewValue: string;
 }
+export const isValidDate = (c: FormControl) => {
+  const date = new Date(c.value);
+  return date > new Date()
+    ? null
+    : { InvalidTravelDate: true };
+};
 @Component({
   selector: 'app-offer-ride',
   templateUrl: './offer-ride.component.html',
@@ -33,6 +39,7 @@ export class OfferRideComponent implements OnInit {
     { value: 87,  viewValue: "Italië"},
     { value: 60, viewValue: "finland"},
     { value: 104, viewValue: "Luxenburg"},
+    //...
   ];
   isLinear = true;
   locationsGroup: FormGroup;
@@ -59,7 +66,7 @@ export class OfferRideComponent implements OnInit {
       this.locationsGroup.value.companyNameEnd, this.locationsGroup.value.streetEnd,
       new City(this.locationsGroup.value.postalcodeEnd, this.locationsGroup.value.cityEnd,
         this.locationsGroup.value.countryEnd));
-    let newRide = new Ride(0, start, end, stopovers, this.details.value.travelDate,
+    let newRide = new Ride(0, start, end, stopovers,this.details.value.travelDate,
       this.details.value.price, this.details.value.seats,
       this.details.value.seats, false, User.fromJSON(this.user));
 
@@ -127,7 +134,7 @@ export class OfferRideComponent implements OnInit {
         }
       });
     this.details = this._formBuilder.group({
-      travelDate: ['', Validators.required],
+      travelDate: new FormControl('', [Validators.required,isValidDate]),
       price: ['', Validators.required],
       seats: ['', Validators.required]
     });
@@ -141,6 +148,8 @@ export class OfferRideComponent implements OnInit {
       return 'Dit veld is verplicht';
     } else if (errors.pattern) {
       return 'Dit veld mag enkel nummers bevatten';
+    }else if(errors.InvalidTravelDate){
+      return 'Een rit moet minstens 1 dag voor vertrek worden vastgelegd';
     }
   }
   createStopovers(): FormGroup {

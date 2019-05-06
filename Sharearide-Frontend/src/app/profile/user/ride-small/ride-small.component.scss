@@ -91,6 +91,21 @@ $darkblue:rgb(20, 30, 48);
     }
   }
 }
+.button-confirm {
+  color: white !important;
+  width: 50%;
+  background-color: $maincolor;
+  border-radius: 10px;
+  border: $maincolor 2px solid;
+  transition-duration: .5s;
+  display: block;
+  margin: 3% auto;
+  margin-top: 1%;
+  text-shadow: none;
+  &:hover {
+    opacity: 0.5 !important;
+  }
+}
 
 @media (max-width:600px) {
   .title{

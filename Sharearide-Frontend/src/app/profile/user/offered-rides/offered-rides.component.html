@@ -1,8 +1,8 @@
 <div *ngIf="(offeredRidesByUser$ | async) as rides; else loading">
-    <div class="rides" *ngFor="let ride of rides">
-      <app-ride-small [ride]="ride"></app-ride-small>
-    </div>
+  <div class="rides" *ngFor="let ride of rides">
+    <app-ride-small [ride]="ride" [isParticipatedRide]="0"></app-ride-small>
   </div>
-  <ng-template #loading>
-    <mat-spinner class="spinner"></mat-spinner>
-  </ng-template>
+</div>
+<ng-template #loading>
+  <mat-spinner class="spinner"></mat-spinner>
+</ng-template>
