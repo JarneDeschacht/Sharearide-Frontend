@@ -9,7 +9,7 @@ import { SharearideDataService } from 'src/app/dataservice/sharearide-data.servi
 })
 export class UserComponent implements OnInit {
 
-  private user : User = JSON.parse(localStorage.getItem('currentUser')); 
+  public user : User = JSON.parse(localStorage.getItem('currentUser')); 
   public pRides : number = this.user.nrOfParticipatedRides;
   public oRides : number = this.user.nrOfOfferedRides;
 

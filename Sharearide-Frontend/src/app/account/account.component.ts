@@ -70,6 +70,9 @@ export class AccountComponent implements OnInit {
   public userLogin: FormGroup;
   public userRegister: FormGroup;
   public errorMsg: string;
+  public hide1 : boolean = false;
+  public hide2 : boolean = false;
+  public hide3 : boolean = false;
 
 
   constructor(
