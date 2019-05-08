@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://sharearide-backend.azurewebsites.net/api'
+  apiUrl: '/api'
 };
 
 /*

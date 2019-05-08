@@ -61,7 +61,7 @@
         </td>
         <td>
           <mat-form-field>
-            <input matInput placeholder="E-mailadres" aria-label="E-mailadres" type="email" formControlName="email"
+            <input matInput disabled placeholder="E-mailadres" aria-label="E-mailadres" type="email" formControlName="email"
               required>
             <mat-error *ngIf="userEdit.get('email')['errors']  && userEdit.get('email').touched">
               {{getErrorMessage(userEdit.get('email')['errors']) }}

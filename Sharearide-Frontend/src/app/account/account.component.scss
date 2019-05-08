@@ -14,15 +14,9 @@ $darkblue:rgb(20, 30, 48);
   width: 50%;
   padding: 4% 2%;
   border-radius: 50px;
-  transition-duration: 1s;
   color: white;
   background: rgba(20, 30, 48, 0.8);
-  border: 3px solid $maincolor;
-
-  &:hover {
-    transform: scale(1.02);
-    transition-duration: 1s;
-  }
+  border: 2px solid $maincolor;
 
 }
 

@@ -11,9 +11,9 @@
     </div>
   </div>
   <div class="subnav">
-    <button mat-raised-button><a [routerLink]="['personaldata']">Wijzig persoonlijke gegevens</a></button>
-    <button mat-raised-button matBadge="{{pRides}}" matBadgePosition="after" ><a [routerLink]="['participatedRides']">Deelgenomen ritten</a></button>
-    <button mat-raised-button matBadge="{{oRides}}" matBadgePosition="after" ><a [routerLink]="['offeredRides']">Geplaatste ritten</a></button>
+    <button mat-raised-button [routerLink]="['personaldata']"><a>Wijzig persoonlijke gegevens</a></button>
+    <button mat-raised-button matBadge="{{pRides}}" matBadgePosition="after" [routerLink]="['participatedRides']"><a >Deelgenomen ritten</a></button>
+    <button mat-raised-button matBadge="{{oRides}}" matBadgePosition="after" [routerLink]="['offeredRides']"><a >Geplaatste ritten</a></button>
   </div>
   <div class="content">
       <router-outlet></router-outlet>
