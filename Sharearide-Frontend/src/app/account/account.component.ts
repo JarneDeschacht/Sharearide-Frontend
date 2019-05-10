@@ -240,7 +240,7 @@ export class AccountComponent implements OnInit {
     if (errors.required) {
       return 'Dit veld is verplicht';
     }
-    else if (errors.minlength) {
+    else if (errors.minLength) {
       return `Dit veld moet minstens ${errors.minlength.requiredLength} 
         karakters bevatten (nu ${errors.minlength.actualLength})`;
     } else if (errors.email) {
@@ -255,7 +255,7 @@ export class AccountComponent implements OnInit {
     } else if (errors.InvalidBirthDate) {
       return 'Je moet minstens 18 jaar oud zijn';
     } else if (errors.InvalidPassword) {
-      return 'Een wachtwoord moet minsten 1 kleine letter, 1 hoofdletter, 1 nummer en 1 speciaal teken bevatten'
+      return 'Een wachtwoord moet minstens 1 kleine letter, 1 hoofdletter, 1 nummer en 1 speciaal teken bevatten'
     }
   }
   openSnackBar(message: string) {

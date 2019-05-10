@@ -1,6 +1,10 @@
 {
   "/api": {
-    "target": "https://sharearide-backend.azurewebsites.net/",
+    "target": {
+      "host": "localhost",
+      "protocol": "https:",
+      "port": 44364
+    },
     "secure": false,
     "changeOrigin": true,
     "logLevel": "info"

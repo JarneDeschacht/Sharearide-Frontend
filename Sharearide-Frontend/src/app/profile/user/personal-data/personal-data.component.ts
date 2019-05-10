@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharearideDataService } from 'src/app/dataservice/sharearide-data.service';
 import { Gender } from 'src/app/account/account.component';
 import { User } from 'src/app/models/user.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import * as moment from 'moment';
+import { MatSnackBar } from '@angular/material';
 
 export const isValidDate = (c: FormControl) => {
   const date = new Date(c.value);
@@ -14,6 +15,22 @@ export const isValidDate = (c: FormControl) => {
     ? null
     : { InvalidBirthDate: true };
 };
+export const isValidPassword = (c: FormControl) => {
+  const password = c.value;
+  var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/;
+
+  return regex.test(password)
+    ? null
+    : { InvalidPassword: true };
+}
+function comparePasswords(control: AbstractControl): { [key: string]: any } {
+  const password = control.get('newPassword');
+  const confirmPassword = control.get('newPasswordConfirm');
+  return password.value === confirmPassword.value
+    ? null
+    : { passwordsDiffer: true };
+}
+
 @Component({
   selector: 'app-personal-data',
   templateUrl: './personal-data.component.html',
@@ -26,13 +43,17 @@ export class PersonalDataComponent implements OnInit {
   ];
 
   public userEdit: FormGroup;
+  public passwordEdit: FormGroup;
   private user: User = JSON.parse(localStorage.getItem('currentUser'));
   public errorMsg: string;
+  public showForm = false;
 
   constructor(
     private editfb: FormBuilder,
+    private editpassfb: FormBuilder,
     private _dataService: SharearideDataService,
-    private router: Router) {
+    private router: Router,
+    private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -44,10 +65,16 @@ export class PersonalDataComponent implements OnInit {
       borndate: new FormControl(this.user.dateOfBirth, [Validators.required, isValidDate]),
       email: new FormControl({ value: `${this.user.email}`, disabled: true }, [Validators.required, Validators.email]),
     });
+
+    this.passwordEdit = this.editpassfb.group({
+      oldPassword: ['', Validators.required],
+      newPassword: ['', [Validators.required, Validators.minLength(8), isValidPassword]],
+      newPasswordConfirm: ['', Validators.required]
+    }, { validator: comparePasswords })
   }
 
   edit() {
-    this._dataService.edit(this.user.id, this.userEdit.value.email, this.userEdit.value.firstname, this.userEdit.value.lastname,
+    this._dataService.edit(this.user.id, this.user.email, this.userEdit.value.firstname, this.userEdit.value.lastname,
       this.userEdit.value.gender, this.userEdit.value.borndate, "+" + this.userEdit.value.telnr
     ).pipe()
       .subscribe(
@@ -87,6 +114,10 @@ export class PersonalDataComponent implements OnInit {
     if (errors.required) {
       return 'Dit veld is verplicht';
     }
+    else if (errors.minlength) {
+      return `Dit veld moet minstens ${errors.minlength.requiredLength} 
+        karakters bevatten (nu ${errors.minlength.actualLength})`;
+    }
     else if (errors.email) {
       return `Dit veld bevat geen geldig e-mailadres`;
     } else if (errors.pattern) {
@@ -94,6 +125,29 @@ export class PersonalDataComponent implements OnInit {
     } else if (errors.InvalidBirthDate) {
       return 'Je moet minstens 18 jaar oud zijn';
     }
+    else if (errors.passwordsDiffer) {
+      return `Wachtwoorden zijn niet hetzelfde`;
+    }
+    else if (errors.InvalidPassword) {
+      return 'Een wachtwoord moet minstens 1 kleine letter, 1 hoofdletter, 1 nummer en 1 speciaal teken bevatten'
+    }
+  }
+  changeShowForm(){
+    this.showForm = !this.showForm;
+  }
+
+  editPassword() {
+    this._dataService.editPassword(this.user.email, this.passwordEdit.value.oldPassword, this.passwordEdit.value.newPasswordConfirm).subscribe(val => {
+      if (val)
+        this.router.navigate(['/home']);
+      else
+        this.openSnackBar("Je oude wachtwoord is niet correct!");
+    });
+  }
+  openSnackBar(message: string) {
+    this.snackBar.open(message, "OK", {
+      duration: 5000,
+    });
   }
 
 }

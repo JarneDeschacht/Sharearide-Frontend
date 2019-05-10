@@ -13,6 +13,11 @@ $darkblue:rgb(20, 30, 48);
     margin: 5% 0;
 
   }
+  .changepass{
+    margin: 2%;
+    border: 1px solid white !important;
+    border-radius: 15px;
+  }
 
   .table {
     td {
@@ -37,10 +42,19 @@ $darkblue:rgb(20, 30, 48);
     }
   }
 
+  .table2{
+    td{
+      padding: 0 5%;
+    } 
+    button{
+      margin-top: 3%;
+    }
+  }
+
   .button-confirm {
     margin: 2% auto;
     color: white !important;
-    width: 80%;
+    width: 50%;
     display: block;
     background-color: $maincolor;
     border-radius: 10px;

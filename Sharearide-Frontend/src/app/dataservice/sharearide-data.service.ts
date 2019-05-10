@@ -41,8 +41,6 @@ export class SharearideDataService {
   get user$(): BehaviorSubject<string> {
     return this._currentuser$;
   }
-
-
   get token(): string {
     const localToken = localStorage.getItem(this._tokenKey);
     return !!localToken ? localToken : '';
@@ -152,7 +150,10 @@ export class SharearideDataService {
   removeUserFromRide(rideId: number, userId: number) {
     return this.http.post(`${environment.apiUrl}/ride/${rideId}/removeuser/${userId}`, { rideId, userId });
   }
-  removeRide(rideid : number){
-    return this.http.request('delete',`${environment.apiUrl}/ride/${rideid}`,{body : rideid});
+  removeRide(rideid: number) {
+    return this.http.request('delete', `${environment.apiUrl}/ride/${rideid}`, { body: rideid });
+  }
+  editPassword(email: string, oldpass: string, newpass: string) {
+    return this.http.put(`${environment.apiUrl}/account/changepassword/${email}/${oldpass}/${newpass}`, { email, oldpass, newpass });
   }
 }

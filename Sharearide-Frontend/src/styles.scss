@@ -10,6 +10,7 @@ body {
   overflow-x: auto;
   overflow-y: scroll;
   background: url('../src/assets/Images/bg.jpg') center fixed;
+  height: 100vh;
 }
 
 .mat-step-header .mat-step-icon-selected,
@@ -175,11 +176,14 @@ mat-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-ripp
 .mat-stepper-vertical-line::before {
   border-left-color: $maincolor;
 }
-.mat-dialog-container{
+
+.mat-dialog-container {
   background-color: $darkblue;
   border: 4px solid $maincolor;
   border-radius: 20px;
 }
-.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after, .mat-input-element:disabled{
-  color:white;
+
+.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after,
+.mat-input-element:disabled {
+  color: white;
 }

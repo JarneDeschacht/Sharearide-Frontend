@@ -61,8 +61,8 @@
         </td>
         <td>
           <mat-form-field>
-            <input matInput disabled placeholder="E-mailadres" aria-label="E-mailadres" type="email" formControlName="email"
-              required>
+            <input matInput disabled placeholder="E-mailadres" aria-label="E-mailadres" type="email"
+              formControlName="email" required>
             <mat-error *ngIf="userEdit.get('email')['errors']  && userEdit.get('email').touched">
               {{getErrorMessage(userEdit.get('email')['errors']) }}
             </mat-error>
@@ -88,9 +88,59 @@
       </tr>
       <tr>
         <td colspan="4">
-          <button mat-button [disabled]='!userEdit.valid' class="button-confirm">Wijzig gegevens</button>
+          <button mat-button [disabled]='!userEdit.valid' class="button-confirm">Wijzig persoonklijke gegevens</button>
         </td>
       </tr>
     </table>
   </form>
+  <button mat-button (click)="changeShowForm()" class="changepass">Verander wachtwoord</button>
+  <div *ngIf="showForm">
+    <form [formGroup]="passwordEdit" (ngSubmit)='editPassword()'>
+      <table class="table table2">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Oud wachtwoord" required aria-label="Oud Wachtwoord"
+                formControlName="oldPassword">
+              <mat-error *ngIf="
+              passwordEdit.get('oldPassword').errors &&
+              passwordEdit.get('oldPassword').touched">
+                {{getErrorMessage(passwordEdit.get('oldPassword').errors) }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Nieuw wachtwoord" required aria-label="Nieuw Wachtwoord"
+                formControlName="newPassword">
+              <mat-error *ngIf="
+                  passwordEdit.get('newPassword').errors &&
+                  passwordEdit.get('newPassword').touched">
+                {{getErrorMessage(passwordEdit.get('newPassword').errors) }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Bevestig wachtwoord" required aria-label="Bevestig wachtwoord"
+                formControlName="newPasswordConfirm">
+              <mat-error *ngIf="
+              passwordEdit.errors &&
+              passwordEdit.get('newPassword').touched &&
+              passwordEdit.get('newPasswordConfirm').touched
+              ">
+                {{ getErrorMessage(passwordEdit.errors) }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" style="padding: 0 3%;">
+            <button mat-button [disabled]='!passwordEdit.valid' class="button-confirm">Wijzig wachtwoord</button>
+          </td>
+        </tr>
+      </table>
+  
+    </form>
+  </div>
 </div>
