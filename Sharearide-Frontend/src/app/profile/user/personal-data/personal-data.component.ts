@@ -67,9 +67,9 @@ export class PersonalDataComponent implements OnInit {
     });
 
     this.passwordEdit = this.editpassfb.group({
-      oldPassword: ['', Validators.required],
-      newPassword: ['', [Validators.required, Validators.minLength(8), isValidPassword]],
-      newPasswordConfirm: ['', Validators.required]
+      oldPassword: new FormControl('', Validators.required),
+      newPassword: new FormControl('', [Validators.required, Validators.minLength(8), isValidPassword]),
+      newPasswordConfirm: new FormControl('', Validators.required)
     }, { validator: comparePasswords })
   }
 

@@ -9,7 +9,11 @@ body {
   font-family: 'Ubuntu', sans-serif;
   overflow-x: auto;
   overflow-y: scroll;
-  background: url('../src/assets/Images/bg.jpg') center fixed;
+  background: url('../src/assets/Images/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   height: 100vh;
 }
 

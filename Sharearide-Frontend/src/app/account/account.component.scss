@@ -2,7 +2,7 @@ $maincolor: rgb(63, 169, 245);
 $black:#45474c;
 $darkblue:rgb(20, 30, 48);
 
-.loginregister{
+.loginregister {
   display: flex;
   justify-content: center;
 }
@@ -25,7 +25,8 @@ $darkblue:rgb(20, 30, 48);
   color: white;
   margin-bottom: 2%;
 }
-.subtitle{
+
+.subtitle {
   padding-top: 1%;
   text-align: center;
   font-size: 20px;
@@ -33,18 +34,21 @@ $darkblue:rgb(20, 30, 48);
   display: block;
   width: 100%;
 }
-.login-icons{
+
+.login-icons {
   display: block;
   width: 100%;
-  i{
+
+  i {
     text-align: center;
     display: block;
-    color:$maincolor;
+    color: $maincolor;
     margin: 0 auto;
     width: 5%;
     transition-duration: 0.5s;
-    &:hover{
-      color:white;
+
+    &:hover {
+      color: white;
       transition-duration: .5s;
       cursor: pointer;
     }
@@ -95,19 +99,47 @@ $darkblue:rgb(20, 30, 48);
 @media (max-width:600px) {
   .account-forms {
     width: 100%;
-    margin-top: 15%;
-    overflow: hidden;
-    mat-form-field{
-      display: block;
-    }
-    tr{
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      td{
-        min-width: 80%;
+    margin: 6%;
+
+    .table {
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 15%;
+
+      tr {
+        display: flex;
+        min-width: 100%;
+        td {
+          &:nth-child(1) {
+            min-width: 20%;
+          }
+
+          &:nth-child(2) {
+            min-width: 80%;
+          }
+
+          i {
+            text-align: center;
+            display: block;
+            color: $maincolor;
+            margin: 0 auto;
+            padding-top: 25%;
+          }
+        }
+        .btn{
+          min-width: 100% !important;
+        }
       }
     }
+
+  }
+
+}
+
+
+@media (max-width:1024px){
+  .account-forms {
+    width: 70%;
   }
 
 }
