@@ -12,12 +12,10 @@ export class UserComponent implements OnInit {
   public user : User = JSON.parse(localStorage.getItem('currentUser')); 
   public pRides : number = this.user.nrOfParticipatedRides;
   public oRides : number = this.user.nrOfOfferedRides;
+  public imgPath : string = `https://localhost:44364/${this.user.url}`;
 
   constructor() { }
 
   ngOnInit() {
-  }
-  createImgPath(){
-    return `${environment.imgUrl}/${this.user.URL}`;
   }
 }

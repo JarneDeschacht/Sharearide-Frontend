@@ -188,7 +188,7 @@ export class PersonalDataComponent implements OnInit {
         this._dataService.addUrlToUser(this.user.id,this.fromJSON(event.body)).subscribe(val => {
           if (val)
           {
-            this.user.URL = this.fromJSON(event.body);
+            this.user.url = this.fromJSON(event.body);
             localStorage.setItem("currentUser",JSON.stringify(this.user));
             this.router.navigate(["/home"]);
           }

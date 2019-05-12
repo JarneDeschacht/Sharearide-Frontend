@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: '/api',
-  imgUrl: 'https://sharearide-backend.azurewebsites.net/',
+  imgUrl: 'https://localhost:44364',
 };
 
 /*

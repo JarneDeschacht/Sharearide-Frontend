@@ -63,6 +63,7 @@ $darkblue:rgb(20, 30, 48);
       border-radius: 10px;
       border: $maincolor 2px solid;
       margin: 2%;
+      width: 30%;
 
       &:hover {
         box-shadow: 0px 7px 7px white;
@@ -90,6 +91,18 @@ $darkblue:rgb(20, 30, 48);
     button{
       width: 100%;
     }
+  }
+  .header{
+    display: block;
+    .profilepic{
+      width: 60%;
+      margin: 0 auto;
+      display: block;
+      margin-top: 7%;
+    }
+  }
+  h1{
+    margin-top: 1%;
   }
  }
 }

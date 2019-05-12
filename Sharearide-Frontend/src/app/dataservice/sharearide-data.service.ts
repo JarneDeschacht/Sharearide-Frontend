@@ -81,7 +81,6 @@ export class SharearideDataService {
           if (user) {
             localStorage.setItem(this._tokenKey, user.token);
             this._currentuser$.next(user.firstName);
-            console.log(this._currentuser$);
             localStorage.setItem(this._userKey, JSON.stringify(user))
             return true;
           } else {
