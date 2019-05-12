@@ -93,7 +93,10 @@
       </tr>
     </table>
   </form>
-  <button mat-button (click)="changeShowForm()" class="changepass">Verander wachtwoord</button>
+  <div class="subsubnav">
+    <button mat-button (click)="changeShowForm()" class="changepass">Wijzig wachtwoord</button>
+    <button mat-button (click)="changeShowFileReader()" class="changepass">Wijzig profielfoto</button>
+  </div>
   <div *ngIf="showForm">
     <form [formGroup]="passwordEdit" (ngSubmit)='editPassword()'>
       <table class="table table2">
@@ -122,8 +125,8 @@
           </td>
           <td>
             <mat-form-field>
-              <input matInput type="password" placeholder="Bevestig wachtwoord" required aria-label="Bevestig wachtwoord"
-                formControlName="newPasswordConfirm">
+              <input matInput type="password" placeholder="Bevestig wachtwoord" required
+                aria-label="Bevestig wachtwoord" formControlName="newPasswordConfirm">
               <mat-error *ngIf="
               passwordEdit.errors &&
               passwordEdit.get('newPassword').touched &&
@@ -140,7 +143,40 @@
           </td>
         </tr>
       </table>
-  
+    </form>
+  </div>
+
+  <div *ngIf="showFileReader">
+    <form [formGroup]="fileReader" (ngSubmit)='upload()'>
+      <table class="table tableFileReader">
+        <tr>
+          <td>
+            <mat-form-field>
+              <ngx-mat-file-input #removableInput formControlName="image" required placeholder="Kies een foto" #file
+                accept="image/*" (change)="preview()"></ngx-mat-file-input>
+              <button mat-icon-button matSuffix *ngIf="!removableInput.empty"
+                (click)="removableInput.clear($event);removeImage()">
+                <mat-icon>clear</mat-icon>
+              </button>
+              <mat-icon matSuffix>folder</mat-icon>
+              <mat-error *ngIf="fileReader.get('image')['errors']  && 
+                        fileReader.get('image').touched">
+                {{getErrorMessage(fileReader.get('image')['errors']) }}
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img [src]="imgURL" width="300" *ngIf="imgURL">
+          </td>
+        </tr>
+        <tr colspan="3" style="padding: 0 3%;">
+          <td>
+            <button mat-button [disabled]='!fileReader.valid' class="button-confirm">Wijzig profielfoto</button>
+          </td>
+        </tr>
+      </table>
     </form>
   </div>
 </div>

@@ -8,12 +8,14 @@ $darkblue:rgb(20, 30, 48);
   border: 3px solid $maincolor;
   border-radius: 50px;
   color: white;
+
   h1 {
     text-align: center;
     margin: 5% 0;
 
   }
-  .changepass{
+
+  .changepass {
     margin: 2%;
     border: 1px solid white !important;
     border-radius: 15px;
@@ -39,14 +41,21 @@ $darkblue:rgb(20, 30, 48);
     mat-form-field {
       width: 100%;
       margin: 1.5% auto;
+
+      button {
+        &:hover {
+          cursor: pointer !important;
+        }
+      }
     }
   }
 
-  .table2{
-    td{
+  .table2 {
+    td {
       padding: 0 5%;
-    } 
-    button{
+    }
+
+    button {
       margin-top: 3%;
     }
   }
@@ -61,31 +70,58 @@ $darkblue:rgb(20, 30, 48);
     border: $maincolor 2px solid;
     transition-duration: .5s;
   }
+
+  .subsubnav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
+.tableFileReader {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  mat-form-field {
+    max-width: 40% !important;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+
 @media (max-width:600px) {
-  .personal-data{
+  .personal-data {
     margin-top: 5%;
-    h1{
+
+    h1 {
       padding-top: 2%;
     }
+
     .table {
       width: 100%;
       margin-top: 15%;
       overflow: hidden;
-      mat-form-field{
+
+      mat-form-field {
         display: block;
       }
-      tr{
+
+      tr {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        td{
+
+        td {
           min-width: 90%;
           margin: 2% auto;
         }
       }
-      .button-confirm{
+
+      .button-confirm {
         margin: 4% auto;
       }
     }

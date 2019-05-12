@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharearideDataService } from 'src/app/dataservice/sharearide-data.service';
 import { Gender } from 'src/app/account/account.component';
 import { User } from 'src/app/models/user.model';
-import { HttpErrorResponse } from '@angular/common/http';
 import * as moment from 'moment';
 import { MatSnackBar } from '@angular/material';
+import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
 
 export const isValidDate = (c: FormControl) => {
   const date = new Date(c.value);
@@ -44,13 +44,17 @@ export class PersonalDataComponent implements OnInit {
 
   public userEdit: FormGroup;
   public passwordEdit: FormGroup;
+  public fileReader: FormGroup;
   private user: User = JSON.parse(localStorage.getItem('currentUser'));
   public errorMsg: string;
   public showForm = false;
+  public showFileReader = false;
+
+  private imgURL;
+  private imagePath;
 
   constructor(
     private editfb: FormBuilder,
-    private editpassfb: FormBuilder,
     private _dataService: SharearideDataService,
     private router: Router,
     private snackBar: MatSnackBar) {
@@ -66,11 +70,15 @@ export class PersonalDataComponent implements OnInit {
       email: new FormControl({ value: `${this.user.email}`, disabled: true }, [Validators.required, Validators.email]),
     });
 
-    this.passwordEdit = this.editpassfb.group({
+    this.passwordEdit = this.editfb.group({
       oldPassword: new FormControl('', Validators.required),
       newPassword: new FormControl('', [Validators.required, Validators.minLength(8), isValidPassword]),
       newPasswordConfirm: new FormControl('', Validators.required)
-    }, { validator: comparePasswords })
+    }, { validator: comparePasswords });
+
+    this.fileReader = this.editfb.group({
+      image: ['', [Validators.required]],
+    });
   }
 
   edit() {
@@ -132,8 +140,13 @@ export class PersonalDataComponent implements OnInit {
       return 'Een wachtwoord moet minstens 1 kleine letter, 1 hoofdletter, 1 nummer en 1 speciaal teken bevatten'
     }
   }
-  changeShowForm(){
+  changeShowForm() {
+    this.showFileReader = false;
     this.showForm = !this.showForm;
+  }
+  changeShowFileReader() {
+    this.showForm = false;
+    this.showFileReader = !this.showFileReader;
   }
 
   editPassword() {
@@ -150,4 +163,41 @@ export class PersonalDataComponent implements OnInit {
     });
   }
 
+  preview() {
+    if (this.fileReader.value.image.files.length === 0) return;
+
+    var mimeType = this.fileReader.value.image.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+
+    var reader = new FileReader();
+    this.imagePath = this.fileReader.value.image.files;
+    reader.readAsDataURL(this.fileReader.value.image.files[0]);
+    reader.onload = _event => {
+      this.imgURL = reader.result;
+    }
+  }
+  removeImage() {
+    this.imgURL = "";
+  }
+  upload() {
+    this._dataService.upload(this.fileReader.value.image.files).subscribe(event => {
+      if (event.type === HttpEventType.Response)
+      {
+        this._dataService.addUrlToUser(this.user.id,this.fromJSON(event.body)).subscribe(val => {
+          if (val)
+          {
+            this.user.URL = this.fromJSON(event.body);
+            localStorage.setItem("currentUser",JSON.stringify(this.user));
+            this.router.navigate(["/home"]);
+          }
+        });
+      }
+    });
+  }
+  private fromJSON(json: any): string {
+    var res: string = json.dbPath;
+    return res;
+  }
 }

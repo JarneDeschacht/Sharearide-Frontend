@@ -12,12 +12,13 @@ export class User {
         private _token: string,
         private _nrOfParticipatedRides: number,
         private _nrOfOfferedRides: number,
+        private _URL : string,
     ) { }
 
     static fromJSON(json: any): User {
         const ride = new User(json.id, json.firstName, json.lastName, json.dateOfBirth,
             json.email, json.phoneNumber, json.gender, json.token,
-            json.nrOfOfferedRides, json.nrOfParticipatedRides);
+            json.nrOfOfferedRides, json.nrOfParticipatedRides,json.URL);
         return ride;
     }
     toJSON(): any {
@@ -32,6 +33,7 @@ export class User {
             token: this.token,
             nrOfOfferedRides: this.nrOfOfferedRides,
             nrOfParticipatedRides: this.nrOfParticipatedRides,
+            URL : this.URL
         }
     }
 
@@ -70,5 +72,11 @@ export class User {
     }
     set nrOfOfferedRides(value) {
         this._nrOfOfferedRides = value;
+    }
+    set URL(value){
+        this._URL = value;
+    }
+    get URL() : string{
+        return this._URL;
     }
 }

@@ -17,6 +17,8 @@ $darkblue:rgb(20, 30, 48);
     .profilepic {
       width: 25%;
       height: 25%;
+      border-radius: 50%;
+      border: 2px solid $darkblue;
     }
 
     .header-content {

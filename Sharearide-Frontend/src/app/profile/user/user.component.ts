@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/models/user.model';
-import { SharearideDataService } from 'src/app/dataservice/sharearide-data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user',
@@ -13,8 +13,11 @@ export class UserComponent implements OnInit {
   public pRides : number = this.user.nrOfParticipatedRides;
   public oRides : number = this.user.nrOfOfferedRides;
 
-  constructor(private _dataService : SharearideDataService) { }
+  constructor() { }
 
   ngOnInit() {
+  }
+  createImgPath(){
+    return `${environment.imgUrl}/${this.user.URL}`;
   }
 }

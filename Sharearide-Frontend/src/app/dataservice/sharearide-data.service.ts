@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -155,5 +155,25 @@ export class SharearideDataService {
   }
   editPassword(email: string, oldpass: string, newpass: string) {
     return this.http.put(`${environment.apiUrl}/account/changepassword/${email}/${oldpass}/${newpass}`, { email, oldpass, newpass });
+  }
+
+
+  public upload = (files) => {
+    if (files.length === 0) {
+      return;
+    }
+
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+
+    return this.http.post(`${environment.apiUrl}/upload`, formData, {
+      reportProgress: true,
+      observe: "events"
+    });
+  }
+
+  addUrlToUser(id:number,url : string){
+    return this.http.post(`${environment.apiUrl}/upload/addUrlToUser`,{id,url});
   }
 }

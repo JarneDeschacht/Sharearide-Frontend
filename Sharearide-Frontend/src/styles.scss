@@ -191,3 +191,8 @@ mat-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-ripp
 .mat-input-element:disabled {
   color: white;
 }
+
+.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon,
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon{
+  cursor: pointer !important;
+}

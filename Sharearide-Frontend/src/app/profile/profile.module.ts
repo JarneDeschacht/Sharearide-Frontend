@@ -9,6 +9,7 @@ import { PersonalDataComponent } from './user/personal-data/personal-data.compon
 import { ParticipatedRidesComponent } from './user/participated-rides/participated-rides.component';
 import { OfferedRidesComponent } from './user/offered-rides/offered-rides.component';
 import { RideSmallComponent } from './user/ride-small/ride-small.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 const routes = [
   {
@@ -35,6 +36,7 @@ const routes = [
     CommonModule,
     SharedModule,
     HttpClientModule,
+    MaterialFileInputModule,
     RouterModule.forChild(routes)
   ]
 })

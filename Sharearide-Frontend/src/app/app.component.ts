@@ -9,6 +9,7 @@ import { SharearideDataService } from './dataservice/sharearide-data.service';
 })
 export class AppComponent {
   loggedInUser$ = this._dataService.user$;
+  public user : User = JSON.parse(localStorage.getItem('currentUser')); 
 
   constructor(private _dataService: SharearideDataService, ) {
 
@@ -16,7 +17,6 @@ export class AppComponent {
   logout() {
     this._dataService.logout();
   }
-
   ngOnInit() {
   }
 

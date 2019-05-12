@@ -28,6 +28,7 @@
     "core-js": "^2.5.4",
     "express": "^4.16.4",
     "moment": "^2.24.0",
+    "ngx-material-file-input": "^1.1.1",
     "path": "^0.12.7",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
