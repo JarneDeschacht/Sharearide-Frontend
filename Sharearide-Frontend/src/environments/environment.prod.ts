@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: '/api'
+  apiUrl: '/api',
+  imgUrl: 'https://sharearide-backend.azurewebsites.net/',
 };
