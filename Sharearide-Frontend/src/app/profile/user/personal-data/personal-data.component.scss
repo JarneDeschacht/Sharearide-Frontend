@@ -93,7 +93,7 @@ $darkblue:rgb(20, 30, 48);
 }
 
 
-@media (max-width:600px) {
+@media (max-width:800px) {
   .personal-data {
     margin-top: 5%;
 
@@ -118,6 +118,9 @@ $darkblue:rgb(20, 30, 48);
         td {
           min-width: 90%;
           margin: 2% auto;
+          i{
+            display: none;
+          }
         }
       }
 

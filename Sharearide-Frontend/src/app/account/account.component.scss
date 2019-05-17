@@ -96,7 +96,7 @@ $darkblue:rgb(20, 30, 48);
   cursor: pointer !important;
 }
 
-@media (max-width:600px) {
+@media (max-width:800px) {
   .account-forms {
     width: 100%;
     margin: 6%;
@@ -108,22 +108,13 @@ $darkblue:rgb(20, 30, 48);
 
       tr {
         display: flex;
+        flex-wrap: wrap;
         min-width: 100%;
         td {
-          &:nth-child(1) {
-            min-width: 20%;
-          }
-
-          &:nth-child(2) {
-            min-width: 80%;
-          }
+          min-width: 110%;
 
           i {
-            text-align: center;
-            display: block;
-            color: $maincolor;
-            margin: 0 auto;
-            padding-top: 25%;
+            display: none;
           }
         }
         .btn{

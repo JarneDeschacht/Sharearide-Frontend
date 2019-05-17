@@ -1,6 +1,6 @@
 <div *ngIf="(participatedRidesByUser$ | async) as rides; else loading">
   <div class="rides" *ngFor="let ride of rides">
-    <app-ride-small [ride]="ride" [isParticipatedRide]="1"></app-ride-small>
+    <app-ride-small data-cy='smallRide' [ride]="ride" [isParticipatedRide]="1"></app-ride-small>
   </div>
 </div>
 <ng-template #loading>

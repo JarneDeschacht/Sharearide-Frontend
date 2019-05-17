@@ -4,24 +4,24 @@
   <div *ngIf="(rides$ | async) as rides; else loading">
     <div class="filter">
       <div *ngIf="filterRideDate || filterRideDestination">
-        <i class="fas fa-times fa-2x reset" (click)="resetfilter()" matTooltip="Reset filter"></i>
+        <i class="fas fa-times fa-2x reset" data-cy='clearfilter' (click)="resetfilter()" matTooltip="Reset filter"></i>
       </div>
       <div *ngIf="!filterRideDate && !filterRideDestination">
         <i class="fas fa-filter fa-2x"></i>
       </div>
       <mat-form-field>
-        <input matInput (keyup)="filterRide$.next($event.target.value)" placeholder="filter op bestemming" type="text"
+        <input matInput (keyup)="filterRide$.next($event.target.value)" data-cy='filterDestination' placeholder="filter op bestemming" type="text"
           [value]="filterRideDestination" />
       </mat-form-field>
       <mat-form-field>
         <input matInput (dateInput)="filterRideDate$.next($event.target.value)" [matDatepicker]="picker"
-          placeholder="filter op datum" aria-label="Geboortedatum" [value]="filterRideDate">
+          placeholder="filter op datum" aria-label="Geboortedatum" [value]="filterRideDate" data-cy='filterDate'>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="rides" *ngFor="let ride of (rides | rideFilter : filterRideDestination:filterRideDate)">
-      <app-ride [ride]="ride"></app-ride>
+      <app-ride [ride]="ride" data-cy="ride"></app-ride>
     </div>
   </div>
   <ng-template #loading>

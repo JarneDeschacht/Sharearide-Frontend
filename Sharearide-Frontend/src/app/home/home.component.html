@@ -1,5 +1,5 @@
 <div class="intro">
-  <h1 class="title" *ngIf="(loggedInUser$ | async) as user">
+  <h1 class="title" *ngIf="(loggedInUser$ | async) as user" data-cy='usernameTitle'>
     welkom {{user}} !
   </h1>
 </div>

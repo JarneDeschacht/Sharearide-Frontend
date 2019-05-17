@@ -45,10 +45,6 @@ export class SharearideDataService {
     const localToken = localStorage.getItem(this._tokenKey);
     return !!localToken ? localToken : '';
   }
-  get users$(): Observable<User[]> {
-    return this.http.get(`${environment.apiUrl}/user/`).pipe(
-      map((list: any[]): User[] => list.map(User.fromJSON)));
-  }
   rides$(id: number): Observable<Ride[]> {
     return this.http.get(`${environment.apiUrl}/ride/user/${id}`).pipe(
       map((list: any[]): Ride[] => list.map(Ride.fromJSON)));
@@ -81,7 +77,7 @@ export class SharearideDataService {
           if (user) {
             localStorage.setItem(this._tokenKey, user.token);
             this._currentuser$.next(user.firstName);
-            localStorage.setItem(this._userKey, JSON.stringify(user))
+            localStorage.setItem(this._userKey, JSON.stringify(User.fromJSON(user)));
             return true;
           } else {
             return false;
@@ -105,7 +101,7 @@ export class SharearideDataService {
         map((user: any) => {
           if (user) {
             this._currentuser$.next(user.firstName);
-            localStorage.setItem(this._userKey, JSON.stringify(user))
+            localStorage.setItem(this._userKey, JSON.stringify(User.fromJSON(user)));
             return true;
           } else {
             return false;
@@ -132,7 +128,7 @@ export class SharearideDataService {
             localStorage.setItem(this._tokenKey, user.token);
             this._currentuser$.next(user.firstName);
             console.log(this._currentuser$);
-            localStorage.setItem(this._userKey, JSON.stringify(user))
+            localStorage.setItem(this._userKey, JSON.stringify(User.fromJSON(user)));
             return true;
           } else {
             return false;

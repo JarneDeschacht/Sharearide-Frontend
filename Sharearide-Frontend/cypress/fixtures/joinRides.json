@@ -1,0 +1,180 @@
+[
+    {
+      "rideId": 11,
+      "pickUpLocation": {
+        "locationId": 5,
+        "number": "6",
+        "companyName": "Kobenhavens lufthavne",
+        "street": "Lufthavnsboulevarden",
+        "city": {
+          "postalcode": "2770",
+          "name": "Kopenhagen",
+          "country": 48
+        }
+      },
+      "dropOffLocation": {
+        "locationId": 10,
+        "number": "16",
+        "companyName": "",
+        "street": "Zilverstraat",
+        "city": {
+          "postalcode": "8480",
+          "name": "Bekegem",
+          "country": 15
+        }
+      },
+      "stopovers": [
+        {
+          "locationId": 3,
+          "number": "5",
+          "companyName": "",
+          "street": "Stationsplein",
+          "city": {
+            "postalcode": "8000",
+            "name": "Brugge",
+            "country": 15
+          }
+        },
+        {
+          "locationId": 2,
+          "number": "119",
+          "companyName": "Sportpaleis",
+          "street": "Schijnpoortweg",
+          "city": {
+            "postalcode": "2000",
+            "name": "Antwerpen",
+            "country": 15
+          }
+        }
+      ],
+      "travelDate": "2019-05-19T00:00:00",
+      "passengerContribution": 85.5,
+      "totalAvailableSeats": 6,
+      "availableSeats": 5,
+      "isSoldOut": false,
+      "owner": {
+        "id": 6,
+        "firstName": "Camiel",
+        "lastName": "Deschacht",
+        "email": "camiel.deschacht@student.hogent.be",
+        "gender": 0,
+        "dateOfBirth": "1999-08-09T00:00:00",
+        "phoneNumber": "+32492554616",
+        "token": null,
+        "nrOfParticipatedRides": 0,
+        "nrOfOfferedRides": 0,
+        "url": "Resources/Images/profilepic.png"
+      }
+    },
+    {
+      "rideId": 10,
+      "pickUpLocation": {
+        "locationId": 10,
+        "number": "16",
+        "companyName": "",
+        "street": "Zilverstraat",
+        "city": {
+          "postalcode": "8480",
+          "name": "Bekegem",
+          "country": 15
+        }
+      },
+      "dropOffLocation": {
+        "locationId": 4,
+        "number": "15",
+        "companyName": "",
+        "street": "Stationsplein",
+        "city": {
+          "postalcode": "1000",
+          "name": "Amsterdam",
+          "country": 127
+        }
+      },
+      "stopovers": [
+        {
+          "locationId": 3,
+          "number": "5",
+          "companyName": "",
+          "street": "Stationsplein",
+          "city": {
+            "postalcode": "8000",
+            "name": "Brugge",
+            "country": 15
+          }
+        },
+        {
+          "locationId": 2,
+          "number": "119",
+          "companyName": "Sportpaleis",
+          "street": "Schijnpoortweg",
+          "city": {
+            "postalcode": "2000",
+            "name": "Antwerpen",
+            "country": 15
+          }
+        }
+      ],
+      "travelDate": "2019-05-22T00:00:00",
+      "passengerContribution": 24.87,
+      "totalAvailableSeats": 3,
+      "availableSeats": 0,
+      "isSoldOut": true,
+      "owner": {
+        "id": 1,
+        "firstName": "Jarne",
+        "lastName": "Deschacht",
+        "email": "jarne.deschacht@student.hogent.be",
+        "gender": 0,
+        "dateOfBirth": "1999-08-09T00:00:00",
+        "phoneNumber": "+32492554616",
+        "token": null,
+        "nrOfParticipatedRides": 0,
+        "nrOfOfferedRides": 0,
+        "url": "Resources/Images/profilepic.png"
+      }
+    },
+    {
+      "rideId": 1,
+      "pickUpLocation": {
+        "locationId": 3,
+        "number": "5",
+        "companyName": "",
+        "street": "Stationsplein",
+        "city": {
+          "postalcode": "8000",
+          "name": "Brugge",
+          "country": 15
+        }
+      },
+      "dropOffLocation": {
+        "locationId": 1,
+        "number": "56",
+        "companyName": "Western Digital",
+        "street": "Boulevard des Îles",
+        "city": {
+          "postalcode": "75000",
+          "name": "Parijs",
+          "country": 61
+        }
+      },
+      "stopovers": [],
+      "travelDate": "2019-10-14T00:00:00",
+      "passengerContribution": 27.75,
+      "totalAvailableSeats": 2,
+      "availableSeats": 1,
+      "isSoldOut": false,
+      "owner": {
+        "id": 1,
+        "firstName": "Jarne",
+        "lastName": "Deschacht",
+        "email": "jarne.deschacht@student.hogent.be",
+        "gender": 0,
+        "dateOfBirth": "1999-08-09T00:00:00",
+        "phoneNumber": "+32492554616",
+        "token": null,
+        "nrOfParticipatedRides": 0,
+        "nrOfOfferedRides": 0,
+        "url": "Resources/Images/profilepic.png"
+      }
+    }
+  ]

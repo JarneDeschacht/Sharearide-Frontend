@@ -189,8 +189,8 @@ export class PersonalDataComponent implements OnInit {
           if (val)
           {
             this.user.url = this.fromJSON(event.body);
-            localStorage.setItem("currentUser",JSON.stringify(this.user));
-            this.router.navigate(["/home"]);
+            localStorage.setItem('currentUser', JSON.stringify(this.user));
+            this.router.navigate(['/home']);
           }
         });
       }

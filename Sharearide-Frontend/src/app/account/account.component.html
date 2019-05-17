@@ -14,7 +14,7 @@
               <td>
                 <mat-form-field>
                   <input matInput placeholder="E-mailadres" aria-label="E-mailadres" type="email"
-                    formControlName="email" required>
+                    formControlName="email" required data-cy="login-email">
                   <mat-error *ngIf="userLogin.get('email')['errors']  && 
                   userLogin.get('email').touched">
                     {{getErrorMessage(userLogin.get('email')['errors']) }}
@@ -29,7 +29,7 @@
               <td>
                 <mat-form-field>
                   <input matInput [type]="hide3 ? 'text' : 'password'" placeholder="Wachtwoord" aria-label="Wachtwoord"
-                    formControlName="password" required>
+                    formControlName="password" required data-cy="login-password">
                   <mat-icon matSuffix (click)="hide3 = !hide3">
                     {{hide3 ? "visibility_off" : "visibility"}}
                   </mat-icon>
@@ -42,7 +42,8 @@
             </tr>
             <tr>
               <td colspan="2" class="btn">
-                <button class="button-confirm" mat-button [disabled]='!userLogin.valid'>Inloggen</button>
+                <button class="button-confirm" mat-button [disabled]='!userLogin.valid'
+                  data-cy="login-button">Inloggen</button>
               </td>
             </tr>
 
@@ -53,7 +54,7 @@
           </div>
         </form>
       </mat-tab>
-      <mat-tab label="Registreren">
+      <mat-tab data-cy="registertab" label="Registreren">
         <h1 class="title">Registreren</h1>
 
         <!--REGISTER-->
@@ -65,7 +66,8 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="Voornaam" required aria-label="Voornaam" formControlName="firstname">
+                  <input matInput placeholder="Voornaam" data-cy="register-firstname" required aria-label="Voornaam"
+                    formControlName="firstname">
                   <mat-error *ngIf="userRegister.get('firstname')['errors']  && userRegister.get('firstname').touched">
                     {{getErrorMessage(userRegister.get('firstname')['errors']) }}
                   </mat-error>
@@ -76,7 +78,8 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="Familienaam" required aria-label="Voornaam" formControlName="lastname">
+                  <input matInput placeholder="Familienaam" data-cy="register-lastname" required aria-label="Voornaam"
+                    formControlName="lastname">
                   <mat-error *ngIf="userRegister.get('lastname')['errors']  && userRegister.get('lastname').touched">
                     {{getErrorMessage(userRegister.get('lastname')['errors']) }}
                   </mat-error>
@@ -90,8 +93,8 @@
               <td>
                 <mat-form-field>
                   <span matPrefix>+ &nbsp;</span>
-                  <input type="tel" matInput placeholder="Telefoonnummer" required aria-label="Telefoonnummer"
-                    formControlName="telnr">
+                  <input type="tel" matInput placeholder="Telefoonnummer" data-cy="register-telnr" required
+                    aria-label="Telefoonnummer" formControlName="telnr">
                   <mat-error *ngIf="userRegister.get('telnr')['errors']  && userRegister.get('telnr').touched">
                     {{getErrorMessage(userRegister.get('telnr')['errors']) }}
                   </mat-error>
@@ -102,8 +105,8 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker" placeholder="Geboortedatum" required
-                    aria-label="Geboortedatum" formControlName="borndate">
+                  <input matInput [matDatepicker]="picker" data-cy="register-birthdate" placeholder="Geboortedatum"
+                    required aria-label="Geboortedatum" formControlName="borndate">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                   <mat-error *ngIf="userRegister.get('borndate')['errors']  && userRegister.get('borndate').touched">
@@ -118,8 +121,8 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="E-mailadres" aria-label="E-mailadres" type="email"
-                    formControlName="email" required>
+                  <input matInput placeholder="E-mailadres" data-cy="register-email" aria-label="E-mailadres"
+                    type="email" formControlName="email" required>
                   <mat-error *ngIf="userRegister.get('email')['errors']  && userRegister.get('email').touched">
                     {{getErrorMessage(userRegister.get('email')['errors']) }}
                   </mat-error>
@@ -131,7 +134,7 @@
               <td>
                 <mat-form-field>
                   <mat-label>Geslacht</mat-label>
-                  <mat-select aria-placeholder="Geslacht" formControlName="gender" required>
+                  <mat-select aria-placeholder="Geslacht" data-cy="register-gender" formControlName="gender" required>
                     <mat-option *ngFor="let gender of genders" [value]="gender.value">
                       {{gender.viewValue}}
                     </mat-option>
@@ -149,8 +152,8 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput [type]="hide1 ? 'text' : 'password'" placeholder="Wachtwoord" required
-                    aria-label="Wachtwoord" formControlName="password">
+                  <input matInput [type]="hide1 ? 'text' : 'password'" data-cy="register-password"
+                    placeholder="Wachtwoord" required aria-label="Wachtwoord" formControlName="password">
                   <mat-icon matSuffix (click)="hide1 = !hide1">
                     {{hide1 ? "visibility_off" : "visibility"}}
                   </mat-icon>
@@ -166,8 +169,9 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput [type]="hide2 ? 'text' : 'password'" placeholder=" Bevestig Wachtwoord" required
-                    aria-label="Bevestig Wachtwoord" formControlName="passwordConfirm">
+                  <input matInput [type]="hide2 ? 'text' : 'password'" data-cy="register-passwordConfirm"
+                    placeholder=" Bevestig Wachtwoord" required aria-label="Bevestig Wachtwoord"
+                    formControlName="passwordConfirm">
                   <mat-icon matSuffix (click)="hide2 = !hide2">
                     {{hide2 ? "visibility_off" : "visibility"}}
                   </mat-icon>
@@ -183,7 +187,8 @@
             </tr>
             <tr>
               <td colspan="4" class="btn">
-                <button mat-button [disabled]='!userRegister.valid' class="button-confirm">Bevestigen</button>
+                <button mat-button [disabled]='!userRegister.valid' data-cy="register-confirm"
+                  class="button-confirm">Bevestigen</button>
               </td>
             </tr>
 
