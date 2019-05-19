@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
   public user : User = JSON.parse(localStorage.getItem('currentUser')); 
   public pRides : number = this.user.nrOfParticipatedRides;
   public oRides : number = this.user.nrOfOfferedRides;
-  public imgPath : string = `https://localhost:44364/${this.user.url}`;
+  public imgPath : string =  `${environment.imgUrl}/${this.user.url}`;
 
   constructor() { }
 
