@@ -85,7 +85,6 @@ export class RegisterDialogComponent implements OnInit {
               this.data.firstname
               }: ${err.error}`;
           }
-          console.log(this.errorMsg);
         }
       );
     this.dialogRef.close();

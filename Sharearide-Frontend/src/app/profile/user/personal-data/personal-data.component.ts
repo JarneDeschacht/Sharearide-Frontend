@@ -109,7 +109,6 @@ export class PersonalDataComponent implements OnInit {
               this.userEdit.value.firstname
               }: ${err.error}`;
           }
-          console.log(this.errorMsg);
         }
       );
   }

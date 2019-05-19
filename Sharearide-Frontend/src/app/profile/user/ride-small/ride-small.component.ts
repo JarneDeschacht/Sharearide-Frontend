@@ -34,7 +34,6 @@ export class RideSmallComponent implements OnInit {
         }
       },
       (err: HttpErrorResponse) => {
-        console.log(err);
       }
     );
   }
@@ -48,7 +47,6 @@ export class RideSmallComponent implements OnInit {
         }
       },
       (err: HttpErrorResponse) => {
-        console.log(err);
       }
     );
   }

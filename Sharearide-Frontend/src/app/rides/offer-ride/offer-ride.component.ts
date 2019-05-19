@@ -31,7 +31,7 @@ export class OfferRideComponent implements OnInit {
     { value: 127, viewValue: 'Nederland' },
     { value: 48,  viewValue: 'Denemarken' },
     { value: 61,  viewValue: 'Frankrijk' },
-    { value: 168, viewValue: 'spanje'},
+    { value: 168, viewValue: 'Spanje'},
     { value: 175, viewValue: "Zweden"},
     { value: 176, viewValue: "Zwitserland"},
     { value: 145, viewValue: "Portugal"},
@@ -69,8 +69,7 @@ export class OfferRideComponent implements OnInit {
     let newRide = new Ride(0, start, end, stopovers,this.details.value.travelDate,
       this.details.value.price, this.details.value.seats,
       this.details.value.seats, false, User.fromJSON(this.user));
-
-    console.log(newRide.toJSON());
+      
     this._dataService.addRide(newRide).subscribe(
       val => {
         if (val) {

@@ -124,10 +124,8 @@ export class SharearideDataService {
       .pipe(
         map((user: any) => {
           if (user) {
-            console.log(user);
             localStorage.setItem(this._tokenKey, user.token);
             this._currentuser$.next(user.firstName);
-            console.log(this._currentuser$);
             localStorage.setItem(this._userKey, JSON.stringify(User.fromJSON(user)));
             return true;
           } else {

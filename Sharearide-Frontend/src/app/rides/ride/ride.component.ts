@@ -26,7 +26,6 @@ export class RideComponent implements OnInit {
         }
       },
       (err: HttpErrorResponse) => {
-        console.log(err);
       }
     );
   }

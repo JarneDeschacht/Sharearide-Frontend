@@ -113,7 +113,6 @@ export class AccountComponent implements OnInit {
               this.userLogin.value.firstname
               }: ${err.error}`;
           }
-          console.log(this.errorMsg);
         }
       );
   }
@@ -149,7 +148,6 @@ export class AccountComponent implements OnInit {
               this.userRegister.value.firstname
               }: ${err.error}`;
           }
-          console.log(this.errorMsg);
         }
       );
   }
@@ -198,19 +196,15 @@ export class AccountComponent implements OnInit {
 
   }
   loginregisterFB() {
-    console.log("submit login to facebook");
     // FB.login();
     FB.login((response) => {
-      console.log('submitLogin', response);
       if (response.status === 'connected') {
         FB.api(
           `/me?fields=id,first_name,last_name,email`,
           function (response2) {
             if (response2 && !response2.error) {
-              console.log(response2);
               this.name = response2.first_name + "§" + response2.last_name + "§" + response2.email + "§" + response2.id;
             }
-            else console.log(response2.error)
           }
         );
       }
@@ -271,9 +265,7 @@ export class AccountComponent implements OnInit {
       disableClose: true,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe();
   }
   loginFB() {
     this._dataService
@@ -305,7 +297,6 @@ export class AccountComponent implements OnInit {
               this.userLogin.value.firstname
               }: ${err.error}`;
           }
-          console.log(this.errorMsg);
         }
       );
   }
